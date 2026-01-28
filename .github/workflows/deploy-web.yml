@@ -9,7 +9,7 @@ on:
 permissions:
     contents: read
     pages: write # For deploy-pages job
-
+    id-token: write # For deploy-pages job
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }} # Use branch name for concurrency
     cancel-in-progress: true
