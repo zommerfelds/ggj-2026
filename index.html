@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>If you are not redirected automatically, follow this <a id="game-link" href="game.html">link to the game</a>.</p>
+    <script type="text/javascript">
+        var url = "game.html?v=" + new Date().getTime();
+        document.getElementById("game-link").href = url;
+        window.location.href = url;
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ccgmx8dcgeh31"]
+
+[node name="Node2D" type="Node2D" unique_id=1074987799]
+
+[node name="Label" type="Label" parent="." unique_id=2051775926]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 382.0
+offset_top = 265.0
+offset_right = 716.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Hello, friends!"
