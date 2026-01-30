@@ -9,8 +9,6 @@ func _physics_process(_delta: float) -> void:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")).limit_length(0.4)
 
-	testing what happens when checking in broken code.
-
 	direction = (direction + controller).limit_length(10.0)
 	$Label.position += direction
 	if $Label.position.x > get_viewport_rect().end.x - $Label.size.x:
