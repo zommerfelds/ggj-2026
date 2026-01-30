@@ -1,0 +1,16 @@
+extends Node2D
+
+
+var direction = Vector2(2, 2)
+
+
+func _process(_delta: float) -> void:
+	$Label.position += direction
+	if $Label.position.x > get_viewport_rect().end.x - $Label.size.x:
+		direction.x = -abs(direction.x)
+	if $Label.position.x < 0:
+		direction.x = abs(direction.x)
+	if $Label.position.y > get_viewport_rect().end.y - $Label.size.y:
+		direction.y = -abs(direction.y)
+	if $Label.position.y < 0:
+		direction.y = abs(direction.y)

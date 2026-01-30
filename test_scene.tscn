@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://ccgmx8dcgeh31"]
 
+[ext_resource type="Script" uid="uid://t24106jb54fb" path="res://test_scene.gd" id="1_uhqqe"]
+
 [node name="Node2D" type="Node2D" unique_id=1074987799]
+script = ExtResource("1_uhqqe")
 
 [node name="Label" type="Label" parent="." unique_id=2051775926]
 anchors_preset = 15
