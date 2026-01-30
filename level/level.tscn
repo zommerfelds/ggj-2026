@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwcfww0n68buj"]
 
 [ext_resource type="Texture2D" uid="uid://c6wp7clm68tok" path="res://level/floor/floor_texture.tres" id="1_7lnir"]
+[ext_resource type="Texture2D" uid="uid://b4el08us2sunn" path="res://level/plant/plant.png" id="2_5gx2l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5gx2l"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -11,6 +12,13 @@ albedo_texture = ExtResource("1_7lnir")
 uv1_scale = Vector3(8, 8, 8)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lnir"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qohg2"]
+size = Vector2(1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkbyq"]
+transparency = 1
+albedo_texture = ExtResource("2_5gx2l")
 
 [sub_resource type="Environment" id="Environment_vkbyq"]
 ambient_light_source = 2
@@ -40,6 +48,11 @@ size = 8.0
 [node name="Player" type="MeshInstance3D" parent="Objects" unique_id=1038159648]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.74401855, 0.5, 1.680542)
 mesh = SubResource("CapsuleMesh_7lnir")
+
+[node name="Plant" type="MeshInstance3D" parent="Objects" unique_id=1644856029]
+transform = Transform3D(0.7071068, 0.6123725, 0.35355332, 0, 0.5, -0.8660254, -0.7071068, 0.6123725, 0.35355332, 2.668213, 1, 0)
+mesh = SubResource("PlaneMesh_qohg2")
+surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
