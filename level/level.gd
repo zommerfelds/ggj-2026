@@ -73,10 +73,9 @@ func _ready() -> void:
 
 	# Resize floor:
 	$Floor/FloorMesh.mesh.size = Vector2(grid_size.x, grid_size.z)
-	$Floor/FloorMesh.position.x = grid_size.x / 2.0
-	$Floor/FloorMesh.position.z = grid_size.z / 2.0
 	$Floor/FloorMesh.get_surface_override_material(0).uv1_scale = Vector3(grid_size.x, grid_size.z, 1)
-	$CameraPivot.position = $Floor/FloorMesh.position
+	$CameraPivot.position = Vector3(grid_size.x / 2.0, 0, grid_size.z / 2.0)
+	$Floor/FloorMesh.position = $CameraPivot/FloorReference.global_position
 
 	# Create wall collision shapes:
 	var walls = StaticBody3D.new()
@@ -93,6 +92,10 @@ func _ready() -> void:
 	prototype.free()
 
 	$CameraPivot/Camera3D.size = max(grid_size.x, grid_size.z)
+
+
+func _process(delta: float) -> void:
+	$Floor/FloorMesh.position = $CameraPivot/FloorReference.global_position
 
 
 func add_player(x, z) -> void:
