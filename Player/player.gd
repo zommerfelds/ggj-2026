@@ -24,7 +24,7 @@ func _physics_process(_delta):
 		direction.z += 1
 	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
-		
+
 	if direction.x != 0.0:
 		%Face.scale.x = -signf(direction.x)
 
@@ -36,7 +36,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	var c = get_last_slide_collision()
-	if c != null and c.get_collider() is Plant:
+	if c != null and (c.get_collider() is Plant or c.get_collider() is Box):
 		var n = c.get_normal()
 		var push_new = Vector3i.ZERO
 
