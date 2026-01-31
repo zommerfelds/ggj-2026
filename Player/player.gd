@@ -7,7 +7,7 @@ class_name Player
 
 # While pushing an object: Direction and accumulated time (frames).
 var push_direction: Vector3i = Vector3i.ZERO
-var push_time: int = 0
+var push_time: float = 0.0
 
 
 func _ready() -> void:
@@ -54,9 +54,15 @@ func _physics_process(_delta):
 			push_time = 0
 		else:
 			if push_new == push_direction:
-				push_time += 1
-				if push_time > 30:
-					c.get_collider().position += Vector3(push_direction)
+				push_time += _delta
+				if push_time > 0.3:
+					var tween = get_tree().create_tween()
+					tween.tween_property(
+						c.get_collider(),
+						"position",
+						c.get_collider().position + Vector3(push_direction),
+						0.3
+					)
 					push_time = 0
 			else:
 				push_time = 0
