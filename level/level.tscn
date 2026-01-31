@@ -15,7 +15,7 @@ uv1_scale = Vector3(8, 8, 8)
 
 [sub_resource type="Environment" id="Environment_vkbyq"]
 background_mode = 1
-background_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
+background_color = Color(1, 1, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 

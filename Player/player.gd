@@ -18,13 +18,13 @@ func _physics_process(_delta):
 	var direction = Vector3.ZERO
 
 	if Input.is_action_pressed("move_right"):
-		direction.x += 1
+		direction += Vector3(0.5, 0, 0.5)
 	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
+		direction += Vector3(-0.5, 0, -0.5)
 	if Input.is_action_pressed("move_back"):
-		direction.z += 1
+		direction += Vector3(-0.5, 0, 0.5)
 	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
+		direction += Vector3(0.5, 0, -0.5)
 
 	if direction.x != 0.0:
 		%Face.scale.x = -signf(direction.x)
@@ -45,8 +45,10 @@ func _physics_process(_delta):
 
 	direction = direction.normalized().rotated(Vector3.UP, camera.global_rotation.y)
 
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
+	# Smoothly ramp up/down the velocity.
+	const interpolation = 0.3
+	velocity.x = lerp(velocity.x, direction.x * speed, interpolation)
+	velocity.z = lerp(velocity.z, direction.z * speed, interpolation)
 
 	move_and_slide()
 	maybe_push(_delta, direction)
