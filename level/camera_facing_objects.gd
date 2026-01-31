@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	for child in get_children():
-		if (child is Node3D && !(child is Player)):
+		if (child is Node3D && !(child is Player) && !(child is Plant)):
 			var isObjectMasked = checkIfObjectIsMasked(child)
 			child.process_mode = Node.PROCESS_MODE_DISABLED if isObjectMasked else Node.PROCESS_MODE_INHERIT
 #

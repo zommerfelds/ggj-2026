@@ -8,6 +8,7 @@ var plant_scene = preload("res://level/plant/plant.tscn")
 var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
 var rotation_switch_scene = preload("res://level/rotation_switch/rotation_switch.tscn")
+var box_scene = preload("res://level/box/box.tscn")
 
 
 # Only X and Z matter for the grid size
@@ -35,6 +36,7 @@ func _ready() -> void:
 			add_plant(5, 0)
 			add_goal(5, 3)
 			add_player(0, 0)
+			add_box(1, 1)
 		_:
 			grid_size = Vector3i(6, -1, 6)
 			add_rock(1, 3)
@@ -95,3 +97,9 @@ func add_rotation_switch(x, z) -> void:
 	var rotation_switch = rotation_switch_scene.instantiate()
 	rotation_switch.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(rotation_switch)
+
+
+func add_box(x, z) -> void:
+	var box = box_scene.instantiate()
+	box.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(box)
