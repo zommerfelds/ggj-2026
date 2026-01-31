@@ -18,7 +18,7 @@ func _ready() -> void:
 
 	match level_index:
 		1:
-			grid_size = Vector3i(6, -1, 6)
+			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_rock(0, 1)
 			add_rock(0, 2)
@@ -66,6 +66,8 @@ func _ready() -> void:
 		walls.add_child(wall)
 	add_child(walls)
 	prototype.free()
+
+	$CameraPivot/Camera3D.size = max(grid_size.x, grid_size.z)
 
 
 func add_player(x, z) -> void:
