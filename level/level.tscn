@@ -18,6 +18,7 @@ background_mode = 1
 background_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_7lnir"]
 
@@ -38,9 +39,9 @@ transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -
 script = ExtResource("2_ivpvi")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1005227411]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.1, 7)
 projection = 1
-size = 8.0
+size = 7.254
 
 [node name="FloorReference" type="Node3D" parent="CameraPivot" unique_id=799592643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
