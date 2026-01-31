@@ -2,6 +2,7 @@ extends Node3D
 
 @export var cameraPivot: Node3D
 
+var world_has_ended = false
 const RAY_LENGTH = 10000
 
 func _process(delta: float) -> void:
@@ -20,7 +21,9 @@ func _physics_process(delta: float) -> void:
 			child.process_mode = Node.PROCESS_MODE_DISABLED if isObjectMasked else Node.PROCESS_MODE_INHERIT
 		if child is Node3D && !(child is Player):
 			if checkForParadox(child as Node3D):
-				SignalBus.end_world.emit((child as Node3D).global_position)
+				if !world_has_ended:
+					world_has_ended = true
+					SignalBus.end_world.emit((child as Node3D).global_position)
 
 func checkIfObjectIsMasked(object: Node3D) -> bool:
 	var space_state = object.get_world_3d().direct_space_state

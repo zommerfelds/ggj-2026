@@ -33,6 +33,7 @@ func next_level(delta: int = 1) -> void:
 	call_deferred("setup_level")
 
 func setup_level() -> void:
+	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
 	level.level_index = level_index
 	add_child(level)
@@ -48,4 +49,8 @@ func end_world(source: Vector3) -> void:
 		"scale",
 		Vector3(targetSize, targetSize, targetSize),
 		1.5
+	)
+	tween.tween_callback(func ():
+		print("set visible")
+		%ParadoxLabel.visible = true
 	)

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
+font_size = 50
+
 [node name="GameUI" type="Node" unique_id=607135136]
 script = ExtResource("1_0osaa")
 
@@ -32,3 +35,17 @@ offset_right = 171.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 40
 text = "Level 1"
+
+[node name="ParadoxLabel" type="Label" parent="Overlay" unique_id=817727250]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1200.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "You have created a paradox! The world has ended.
+
+Press R to try again."
+label_settings = SubResource("LabelSettings_0osaa")
+horizontal_alignment = 1
+vertical_alignment = 1
