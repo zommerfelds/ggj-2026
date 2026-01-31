@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://byque4w54oowj"]
 
 [ext_resource type="Script" uid="uid://mjj3k65544df" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="Texture2D" uid="uid://cogs3fkrakoto" path="res://Player/racoon/belly.PNG" id="2_tok1r"]
+[ext_resource type="Texture2D" uid="uid://bf2n3wel01tax" path="res://Player/racoon/head.PNG" id="3_ddoul"]
+[ext_resource type="Texture2D" uid="uid://dlyibdnyr57d2" path="res://Player/racoon/arm r.PNG" id="4_vlldt"]
+[ext_resource type="Texture2D" uid="uid://bpn5km7vno38k" path="res://Player/racoon/arm l.PNG" id="5_s1rgi"]
+[ext_resource type="Texture2D" uid="uid://dvqlhr7f6caty" path="res://Player/racoon/foot r.PNG" id="6_j23h2"]
+[ext_resource type="Texture2D" uid="uid://fvwnta1ygr2w" path="res://Player/racoon/foot l.PNG" id="7_0j2ni"]
+[ext_resource type="Texture2D" uid="uid://0uhdojav3oll" path="res://Player/racoon/tail.PNG" id="8_s1rgi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
 radius = 0.25
@@ -10,13 +17,93 @@ height = 1.0
 radius = 0.25
 height = 1.0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_tok1r"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddoul"]
+transparency = 1
+albedo_texture = ExtResource("2_tok1r")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8g4oa"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6ysni"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlldt"]
+transparency = 1
+albedo_texture = ExtResource("3_ddoul")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0k0e"]
+transparency = 1
+albedo_texture = ExtResource("4_vlldt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wa8t"]
+transparency = 1
+albedo_texture = ExtResource("5_s1rgi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
+transparency = 1
+albedo_texture = ExtResource("6_j23h2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm7nj"]
+transparency = 1
+albedo_texture = ExtResource("7_0j2ni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j23h2"]
+transparency = 1
+albedo_texture = ExtResource("8_s1rgi")
+
 [node name="Player" type="CharacterBody3D" unique_id=1890698145]
 script = ExtResource("1_3qydi")
 
 [node name="PlayerBody" type="MeshInstance3D" parent="." unique_id=2098642903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_l2ndj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=495696465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_3qydi")
+
+[node name="FaceOld" type="MeshInstance3D" parent="." unique_id=1876588193]
+transform = Transform3D(0.7071068, 0.61237246, 0.35355338, 0, 0.49999997, -0.86602557, -0.7071068, 0.61237246, 0.35355338, 0, 0.42135406, 0)
+visible = false
+mesh = SubResource("PlaneMesh_tok1r")
+surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
+
+[node name="Face" type="Node3D" parent="." unique_id=1095450874]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.208, 0.30993652, -0.208)
+
+[node name="belly" type="MeshInstance3D" parent="Face" unique_id=1613489954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.42135406, 0)
+mesh = SubResource("PlaneMesh_8g4oa")
+surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
+
+[node name="face" type="MeshInstance3D" parent="Face" unique_id=1096647263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.4294107, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_vlldt")
+
+[node name="arm r" type="MeshInstance3D" parent="Face" unique_id=1551627667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.41598296, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0k0e")
+
+[node name="arm l" type="MeshInstance3D" parent="Face" unique_id=1887718740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.4367349, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_5wa8t")
+
+[node name="leg r" type="MeshInstance3D" parent="Face" unique_id=1548851811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.41598296, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
+
+[node name="leg l" type="MeshInstance3D" parent="Face" unique_id=1438876421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.4367349, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_dm7nj")
+
+[node name="tail" type="MeshInstance3D" parent="Face" unique_id=667908049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0.40764952, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_j23h2")
