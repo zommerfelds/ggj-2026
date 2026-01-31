@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c6wp7clm68tok" path="res://level/floor/floor_texture.tres" id="1_7lnir"]
 [ext_resource type="Script" uid="uid://biecaw1ifj6ps" path="res://level/camera_facing_objects.gd" id="2_44x8d"]
 [ext_resource type="Script" uid="uid://lrt4ayitwhwa" path="res://level/camera_pivot.gd" id="2_ivpvi"]
-[ext_resource type="PackedScene" uid="uid://byque4w54oowj" path="res://Player/Player.tscn" id="2_qohg2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5gx2l"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -32,6 +31,8 @@ level_index = 1
 mesh = SubResource("PlaneMesh_5gx2l")
 surface_material_override/0 = SubResource("StandardMaterial3D_qohg2")
 
+[node name="Walls" type="StaticBody3D" parent="." unique_id=2019861610]
+
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1970826554]
 transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 0, 0)
 script = ExtResource("2_ivpvi")
@@ -44,9 +45,6 @@ size = 8.0
 [node name="Objects" type="Node3D" parent="." unique_id=1812326925 node_paths=PackedStringArray("cameraPivot")]
 script = ExtResource("2_44x8d")
 cameraPivot = NodePath("../CameraPivot")
-
-[node name="Player" parent="Objects" unique_id=217308772 node_paths=PackedStringArray("camera") instance=ExtResource("2_qohg2")]
-camera = NodePath("../../CameraPivot/Camera3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
