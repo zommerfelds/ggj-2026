@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://bwcfww0n68buj"]
 
+[ext_resource type="Script" uid="uid://e7lp8wt3gqab" path="res://level/level.gd" id="1_0v1st"]
 [ext_resource type="Texture2D" uid="uid://c6wp7clm68tok" path="res://level/floor/floor_texture.tres" id="1_7lnir"]
 [ext_resource type="Script" uid="uid://biecaw1ifj6ps" path="res://level/camera_facing_objects.gd" id="2_44x8d"]
 [ext_resource type="Script" uid="uid://lrt4ayitwhwa" path="res://level/camera_pivot.gd" id="2_ivpvi"]
 [ext_resource type="PackedScene" uid="uid://byque4w54oowj" path="res://Player/Player.tscn" id="2_qohg2"]
-[ext_resource type="PackedScene" uid="uid://djus3q4uij4ww" path="res://level/goal/goal.tscn" id="4_vkbyq"]
-[ext_resource type="PackedScene" uid="uid://g12b070v6eli" path="res://level/plant/plant.tscn" id="5_44x8d"]
-[ext_resource type="PackedScene" uid="uid://gspapybfyiaj" path="res://level/rock/rock.tscn" id="5_ktfr2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5gx2l"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -25,10 +23,12 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_7lnir"]
 
 [node name="Level" type="Node3D" unique_id=528702116]
+script = ExtResource("1_0v1st")
+level_index = 1
 
 [node name="Floor" type="Node3D" parent="." unique_id=1961210659]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1371076623]
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=1371076623]
 mesh = SubResource("PlaneMesh_5gx2l")
 surface_material_override/0 = SubResource("StandardMaterial3D_qohg2")
 
@@ -47,18 +47,6 @@ cameraPivot = NodePath("../CameraPivot")
 
 [node name="Player" parent="Objects" unique_id=217308772 node_paths=PackedStringArray("camera") instance=ExtResource("2_qohg2")]
 camera = NodePath("../../CameraPivot/Camera3D")
-
-[node name="Goal" parent="Objects" unique_id=2129572166 instance=ExtResource("4_vkbyq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
-
-[node name="Rock" parent="Objects" unique_id=490074602 instance=ExtResource("5_ktfr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
-
-[node name="Rock2" parent="Objects" unique_id=1302769966 instance=ExtResource("5_ktfr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
-
-[node name="Plant" parent="Objects" unique_id=1778761240 instance=ExtResource("5_44x8d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
