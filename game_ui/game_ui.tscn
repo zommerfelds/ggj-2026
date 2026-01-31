@@ -13,18 +13,17 @@ script = ExtResource("1_0osaa")
 
 [node name="Overlay" type="Control" parent="." unique_id=384996768]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 200.0
-offset_bottom = 100.0
-
-[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=1986285235]
-modulate = Color(1, 1, 1, 0.4627451)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=1986285235]
+modulate = Color(1, 1, 1, 0.4627451)
+layout_mode = 1
+offset_right = 191.0
+offset_bottom = 95.0
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
 [node name="LevelName" type="Label" parent="Overlay" unique_id=1845814335]
@@ -35,13 +34,17 @@ offset_right = 171.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 40
 text = "Level 1"
+horizontal_alignment = 1
 
 [node name="ParadoxLabel" type="Label" parent="Overlay" unique_id=817727250]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1200.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "You have created a paradox! The world has ended.
 
