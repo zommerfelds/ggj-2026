@@ -8,6 +8,7 @@ class_name Player
 # While pushing an object: Direction and accumulated time (frames).
 var push_direction: Vector3i = Vector3i.ZERO
 var push_time: float = 0.0
+var current_step_is_left = false
 
 
 func _ready() -> void:
@@ -29,7 +30,17 @@ func _physics_process(_delta):
 		%Face.scale.x = -signf(direction.x)
 		
 	if not direction.is_zero_approx():
+		var just_switched = false
+		if %AnimationPlayer.current_animation != "walk":
+			current_step_is_left = not current_step_is_left
+			just_switched = true
+
 		%AnimationPlayer.current_animation = "walk"
+		
+		if just_switched and current_step_is_left:
+			print("hey")
+			%AnimationPlayer.seek(0.4) # %AnimationPlayer.get_section_end_time() / 0.5)
+
 	else:
 		%AnimationPlayer.current_animation = "idle"
 

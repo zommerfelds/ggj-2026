@@ -203,6 +203,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0.4367349, 0), Vector3(0, 0.4367349, -0.007824123)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node/leg r:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node/leg l:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0j2ni"]
 resource_name = "walk"
@@ -387,6 +411,7 @@ unique_name_in_owner = true
 root_node = NodePath("../Face")
 libraries/ = SubResource("AnimationLibrary_j23h2")
 autoplay = &"idle"
+blend_times = [&"walk", &"idle", 0.3]
 
 [node name="Face" type="Node3D" parent="." unique_id=1095450874]
 unique_name_in_owner = true
