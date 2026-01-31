@@ -39,7 +39,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	maybe_push(_delta, direction)
-	
+
 	set_anim_state(direction)
 
 func set_anim_state(direction: Vector2):
@@ -66,7 +66,7 @@ func maybe_push(delta: float, direction: Vector2):
 	if c != null:
 		var n = c.get_normal()
 		var push_new = Vector3i.ZERO
-		
+
 		var dirs = [Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, 1)]
 		for dir in dirs:
 			if n.dot(dir) < -0.8:
@@ -93,6 +93,7 @@ func maybe_push(delta: float, direction: Vector2):
 			push_time = 0
 			push_direction = push_new
 	else:
+		%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
 		push_time = 0
 
 
