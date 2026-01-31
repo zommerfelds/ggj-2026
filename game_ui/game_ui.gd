@@ -7,7 +7,6 @@ var level_preload = preload("res://level/level.tscn")
 var level_index = 1
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("goal_reached", next_level)
 

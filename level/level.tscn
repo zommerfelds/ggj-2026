@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1eik8c6lum4p" path="res://level/plant/tree.png" id="2_5gx2l"]
 [ext_resource type="PackedScene" uid="uid://byque4w54oowj" path="res://Player/Player.tscn" id="2_qohg2"]
 [ext_resource type="PackedScene" uid="uid://djus3q4uij4ww" path="res://level/goal/goal.tscn" id="4_vkbyq"]
+[ext_resource type="PackedScene" uid="uid://gspapybfyiaj" path="res://level/rock/rock.tscn" id="5_ktfr2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5gx2l"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -57,6 +58,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
 [node name="Goal" parent="Objects" unique_id=2129572166 instance=ExtResource("4_vkbyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
+
+[node name="Rock" parent="Objects" unique_id=490074602 instance=ExtResource("5_ktfr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
