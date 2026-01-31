@@ -3,10 +3,20 @@
 [ext_resource type="Script" uid="uid://mjj3k65544df" path="res://Player/player.gd" id="1_3qydi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qydi"]
+radius = 0.25
+height = 1.0
 
 [node name="Player" type="CharacterBody3D" unique_id=1890698145]
 script = ExtResource("1_3qydi")
 
 [node name="PlayerBody" type="MeshInstance3D" parent="." unique_id=2098642903]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_l2ndj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=495696465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_3qydi")
