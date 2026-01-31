@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dfevirow2ys32"]
+
+[ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
+[ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
+
+[node name="GameUI" type="Node" unique_id=607135136]
+script = ExtResource("1_0osaa")
+
+[node name="Level" parent="." unique_id=528702116 instance=ExtResource("1_dfl03")]
+
+[node name="Overlay" type="Control" parent="." unique_id=384996768]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=1986285235]
+modulate = Color(1, 1, 1, 0.4627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15637839, 0.22576961, 0.24399114, 1)
+
+[node name="LevelName" type="Label" parent="Overlay" unique_id=1845814335]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 171.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 40
+text = "Level 1"

@@ -1,7 +1,9 @@
 extends CharacterBody3D
+class_name Player
 
 @export var speed = 6
 @export var camera: Camera3D
+
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -14,10 +16,10 @@ func _physics_process(delta):
 		direction.z += 1
 	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
-		
+
 	direction = direction.normalized().rotated(Vector3.UP, camera.global_rotation.y)
-	
+
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-	
+
 	move_and_slide()
