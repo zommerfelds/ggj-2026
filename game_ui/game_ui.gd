@@ -10,6 +10,10 @@ var level_index = 1
 func _ready() -> void:
 	SignalBus.connect("goal_reached", next_level)
 
+func _process(delta) -> void:
+	if (Input.is_action_pressed("skip_level_1") && Input.is_action_just_pressed("skip_level_2")
+	 || Input.is_action_pressed("skip_level_2") && Input.is_action_just_pressed("skip_level_1")):
+		next_level()
 
 func next_level() -> void:
 	level.queue_free()
