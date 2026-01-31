@@ -48,12 +48,25 @@ func _physics_process(_delta):
 			push_new = Vector3i(0, 0, -1)
 		elif n.z < -0.99 && direction.z > 0.99:
 			push_new = Vector3i(0, 0, 1)
-
-		if push_new == push_direction:
-			push_time += 1
-			if push_time > 30:
-				c.get_collider().position += Vector3(push_direction)
-				push_time = 0
-		else:
+			
+		var nextPosition = (c.get_collider() as Plant).global_position + Vector3(push_new)
+		if (!isSpaceFree(nextPosition)):
 			push_time = 0
-			push_direction = push_new
+		else:
+			if push_new == push_direction:
+				push_time += 1
+				if push_time > 30:
+					c.get_collider().position += Vector3(push_direction)
+					push_time = 0
+			else:
+				push_time = 0
+				push_direction = push_new
+			
+func isSpaceFree(global_pos: Vector3) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsPointQueryParameters3D.new()
+	query.position = global_pos
+	var result = space_state.intersect_point(query)
+	print(global_pos)
+	print(result)
+	return result.size() == 0
