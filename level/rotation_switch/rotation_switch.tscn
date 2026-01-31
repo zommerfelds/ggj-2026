@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b1j1s5d8bpwj2"]
+
+[ext_resource type="Texture2D" uid="uid://c01l8rx0yleu5" path="res://level/rotation_switch/rotation_switch.png" id="1_jyr7v"]
+[ext_resource type="Script" uid="uid://cojk4hinfu4yc" path="res://level/rotation_switch/rotation_switch.gd" id="1_q5djy"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vkbyq"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5djy"]
+transparency = 1
+albedo_texture = ExtResource("1_jyr7v")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vkbyq"]
+height = 1.0
+radius = 0.3
+
+[node name="RotationSwitch" type="Area3D" unique_id=331435693]
+script = ExtResource("1_q5djy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2115822638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010375977, 0)
+mesh = SubResource("PlaneMesh_vkbyq")
+surface_material_override/0 = SubResource("StandardMaterial3D_q5djy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=579231684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_vkbyq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

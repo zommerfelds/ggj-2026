@@ -16,6 +16,8 @@ size = Vector3(0.95, 1, 0.95)
 [sub_resource type="BoxMesh" id="BoxMesh_1hgsj"]
 size = Vector3(0.95, 0.1, 0.95)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfy1k"]
+
 [node name="Plant" type="AnimatableBody3D" unique_id=1778761240]
 script = ExtResource("1_7ygib")
 
@@ -31,3 +33,12 @@ shape = SubResource("BoxShape3D_7ygib")
 [node name="Floor_box" type="MeshInstance3D" parent="." unique_id=1762116794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 mesh = SubResource("BoxMesh_1hgsj")
+
+[node name="MaskingBox" type="Area3D" parent="." unique_id=497885993]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaskingBox" unique_id=1545240691]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.816, 0)
+shape = SubResource("BoxShape3D_pfy1k")
+debug_color = Color(0.89639103, 0.00019213796, 0.7736155, 1)

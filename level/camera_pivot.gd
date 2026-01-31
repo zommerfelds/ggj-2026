@@ -3,8 +3,14 @@ extends Node3D
 var targetRotationY = 45
 var rotationSpeed = 90
 
+var can_rotate = false
+
+func _init() -> void:
+	SignalBus.connect("can_rotate", set_can_rotate)
+
+
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("ui_accept")):
+	if (Input.is_action_just_pressed("ui_accept") and can_rotate):
 		targetRotationY += 90
 		if (targetRotationY > 180):
 			targetRotationY -= 360
@@ -16,3 +22,7 @@ func _process(delta: float) -> void:
 		rotation_degrees.y = targetRotationY
 	else:
 		rotate_y(deg_to_rad(step))
+
+
+func set_can_rotate(new_value: bool) -> void:
+	can_rotate = new_value
