@@ -388,7 +388,6 @@ autoplay = &"idle"
 
 [node name="Face" type="Node3D" parent="." unique_id=1095450874]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0)
 
 [node name="Node" type="Node3D" parent="Face" unique_id=682813501]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.30680114, -0.4972759)

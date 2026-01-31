@@ -3,7 +3,7 @@ extends Node3D
 
 @export var level_index: int = 0
 
-var rock_scene = preload("res://level/rock/rock.tscn")
+var rock_scene = preload("uid://gspapybfyiaj")
 var plant_scene = preload("res://level/plant/plant.tscn")
 var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
