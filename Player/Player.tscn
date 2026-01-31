@@ -239,7 +239,8 @@ libraries/ = SubResource("AnimationLibrary_j23h2")
 autoplay = &"idle"
 
 [node name="Face" type="Node3D" parent="." unique_id=1095450874]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.208, 0.30993652, -0.208)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208, 0.30993652, -0.208)
 
 [node name="belly" type="MeshInstance3D" parent="Face" unique_id=1613489954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.42135406, 0)

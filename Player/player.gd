@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var speed = 6
+@export var speed = 4
 @export var camera: Camera3D
 
 
@@ -27,6 +27,8 @@ func _physics_process(_delta):
 
 	direction = direction.normalized().rotated(Vector3.UP, camera.global_rotation.y)
 
+	if direction.x != 0.0:
+		%Face.scale.x = -signf(direction.x)
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
