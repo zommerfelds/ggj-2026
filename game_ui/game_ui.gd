@@ -24,15 +24,15 @@ func _process(delta) -> void:
 
 func reset_level() -> void:
 	level.queue_free()
-	level = level_preload.instantiate()
-	level.level_index = level_index
-	add_child(level)
+	call_deferred("setup_level")
 
 func next_level(delta: int = 1) -> void:
 	level.queue_free()
-
 	level_index += delta
 	$Overlay/LevelName.text = "Level %d" % level_index
+	call_deferred("setup_level")
+
+func setup_level() -> void:
 	level = level_preload.instantiate()
 	level.level_index = level_index
 	add_child(level)
