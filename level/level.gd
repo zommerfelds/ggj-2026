@@ -28,6 +28,22 @@ func _ready() -> void:
 			add_player(3, 2)
 		2:
 			grid_size = Vector3i(5, -1, 5)
+			add_goal(2, 2)
+			add_rock(2, 3)
+			add_rock(3, 2)
+			add_rock(2, 1)
+			add_rock(1, 2)
+
+			add_plant(1, 1)
+			add_plant(1, 3)
+			add_plant(3, 1)
+			add_plant(3, 3)
+			add_plant(1, 4)
+
+			add_player(4, 0)
+			add_rotation_switch(4, 1)
+		3:
+			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_rock(0, 1)
 			add_rock(0, 2)
@@ -39,7 +55,7 @@ func _ready() -> void:
 			add_plant(1, 2)
 
 			add_player(4, 4)
-		3:
+		4:
 			grid_size = Vector3i(6, -1, 4)
 			add_rock(0, 3)
 			add_plant(5, 0)
