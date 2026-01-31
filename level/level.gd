@@ -20,10 +20,10 @@ func _ready() -> void:
 			add_goal(3, 3)
 			set_player(0, 0)
 		2:
-			grid_size = Vector3i(4, -1, 4)
+			grid_size = Vector3i(6, -1, 4)
 			add_rock(0, 3)
-			add_plant(3, 0)
-			add_goal(3, 3)
+			add_plant(5, 0)
+			add_goal(5, 3)
 			set_player(0, 0)
 		_:
 			grid_size = Vector3i(6, -1, 6)
