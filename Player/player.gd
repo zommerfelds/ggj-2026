@@ -56,9 +56,10 @@ func _physics_process(_delta):
 	velocity.z = lerp(velocity.z, direction.y * speed, interpolation)
 
 	move_and_slide()
-	maybe_push(_delta, direction)
+	if maybe_push(_delta, direction):
+		%AnimationPlayer.current_animation = "walk_push" if walking_up else "walk_back"
 
-func maybe_push(delta: float, direction: Vector2):
+func maybe_push(delta: float, direction: Vector2) -> bool:
 	var c = get_last_slide_collision()
 	if c != null and (c.get_collider() is Plant or c.get_collider() is Box):
 		var n = c.get_normal()
@@ -91,8 +92,10 @@ func maybe_push(delta: float, direction: Vector2):
 			else:
 				push_time = 0
 				push_direction = push_new
+		return push_new.length() > 0.1
 	else:
 		push_time = 0
+		return false
 
 
 func isSpaceFree(global_pos: Vector3) -> bool:
