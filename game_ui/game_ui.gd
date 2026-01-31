@@ -17,4 +17,5 @@ func next_level() -> void:
 	level_index += 1
 	$Overlay/LevelName.text = "Level %d" % level_index
 	level = level_preload.instantiate()
+	level.level_index = level_index
 	add_child(level)

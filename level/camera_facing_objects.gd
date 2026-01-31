@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 			var mesh = child.get_node_or_null("Face")
 			if (mesh is Node3D):
 				mesh.rotation.y = cameraPivotRotationY
+				mesh.rotation_degrees.x = 60
 
 func _physics_process(delta: float) -> void:
 	for child in get_children():
