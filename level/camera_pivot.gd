@@ -10,11 +10,11 @@ func _init() -> void:
 
 
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("ui_accept") and can_rotate):
+	if (Input.is_action_just_pressed("rotate_right") and can_rotate):
 		targetRotationY += 90
 		if (targetRotationY > 180):
 			targetRotationY -= 360
-	if (Input.is_action_just_pressed("ui_cancel") and can_rotate):
+	if (Input.is_action_just_pressed("rotate_left") and can_rotate):
 		targetRotationY -= 90
 		if (targetRotationY < -180):
 			targetRotationY += 360

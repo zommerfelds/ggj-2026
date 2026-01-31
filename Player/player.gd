@@ -15,16 +15,10 @@ func _ready() -> void:
 	%AnimationPlayer.play()
 
 func _physics_process(_delta):
-	var direction = Vector3.ZERO
 
-	if Input.is_action_pressed("move_right"):
-		direction += Vector3(0.5, 0, 0.5)
-	if Input.is_action_pressed("move_left"):
-		direction += Vector3(-0.5, 0, -0.5)
-	if Input.is_action_pressed("move_back"):
-		direction += Vector3(-0.5, 0, 0.5)
-	if Input.is_action_pressed("move_forward"):
-		direction += Vector3(0.5, 0, -0.5)
+	var direction = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")).limit_length(1.0)
 
 	if direction.x != 0.0:
 		%Face.scale.x = -signf(direction.x)
@@ -43,29 +37,29 @@ func _physics_process(_delta):
 	else:
 		%AnimationPlayer.current_animation = "idle"
 
-	direction = direction.normalized().rotated(Vector3.UP, camera.global_rotation.y)
+	direction = direction.rotated(-camera.global_rotation.y)
 
 	# Smoothly ramp up/down the velocity.
 	const interpolation = 0.3
 	velocity.x = lerp(velocity.x, direction.x * speed, interpolation)
-	velocity.z = lerp(velocity.z, direction.z * speed, interpolation)
+	velocity.z = lerp(velocity.z, direction.y * speed, interpolation)
 
 	move_and_slide()
 	maybe_push(_delta, direction)
 
-func maybe_push(delta: float, direction: Vector3):
+func maybe_push(delta: float, direction: Vector2):
 	var c = get_last_slide_collision()
 	if c != null and (c.get_collider() is Plant or c.get_collider() is Box):
 		var n = c.get_normal()
 		var push_new = Vector3i.ZERO
 
-		if n.x > 0.99 && direction.x < -0.99:
+		if n.x > 0.9 && direction.x < -0.9:
 			push_new = Vector3i(-1, 0, 0)
-		elif n.x < -0.99 && direction.x > 0.99:
+		elif n.x < -0.9 && direction.x > 0.9:
 			push_new = Vector3i(1, 0, 0)
-		elif n.z > 0.99 && direction.z < -0.99:
+		elif n.z > 0.9 && direction.y < -0.9:
 			push_new = Vector3i(0, 0, -1)
-		elif n.z < -0.99 && direction.z > 0.99:
+		elif n.z < -0.9 && direction.y > 0.9:
 			push_new = Vector3i(0, 0, 1)
 
 		var nextPosition = (c.get_collider() as Node3D).global_position + Vector3(push_new)
