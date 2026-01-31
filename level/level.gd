@@ -80,7 +80,7 @@ func _ready() -> void:
 			add_box(1, 0)
 			add_box(0, 1)
 			add_box(3, 2)
-			add_box(2, 2)
+			add_box(1, 1)
 			add_plant(1, 2)
 			add_player(3, 3)
 		_:
