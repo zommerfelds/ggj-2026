@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://g12b070v6eli"]
 
-[ext_resource type="Texture2D" uid="uid://c1eik8c6lum4p" path="res://level/plant/tree.png" id="1_1hgsj"]
 [ext_resource type="Script" path="res://level/plant/plant.gd" id="1_7ygib"]
+[ext_resource type="Texture2D" uid="uid://c1rjhricwabaw" path="res://static_assets/objects/tree.PNG" id="2_7ygib"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qohg2"]
-size = Vector2(1.215, 2)
+[sub_resource type="PlaneMesh" id="PlaneMesh_pfy1k"]
+size = Vector2(1.29, 1.79)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkbyq"]
 transparency = 1
-albedo_texture = ExtResource("1_1hgsj")
+albedo_texture = ExtResource("2_7ygib")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ygib"]
 size = Vector3(0.95, 1, 0.95)
@@ -23,7 +23,7 @@ script = ExtResource("1_7ygib")
 
 [node name="Face" type="MeshInstance3D" parent="." unique_id=1465043738]
 transform = Transform3D(0.7071068, 0.6123725, 0.35355332, 0, 0.5, -0.8660254, -0.7071068, 0.6123725, 0.35355332, 0, 0.85, 0)
-mesh = SubResource("PlaneMesh_qohg2")
+mesh = SubResource("PlaneMesh_pfy1k")
 surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1478916422]
