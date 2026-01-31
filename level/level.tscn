@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c6wp7clm68tok" path="res://level/floor/floor_texture.tres" id="1_7lnir"]
 [ext_resource type="Texture2D" uid="uid://c1eik8c6lum4p" path="res://level/plant/tree.png" id="2_5gx2l"]
+[ext_resource type="Script" uid="uid://biecaw1ifj6ps" path="res://level/camera_facing_objects.gd" id="2_44x8d"]
+[ext_resource type="Script" uid="uid://lrt4ayitwhwa" path="res://level/camera_pivot.gd" id="2_ivpvi"]
 [ext_resource type="PackedScene" uid="uid://byque4w54oowj" path="res://Player/Player.tscn" id="2_qohg2"]
 [ext_resource type="PackedScene" uid="uid://djus3q4uij4ww" path="res://level/goal/goal.tscn" id="4_vkbyq"]
 [ext_resource type="PackedScene" uid="uid://gspapybfyiaj" path="res://level/rock/rock.tscn" id="5_ktfr2"]
@@ -26,7 +28,6 @@ background_mode = 1
 background_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.6
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_7lnir"]
 
@@ -40,37 +41,34 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qohg2")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1970826554]
 transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 0, 0)
+script = ExtResource("2_ivpvi")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1005227411]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 7)
 projection = 1
 size = 8.0
 
-[node name="Objects" type="Node3D" parent="." unique_id=1812326925]
+[node name="CameraFacingObjects" type="Node3D" parent="." unique_id=1812326925 node_paths=PackedStringArray("cameraPivot")]
+script = ExtResource("2_44x8d")
+cameraPivot = NodePath("../CameraPivot")
 
-[node name="Player" parent="Objects" unique_id=217308772 node_paths=PackedStringArray("camera") instance=ExtResource("2_qohg2")]
+[node name="Player" parent="CameraFacingObjects" unique_id=217308772 node_paths=PackedStringArray("camera") instance=ExtResource("2_qohg2")]
 camera = NodePath("../../CameraPivot/Camera3D")
 
-[node name="Plant" type="MeshInstance3D" parent="Objects" unique_id=1644856029]
+[node name="Plant" type="MeshInstance3D" parent="CameraFacingObjects" unique_id=1644856029]
 transform = Transform3D(0.7071068, 0.6123725, 0.35355332, 0, 0.5, -0.8660254, -0.7071068, 0.6123725, 0.35355332, 2.6778564, 1, 0.6583252)
 mesh = SubResource("PlaneMesh_qohg2")
 surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
-[node name="Goal" parent="Objects" unique_id=2129572166 instance=ExtResource("4_vkbyq")]
+[node name="Goal" parent="CameraFacingObjects" unique_id=2129572166 instance=ExtResource("4_vkbyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
 
-[node name="Rock" parent="Objects" unique_id=490074602 instance=ExtResource("5_ktfr2")]
+[node name="Rock" parent="CameraFacingObjects" unique_id=490074602 instance=ExtResource("5_ktfr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
 
-[node name="Rock2" parent="Objects" unique_id=1302769966 instance=ExtResource("5_ktfr2")]
+[node name="Rock2" parent="CameraFacingObjects" unique_id=1302769966 instance=ExtResource("5_ktfr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
 camera_attributes = SubResource("CameraAttributesPhysical_7lnir")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1573018530]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.239502, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1647021720]
-transform = Transform3D(1, 0, 0, 0, 0.8610262, 0.5085606, 0, -0.5085606, 0.8610262, 0, 2.1517334, 0)
