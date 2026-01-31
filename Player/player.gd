@@ -54,12 +54,13 @@ func set_anim_state(direction: Vector2):
 
 			if just_switched and current_step_is_left:
 				%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
+
+		%Face.scale.x = 1 if %AnimationPlayer.current_animation.ends_with("back") == currently_heading_right else -1
 	else:
 		if %AnimationPlayer.current_animation.ends_with("back"):
 			%AnimationPlayer.current_animation = "idle_back"
 		else:
 			%AnimationPlayer.current_animation = "idle"
-	%Face.scale.x = 1 if %AnimationPlayer.current_animation.ends_with("back") == currently_heading_right else -1
 
 func maybe_push(delta: float, direction: Vector2):
 	var c = get_last_slide_collision()
