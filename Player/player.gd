@@ -45,6 +45,11 @@ func _physics_process(_delta):
 
 	direction = direction.rotated(-camera.global_rotation.y)
 
+	var direction3D = Vector3(direction.x, 0, direction.y)
+	if (direction3D - Vector3(push_direction)).length() < 0.3:
+		direction = Vector2(push_direction.x, push_direction.z)
+
+
 	# Smoothly ramp up/down the velocity.
 	const interpolation = 0.3
 	velocity.x = lerp(velocity.x, direction.x * speed, interpolation)
