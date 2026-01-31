@@ -17,45 +17,213 @@ height = 1.0
 radius = 0.25
 height = 1.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_tok1r"]
-size = Vector2(1, 1)
+[sub_resource type="Animation" id="Animation_j23h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belly:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.42135406, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4294107, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tail:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tail:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.058389083, 0.40764952, -0.02919443)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("arm r:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("arm l:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0)]
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddoul"]
-transparency = 1
-albedo_texture = ExtResource("2_tok1r")
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belly:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.42135406, 0), Vector3(0, 0.421, -0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4294107, 0), Vector3(0, 0.4294107, -0.0032438636)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tail:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.103323415, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tail:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.030275568, 0.39239073, 0.012975365), Vector3(0.0008867234, 0.30498838, -0.0065605342)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("arm r:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0), Vector3(0, 0.41598296, -0.003353238)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("arm l:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0), Vector3(0, 0.4367349, -0.007824123)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j23h2"]
+_data = {
+&"RESET": SubResource("Animation_j23h2"),
+&"idle": SubResource("Animation_s1rgi")
+}
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8g4oa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddoul"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_tok1r")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ysni"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlldt"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_ddoul")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0k0e"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_vlldt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wa8t"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("5_s1rgi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("6_j23h2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm7nj"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("7_0j2ni")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j23h2"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("8_s1rgi")
 
 [node name="Player" type="CharacterBody3D" unique_id=1890698145]
 script = ExtResource("1_3qydi")
 
-[node name="PlayerBody" type="MeshInstance3D" parent="." unique_id=2098642903]
+[node name="debug pill" type="MeshInstance3D" parent="." unique_id=2098642903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_l2ndj")
@@ -64,11 +232,11 @@ mesh = SubResource("CapsuleMesh_l2ndj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_3qydi")
 
-[node name="FaceOld" type="MeshInstance3D" parent="." unique_id=1876588193]
-transform = Transform3D(0.7071068, 0.61237246, 0.35355338, 0, 0.49999997, -0.86602557, -0.7071068, 0.61237246, 0.35355338, 0, 0.42135406, 0)
-visible = false
-mesh = SubResource("PlaneMesh_tok1r")
-surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=138778755]
+unique_name_in_owner = true
+root_node = NodePath("../Face")
+libraries/ = SubResource("AnimationLibrary_j23h2")
+autoplay = &"idle"
 
 [node name="Face" type="Node3D" parent="." unique_id=1095450874]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.208, 0.30993652, -0.208)
@@ -78,7 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.42135406, 0)
 mesh = SubResource("PlaneMesh_8g4oa")
 surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
 
-[node name="face" type="MeshInstance3D" parent="Face" unique_id=1096647263]
+[node name="head" type="MeshInstance3D" parent="Face" unique_id=1096647263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.4294107, 0)
 mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_vlldt")
@@ -104,6 +272,6 @@ mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_dm7nj")
 
 [node name="tail" type="MeshInstance3D" parent="Face" unique_id=667908049]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0.40764952, 0)
+transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.058389083, 0.40764952, -0.02919443)
 mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_j23h2")

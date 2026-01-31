@@ -10,6 +10,9 @@ var push_direction: Vector3i = Vector3i.ZERO
 var push_time: int = 0
 
 
+func _ready() -> void:
+	%AnimationPlayer.play()
+
 func _physics_process(_delta):
 	var direction = Vector3.ZERO
 
