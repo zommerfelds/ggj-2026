@@ -5,7 +5,12 @@ class_name Player
 @export var camera: Camera3D
 
 
-func _physics_process(delta):
+# While pushing an object: Direction and accumulated time (frames).
+var push_direction: Vector3i = Vector3i.ZERO
+var push_time: int = 0
+
+
+func _physics_process(_delta):
 	var direction = Vector3.ZERO
 
 	if Input.is_action_pressed("move_right"):
@@ -23,3 +28,26 @@ func _physics_process(delta):
 	velocity.z = direction.z * speed
 
 	move_and_slide()
+
+	var c = get_last_slide_collision()
+	if c != null and c.get_collider() is Plant:
+		var n = c.get_normal()
+		var push_new = Vector3i.ZERO
+
+		if n.x > 0.99 && direction.x < -0.99:
+			push_new = Vector3i(-1, 0, 0)
+		elif n.x < -0.99 && direction.x > 0.99:
+			push_new = Vector3i(1, 0, 0)
+		elif n.z > 0.99 && direction.z < -0.99:
+			push_new = Vector3i(0, 0, -1)
+		elif n.z < -0.99 && direction.z > 0.99:
+			push_new = Vector3i(0, 0, 1)
+
+		if push_new == push_direction:
+			push_time += 1
+			if push_time > 30:
+				c.get_collider().position += Vector3(push_direction)
+				push_time = 0
+		else:
+			push_time = 0
+			push_direction = push_new
