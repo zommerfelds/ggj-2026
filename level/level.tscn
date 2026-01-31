@@ -62,6 +62,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
 [node name="Rock" parent="Objects" unique_id=490074602 instance=ExtResource("5_ktfr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
 
+[node name="Rock2" parent="Objects" unique_id=1302769966 instance=ExtResource("5_ktfr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
 camera_attributes = SubResource("CameraAttributesPhysical_7lnir")
