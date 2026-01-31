@@ -17,11 +17,18 @@ func _ready() -> void:
 
 	match level_index:
 		1:
-			grid_size = Vector3i(4, -1, 4)
-			add_plant(3, 0)
-			add_goal(3, 3)
-			add_player(0, 0)
-			add_rotation_switch(0, 3)
+			grid_size = Vector3i(6, -1, 6)
+			add_goal(0, 0)
+			add_rock(0, 1)
+			add_rock(0, 2)
+			add_rock(1, 0)
+			add_rock(2, 0)
+
+			add_plant(2, 1)
+			add_plant(2, 2)
+			add_plant(1, 2)
+
+			add_player(4, 4)
 		2:
 			grid_size = Vector3i(6, -1, 4)
 			add_rock(0, 3)
