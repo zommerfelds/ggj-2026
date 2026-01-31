@@ -27,6 +27,11 @@ func _physics_process(_delta):
 
 	if direction.x != 0.0:
 		%Face.scale.x = -signf(direction.x)
+		
+	if not direction.is_zero_approx():
+		%AnimationPlayer.current_animation = "walk"
+	else:
+		%AnimationPlayer.current_animation = "idle"
 
 	direction = direction.normalized().rotated(Vector3.UP, camera.global_rotation.y)
 

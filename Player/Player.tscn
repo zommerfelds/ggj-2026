@@ -390,9 +390,10 @@ autoplay = &"idle"
 
 [node name="Face" type="Node3D" parent="." unique_id=1095450874]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0273723, 0, 0)
 
 [node name="Node" type="Node3D" parent="Face" unique_id=682813501]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.30680114, -0.4972759)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.08743036, -0.30680114, -0.4972759)
 
 [node name="belly" type="MeshInstance3D" parent="Face/Node" unique_id=1613489954]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 0.42135406, 0)
