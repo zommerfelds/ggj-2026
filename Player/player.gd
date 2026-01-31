@@ -9,7 +9,8 @@ class_name Player
 var push_direction: Vector3i = Vector3i.ZERO
 var push_time: float = 0.0
 var current_step_is_left = false
-
+var walking_up = false
+var currently_heading_right = false
 
 func _ready() -> void:
 	%AnimationPlayer.play()
@@ -20,35 +21,16 @@ func _physics_process(_delta):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")).limit_length(1.0)
 
-	var walking_up = direction.dot(Vector2.DOWN) > -0.1
-	if direction.x != 0.0:
-		%Face.scale.x = signf(direction.x)
-		if walking_up:
-			%Face.scale.x *= -1
-
-	if not direction.is_zero_approx():
-		var just_switched = false
-		if not %AnimationPlayer.current_animation.begins_with("walk"):
-			current_step_is_left = not current_step_is_left
-			just_switched = true
-
-		%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
-
-		if just_switched and current_step_is_left:
-			%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
-
-	else:
-		if %AnimationPlayer.current_animation.ends_with("back"):
-			%AnimationPlayer.current_animation = "idle_back"
-		else:
-			%AnimationPlayer.current_animation = "idle"
+	walking_up = direction.dot(Vector2.DOWN) > -0.1
+	if direction.x != 0.0 and absf(direction.x) > 0.1:
+		currently_heading_right = direction.x > 0.0
 
 	direction = direction.rotated(-camera.global_rotation.y)
+
 
 	var direction3D = Vector3(direction.x, 0, direction.y)
 	if (direction3D - Vector3(push_direction)).length() < 0.3:
 		direction = Vector2(push_direction.x, push_direction.z)
-
 
 	# Smoothly ramp up/down the velocity.
 	const interpolation = 0.3
@@ -56,46 +38,62 @@ func _physics_process(_delta):
 	velocity.z = lerp(velocity.z, direction.y * speed, interpolation)
 
 	move_and_slide()
-	if maybe_push(_delta, direction):
-		%AnimationPlayer.current_animation = "walk_push" if walking_up else "walk_back"
+	maybe_push(_delta, direction)
+	
+	set_anim_state(direction)
 
-func maybe_push(delta: float, direction: Vector2) -> bool:
+func set_anim_state(direction: Vector2):
+	if not direction.is_zero_approx():
+		if not %AnimationPlayer.current_animation.begins_with("push"):
+			var just_switched = false
+			if not %AnimationPlayer.current_animation.begins_with("walk"):
+				current_step_is_left = not current_step_is_left
+				just_switched = true
+
+			%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
+
+			if just_switched and current_step_is_left:
+				%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
+	else:
+		if %AnimationPlayer.current_animation.ends_with("back"):
+			%AnimationPlayer.current_animation = "idle_back"
+		else:
+			%AnimationPlayer.current_animation = "idle"
+	%Face.scale.x = 1 if %AnimationPlayer.current_animation.ends_with("back") == currently_heading_right else -1
+
+func maybe_push(delta: float, direction: Vector2):
 	var c = get_last_slide_collision()
-	if c != null and (c.get_collider() is Plant or c.get_collider() is Box):
+	if c != null:
 		var n = c.get_normal()
 		var push_new = Vector3i.ZERO
-
-		if n.x > 0.9 && direction.x < -0.9:
-			push_new = Vector3i(-1, 0, 0)
-		elif n.x < -0.9 && direction.x > 0.9:
-			push_new = Vector3i(1, 0, 0)
-		elif n.z > 0.9 && direction.y < -0.9:
-			push_new = Vector3i(0, 0, -1)
-		elif n.z < -0.9 && direction.y > 0.9:
-			push_new = Vector3i(0, 0, 1)
+		
+		var dirs = [Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, 1)]
+		for dir in dirs:
+			if n.dot(dir) < -0.8:
+				push_new = dir
+				break
 
 		var nextPosition = (c.get_collider() as Node3D).global_position + Vector3(push_new)
-		if (!isSpaceFree(nextPosition)):
-			push_time = 0
-		else:
-			if push_new == push_direction:
-				push_time += delta
-				if push_time > 0.4:
-					var tween = get_tree().create_tween()
-					tween.tween_property(
-						c.get_collider(),
-						"position",
-						c.get_collider().position + Vector3(push_direction),
-						0.3
-					)
-					push_time = 0
-			else:
+
+		if push_new == push_direction and push_new != Vector3i.ZERO and Vector3(direction.x, 0, direction.y).dot(push_new) > 0.8:
+			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
+			push_time += delta
+			if (push_time > 0.4 and
+					(c.get_collider() is Plant or c.get_collider() is Box) and
+					isSpaceFree(nextPosition)):
+				var tween = get_tree().create_tween()
+				tween.tween_property(
+					c.get_collider(),
+					"position",
+					c.get_collider().position + Vector3(push_direction),
+					0.3
+				)
 				push_time = 0
-				push_direction = push_new
-		return push_new.length() > 0.1
+		else:
+			push_time = 0
+			push_direction = push_new
 	else:
 		push_time = 0
-		return false
 
 
 func isSpaceFree(global_pos: Vector3) -> bool:
