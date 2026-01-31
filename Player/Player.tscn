@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://byque4w54oowj"]
 
 [ext_resource type="Script" uid="uid://mjj3k65544df" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="Texture2D" uid="uid://lc184821j7v2" path="res://Player/racoon/back belly.PNG" id="2_s1rgi"]
 [ext_resource type="Texture2D" uid="uid://cogs3fkrakoto" path="res://Player/racoon/belly.PNG" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://bf2n3wel01tax" path="res://Player/racoon/head.PNG" id="3_ddoul"]
+[ext_resource type="Texture2D" uid="uid://dmb0hkmv01o4e" path="res://Player/racoon/back head.PNG" id="3_j23h2"]
+[ext_resource type="Texture2D" uid="uid://ckr20igw5bgyj" path="res://Player/racoon/back arm r.PNG" id="4_0j2ni"]
 [ext_resource type="Texture2D" uid="uid://dlyibdnyr57d2" path="res://Player/racoon/arm r.PNG" id="4_vlldt"]
 [ext_resource type="Texture2D" uid="uid://bpn5km7vno38k" path="res://Player/racoon/arm l.PNG" id="5_s1rgi"]
+[ext_resource type="Texture2D" uid="uid://oeek50lsgeyl" path="res://Player/racoon/back arm l.PNG" id="5_v0k0e"]
+[ext_resource type="Texture2D" uid="uid://clr7kos2cntvc" path="res://Player/racoon/back foot r.PNG" id="6_5wa8t"]
 [ext_resource type="Texture2D" uid="uid://dvqlhr7f6caty" path="res://Player/racoon/foot r.PNG" id="6_j23h2"]
 [ext_resource type="Texture2D" uid="uid://fvwnta1ygr2w" path="res://Player/racoon/foot l.PNG" id="7_0j2ni"]
+[ext_resource type="Texture2D" uid="uid://drq5u3cf6oyi8" path="res://Player/racoon/back foot l.PNG" id="7_p7tob"]
+[ext_resource type="Texture2D" uid="uid://blb85kpsjkbkv" path="res://Player/racoon/back tail.PNG" id="8_dm7nj"]
 [ext_resource type="Texture2D" uid="uid://0uhdojav3oll" path="res://Player/racoon/tail.PNG" id="8_s1rgi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
@@ -127,6 +134,90 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0.4367349, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/belly:surface_material_override/0:albedo_texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tok1r")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node/head:surface_material_override/0:albedo_texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ddoul")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node/arm r:surface_material_override/0:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vlldt")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node/arm l:surface_material_override/0:albedo_texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_s1rgi")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node/leg r:surface_material_override/0:albedo_texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j23h2")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node/leg l:surface_material_override/0:albedo_texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_0j2ni")]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Node/tail:surface_material_override/0:albedo_texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_s1rgi")]
+}
 
 [sub_resource type="Animation" id="Animation_s1rgi"]
 resource_name = "idle"
@@ -226,6 +317,274 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.4367349, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node/belly:surface_material_override/0:albedo_texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tok1r")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/head:surface_material_override/0:albedo_texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ddoul")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node/arm r:surface_material_override/0:albedo_texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vlldt")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node/arm l:surface_material_override/0:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_s1rgi")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node/leg r:surface_material_override/0:albedo_texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j23h2")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node/leg l:surface_material_override/0:albedo_texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_0j2ni")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node/tail:surface_material_override/0:albedo_texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_s1rgi")]
+}
+
+[sub_resource type="Animation" id="Animation_v0k0e"]
+resource_name = "idle_back"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/belly:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.42135406, 0), Vector3(0, 0.421, -0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4294107, 0), Vector3(0, 0.4294107, -0.0032438636)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/tail:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.103323415, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/tail:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.030275568, 0.44325334, 0.012975335), Vector3(0.0008867234, 0.45436388, -0.0065605342)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/arm r:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0), Vector3(0, 0.41598296, -0.003353238)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node/arm l:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0), Vector3(0, 0.4367349, -0.007824123)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node/leg r:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node/leg l:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node/belly:surface_material_override/0:albedo_texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_s1rgi")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/head:surface_material_override/0:albedo_texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_j23h2")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node/arm r:surface_material_override/0:albedo_texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_0j2ni")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node/arm l:surface_material_override/0:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_v0k0e")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node/leg r:surface_material_override/0:albedo_texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_5wa8t")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node/leg l:surface_material_override/0:albedo_texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_p7tob")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node/tail:surface_material_override/0:albedo_texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_dm7nj")]
 }
 
 [sub_resource type="Animation" id="Animation_0j2ni"]
@@ -340,58 +699,383 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(-0.030275568, 0.39239073, 0.012975365), Vector3(-0.0031649917, 0.3923907, 0.022963494), Vector3(-0.030275568, 0.39239073, 0.012975365), Vector3(-0.0787891, 0.3923907, -0.0070008636)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/belly:surface_material_override/0:albedo_texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tok1r")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node/head:surface_material_override/0:albedo_texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ddoul")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node/arm r:surface_material_override/0:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vlldt")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node/arm l:surface_material_override/0:albedo_texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_s1rgi")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node/leg r:surface_material_override/0:albedo_texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j23h2")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node/leg l:surface_material_override/0:albedo_texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_0j2ni")]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Node/tail:surface_material_override/0:albedo_texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_s1rgi")]
+}
+
+[sub_resource type="Animation" id="Animation_3mea3"]
+resource_name = "walk_back"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/belly:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.42135406, 0), Vector3(-0.0027335882, 0.42135403, 0.030068368), Vector3(0, 0.42135406, 0), Vector3(-0.0116279125, 0.42135403, 0.024418622)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4294107, 0), Vector3(0.009988189, 0.42941067, 0.011415005), Vector3(0, 0.4294107, 0), Vector3(0.008561254, 0.42941067, 0.024256855)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node/head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/arm r:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0), Vector3(-0.056976795, 0.41598293, -0.0069767833), Vector3(0, 0.41598296, 0), Vector3(0.040697813, 0.41598293, -0.019767463)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/arm l:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0), Vector3(0.07209301, 0.43673488, -0.031395376), Vector3(0, 0.4367349, 0), Vector3(-0.10697687, 0.43673488, 0.016279101)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node/leg r:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.41598296, 0), Vector3(0.054669738, 0.41598293, -0.043735802), Vector3(0, 0.41598296, 0), Vector3(-0.065116405, 0.41598293, 0.019767463)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node/leg l:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4367349, 0), Vector3(-0.07653773, 0.43673488, 0.013667434), Vector3(0, 0.4367349, 0), Vector3(0.036046624, 0.43673488, -0.008139551)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node/tail:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node/tail:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.030275568, 0.43308082, 0.012975335), Vector3(-0.0031649992, 0.43040377, 0.022963494), Vector3(-0.026261568, 0.43179584, -0.03519419), Vector3(-0.04906197, 0.4311533, -0.01633352)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/belly:surface_material_override/0:albedo_texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_s1rgi")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node/head:surface_material_override/0:albedo_texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_j23h2")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node/arm r:surface_material_override/0:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_0j2ni")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node/arm l:surface_material_override/0:albedo_texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_v0k0e")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node/leg r:surface_material_override/0:albedo_texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_5wa8t")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node/leg l:surface_material_override/0:albedo_texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_p7tob")]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Node/tail:surface_material_override/0:albedo_texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_dm7nj")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j23h2"]
 _data = {
 &"RESET": SubResource("Animation_j23h2"),
 &"idle": SubResource("Animation_s1rgi"),
-&"walk": SubResource("Animation_0j2ni")
+&"idle_back": SubResource("Animation_v0k0e"),
+&"walk": SubResource("Animation_0j2ni"),
+&"walk_back": SubResource("Animation_3mea3")
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ysni"]
 size = Vector2(2, 1.9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddoul"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j2ni"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_tok1r")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlldt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mea3"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_ddoul")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0k0e"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v5gs"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_vlldt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wa8t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sa4y"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("5_s1rgi")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nb2p"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("6_j23h2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm7nj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7xyo"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("7_0j2ni")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j23h2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evw08"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("8_s1rgi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddoul"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_s1rgi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlldt"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_j23h2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0k0e"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("4_0j2ni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wa8t"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("5_v0k0e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("6_5wa8t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm7nj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("7_p7tob")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j23h2"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("8_dm7nj")
 
 [node name="Player" type="CharacterBody3D" unique_id=1890698145]
 script = ExtResource("1_3qydi")
@@ -422,34 +1106,73 @@ transform = Transform3D(1.14, 0, 0, 0, 1.14, 0, 0, 0, 1.14, 0.08743036, -0.30680
 [node name="belly" type="MeshInstance3D" parent="Face/Node" unique_id=1613489954]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 0.42135406, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
+surface_material_override/0 = SubResource("StandardMaterial3D_0j2ni")
 
 [node name="head" type="MeshInstance3D" parent="Face/Node" unique_id=1096647263]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 0.4294107, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_vlldt")
+surface_material_override/0 = SubResource("StandardMaterial3D_3mea3")
 
 [node name="arm r" type="MeshInstance3D" parent="Face/Node" unique_id=1551627667]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.41598296, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_v0k0e")
+surface_material_override/0 = SubResource("StandardMaterial3D_7v5gs")
 
 [node name="arm l" type="MeshInstance3D" parent="Face/Node" unique_id=1887718740]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.4367349, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_5wa8t")
+surface_material_override/0 = SubResource("StandardMaterial3D_8sa4y")
 
 [node name="leg r" type="MeshInstance3D" parent="Face/Node" unique_id=1548851811]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.41598296, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
+surface_material_override/0 = SubResource("StandardMaterial3D_3nb2p")
 
 [node name="leg l" type="MeshInstance3D" parent="Face/Node" unique_id=1438876421]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.4367349, 0)
 mesh = SubResource("PlaneMesh_6ysni")
-surface_material_override/0 = SubResource("StandardMaterial3D_dm7nj")
+surface_material_override/0 = SubResource("StandardMaterial3D_d7xyo")
 
 [node name="tail" type="MeshInstance3D" parent="Face/Node" unique_id=667908049]
-transform = Transform3D(1.0000005, 0, 0, 0, 0.9999998, 0, 0, 0, 0.99999994, -0.015415773, 0.4076495, -0.011498511)
+transform = Transform3D(1.0000005, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.015415773, 0.4076495, -0.011498511)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_evw08")
+
+[node name="Back facing" type="Node3D" parent="Face" unique_id=293033511]
+transform = Transform3D(1.14, 0, 0, 0, 1.14, 0, 0, 0, 1.14, 0.08743036, -0.30680114, -0.4972759)
+visible = false
+
+[node name="belly" type="MeshInstance3D" parent="Face/Back facing" unique_id=1382169705]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 0.42135406, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_ddoul")
+
+[node name="head" type="MeshInstance3D" parent="Face/Back facing" unique_id=1424519030]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 0.4294107, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_vlldt")
+
+[node name="arm r" type="MeshInstance3D" parent="Face/Back facing" unique_id=57162895]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.41598296, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0k0e")
+
+[node name="arm l" type="MeshInstance3D" parent="Face/Back facing" unique_id=1838435876]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.4367349, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_5wa8t")
+
+[node name="leg r" type="MeshInstance3D" parent="Face/Back facing" unique_id=986460428]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.41598296, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
+
+[node name="leg l" type="MeshInstance3D" parent="Face/Back facing" unique_id=751510241]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 0.4367349, 0)
+mesh = SubResource("PlaneMesh_6ysni")
+surface_material_override/0 = SubResource("StandardMaterial3D_dm7nj")
+
+[node name="tail" type="MeshInstance3D" parent="Face/Back facing" unique_id=803218708]
+transform = Transform3D(1.0000005, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -0.009020336, 0.42745918, 0.005148381)
 mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_j23h2")
