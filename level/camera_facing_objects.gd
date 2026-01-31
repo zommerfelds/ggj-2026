@@ -2,6 +2,7 @@ extends Node3D
 
 @export var cameraPivot: Node3D
 
+var world_has_ended = false
 const RAY_LENGTH = 10000
 
 func _process(delta: float) -> void:
@@ -18,7 +19,12 @@ func _physics_process(delta: float) -> void:
 		if (child is Node3D && !(child is Player) && !(child is Plant)):
 			var isObjectMasked = checkIfObjectIsMasked(child)
 			child.process_mode = Node.PROCESS_MODE_DISABLED if isObjectMasked else Node.PROCESS_MODE_INHERIT
-#
+		if child is Node3D && !(child is Player):
+			if checkForParadox(child as Node3D):
+				if !world_has_ended:
+					world_has_ended = true
+					SignalBus.end_world.emit((child as Node3D).global_position)
+
 func checkIfObjectIsMasked(object: Node3D) -> bool:
 	var space_state = object.get_world_3d().direct_space_state
 	var directionToCamera = Vector3(0,0.577,1).rotated(Vector3(0,1,0), cameraPivot.rotation.y)
@@ -27,3 +33,10 @@ func checkIfObjectIsMasked(object: Node3D) -> bool:
 	query.collide_with_areas = true
 	var result = space_state.intersect_ray(query)
 	return result.get("collider") != null
+
+func checkForParadox(object: Node3D) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsPointQueryParameters3D.new()
+	query.position = object.global_position
+	var result = space_state.intersect_point(query)
+	return result.size() > 1

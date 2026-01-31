@@ -9,6 +9,7 @@ var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
 var rotation_switch_scene = preload("res://level/rotation_switch/rotation_switch.tscn")
 var box_scene = preload("res://level/box/box.tscn")
+var tall_bush_scene = preload("res://level/tall_bush/tall_bush.tscn")
 
 
 # Only X and Z matter for the grid size
@@ -30,15 +31,28 @@ func _ready() -> void:
 			add_goal(1, 1)
 			add_plant(2, 2)
 			add_player(4, 1)
-			add_rotation_switch(4, 2)
 		3:
 			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 0)
-			add_rock(0, 1)
-			add_rock(1, 0)
-			add_plant(2, 2)
-			add_player(3, 2)
+			add_goal(1, 1)
+			add_tall_bush(2, 2)
+			add_player(4, 1)
+			add_rotation_switch(4, 2)
 		4:
+			grid_size = Vector3i(6, -1, 4)
+			add_goal(0, 1)
+			for x in 4:
+				add_rock(1, x)
+			add_plant(4, 3)
+			add_player(4, 1)
+		5:
+			grid_size = Vector3i(5, -1, 5)
+			add_goal(0, 4)
+			add_rock(1, 4)
+			add_rock(0, 3)
+			add_plant(2, 2)
+			add_player(3, 1)
+			add_rotation_switch(4, 2)
+		6:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(2, 2)
 			add_rock(2, 3)
@@ -54,7 +68,7 @@ func _ready() -> void:
 
 			add_player(4, 0)
 			add_rotation_switch(4, 1)
-		5:
+		7:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_rock(0, 1)
@@ -67,20 +81,13 @@ func _ready() -> void:
 			add_plant(1, 2)
 
 			add_player(4, 4)
-		6:
-			grid_size = Vector3i(6, -1, 4)
-			add_rock(0, 3)
-			add_plant(5, 0)
-			add_goal(5, 3)
-			add_player(0, 0)
-			add_box(1, 1)
-		7:
+		8:
 			grid_size = Vector3i(4, -1, 4)
 			add_goal(3, 0)
 			add_box(1, 0)
 			add_box(0, 1)
 			add_box(3, 2)
-			add_box(2, 2)
+			add_box(1, 1)
 			add_plant(1, 2)
 			add_player(3, 3)
 		_:
@@ -136,6 +143,12 @@ func add_plant(x, z) -> void:
 	var plant = plant_scene.instantiate()
 	plant.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(plant)
+
+
+func add_tall_bush(x, z) -> void:
+	var tall_bush = tall_bush_scene.instantiate()
+	tall_bush.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(tall_bush)
 
 
 func add_goal(x, z) -> void:

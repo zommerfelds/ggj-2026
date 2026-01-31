@@ -14,14 +14,27 @@ func _process(delta: float) -> void:
 		targetRotationY += 90
 		if (targetRotationY > 180):
 			targetRotationY -= 360
+	if (Input.is_action_just_pressed("ui_cancel") and can_rotate):
+		targetRotationY -= 90
+		if (targetRotationY < -180):
+			targetRotationY += 360
 	var rotationDiff = targetRotationY - rotation_degrees.y
-	if (rotationDiff < 0):
+	if (rotationDiff < -180):
 		rotationDiff += 360
-	var step = delta * rotationSpeed
-	if (step > rotationDiff):
-		rotation_degrees.y = targetRotationY
+	if (rotationDiff > 180):
+		rotationDiff -= 360
+	if rotationDiff > 0:
+		var step = delta * rotationSpeed
+		if (step > rotationDiff):
+			rotation_degrees.y = targetRotationY
+		else:
+			rotate_y(deg_to_rad(step))
 	else:
-		rotate_y(deg_to_rad(step))
+		var step = -delta * rotationSpeed
+		if (step < rotationDiff):
+			rotation_degrees.y = targetRotationY
+		else:
+			rotate_y(deg_to_rad(step))
 
 
 func set_can_rotate(new_value: bool) -> void:
