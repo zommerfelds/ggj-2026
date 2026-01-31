@@ -2,22 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://djx6q8q8o50st" path="res://level/rock/rock.png" id="1_flje5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_flje5"]
-size = Vector3(0.95, 1, 0.95)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_44x8d"]
 size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivpvi"]
 albedo_texture = ExtResource("1_flje5")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_flje5"]
+size = Vector3(0.95, 1, 0.95)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flje5"]
+size = Vector3(0.95, 0.1, 0.95)
+
 [node name="Rock" type="StaticBody3D" unique_id=490074602]
+
+[node name="Face" type="MeshInstance3D" parent="." unique_id=1193496304]
+transform = Transform3D(0.7071068, 0.61237246, 0.35355338, 0, 0.49999997, -0.86602557, -0.7071068, 0.61237246, 0.35355338, 0, 0.52301025, 0)
+mesh = SubResource("PlaneMesh_44x8d")
+surface_material_override/0 = SubResource("StandardMaterial3D_ivpvi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=791700752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_flje5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1193496304]
-transform = Transform3D(0.7071068, 0.61237246, 0.35355338, 0, 0.49999997, -0.86602557, -0.7071068, 0.61237246, 0.35355338, 0, 0.6448364, 0)
-mesh = SubResource("PlaneMesh_44x8d")
-surface_material_override/0 = SubResource("StandardMaterial3D_ivpvi")
+[node name="Floor_box" type="MeshInstance3D" parent="." unique_id=1591817811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_flje5")
