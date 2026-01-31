@@ -7,6 +7,7 @@ var rock_scene = preload("res://level/rock/rock.tscn")
 var plant_scene = preload("res://level/plant/plant.tscn")
 var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
+var rotation_switch_scene = preload("res://level/rotation_switch/rotation_switch.tscn")
 
 
 # Only X and Z matter for the grid size
@@ -20,6 +21,7 @@ func _ready() -> void:
 			add_plant(3, 0)
 			add_goal(3, 3)
 			add_player(0, 0)
+			add_rotation_switch(0, 3)
 		2:
 			grid_size = Vector3i(6, -1, 4)
 			add_rock(0, 3)
@@ -33,6 +35,7 @@ func _ready() -> void:
 			add_plant(2, 2)
 			add_goal(1, 1)
 			add_player(4, 4)
+			add_rotation_switch(0, 4)
 
 	# Resize floor:
 	$Floor/FloorMesh.mesh.size = Vector2(grid_size.x, grid_size.z)
@@ -79,3 +82,9 @@ func add_goal(x, z) -> void:
 	var goal = goal_scene.instantiate()
 	goal.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(goal)
+
+
+func add_rotation_switch(x, z) -> void:
+	var rotation_switch = rotation_switch_scene.instantiate()
+	rotation_switch.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(rotation_switch)
