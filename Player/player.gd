@@ -34,7 +34,9 @@ func _physics_process(_delta):
 	velocity.z = direction.z * speed
 
 	move_and_slide()
+	maybe_push(_delta, direction)
 
+func maybe_push(delta: float, direction: Vector3):
 	var c = get_last_slide_collision()
 	if c != null and (c.get_collider() is Plant or c.get_collider() is Box):
 		var n = c.get_normal()
@@ -54,8 +56,8 @@ func _physics_process(_delta):
 			push_time = 0
 		else:
 			if push_new == push_direction:
-				push_time += _delta
-				if push_time > 0.3:
+				push_time += delta
+				if push_time > 0.4:
 					var tween = get_tree().create_tween()
 					tween.tween_property(
 						c.get_collider(),
@@ -67,6 +69,9 @@ func _physics_process(_delta):
 			else:
 				push_time = 0
 				push_direction = push_new
+	else:
+		push_time = 0
+
 
 func isSpaceFree(global_pos: Vector3) -> bool:
 	var space_state = get_world_3d().direct_space_state
