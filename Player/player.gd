@@ -20,22 +20,28 @@ func _physics_process(_delta):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")).limit_length(1.0)
 
+	var walking_up = direction.dot(Vector2.DOWN) > -0.1
 	if direction.x != 0.0:
-		%Face.scale.x = -signf(direction.x)
+		%Face.scale.x = signf(direction.x)
+		if walking_up:
+			%Face.scale.x *= -1
 
 	if not direction.is_zero_approx():
 		var just_switched = false
-		if %AnimationPlayer.current_animation != "walk":
+		if not %AnimationPlayer.current_animation.begins_with("walk"):
 			current_step_is_left = not current_step_is_left
 			just_switched = true
 
-		%AnimationPlayer.current_animation = "walk"
+		%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
 
 		if just_switched and current_step_is_left:
 			%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
 
 	else:
-		%AnimationPlayer.current_animation = "idle"
+		if %AnimationPlayer.current_animation.ends_with("back"):
+			%AnimationPlayer.current_animation = "idle_back"
+		else:
+			%AnimationPlayer.current_animation = "idle"
 
 	direction = direction.rotated(-camera.global_rotation.y)
 
