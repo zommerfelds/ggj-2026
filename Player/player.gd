@@ -28,7 +28,7 @@ func _physics_process(_delta):
 
 	if direction.x != 0.0:
 		%Face.scale.x = -signf(direction.x)
-		
+
 	if not direction.is_zero_approx():
 		var just_switched = false
 		if %AnimationPlayer.current_animation != "walk":
@@ -36,7 +36,7 @@ func _physics_process(_delta):
 			just_switched = true
 
 		%AnimationPlayer.current_animation = "walk"
-		
+
 		if just_switched and current_step_is_left:
 			%AnimationPlayer.get_animation()
 			%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
