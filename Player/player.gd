@@ -38,7 +38,6 @@ func _physics_process(_delta):
 		%AnimationPlayer.current_animation = "walk"
 
 		if just_switched and current_step_is_left:
-			%AnimationPlayer.get_animation()
 			%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
 
 	else:
