@@ -57,6 +57,10 @@ func _physics_process(_delta):
 
 func set_anim_state(direction: Vector2):
 	%AnimationPlayer.speed_scale = 1.0
+	if has_won:
+		# TODO: Start celebration animation instead
+		%AnimationPlayer.current_animation = "idle"
+		return
 	if not direction.is_zero_approx():
 		if push_time > 0:
 			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
@@ -130,6 +134,5 @@ func isSpaceFree(global_pos: Vector3) -> bool:
 
 func enter_win_state():
 	has_won = true
-	# TODO: Start celebration animation
 	SignalBus.goal_reached.emit()
 	pass
