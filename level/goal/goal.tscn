@@ -6,16 +6,17 @@
 albedo_color = Color(1, 0.73333335, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_mdcsh"]
-size = Vector3(1, 1, 0.2)
+size = Vector3(1, 0.7, 0.2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5n1eg"]
 height = 1.0
+radius = 0.22
 
 [node name="Goal" type="Area3D" unique_id=2129572166]
 script = ExtResource("1_mdcsh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=396005036]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.35493994, 0)
 material_override = SubResource("StandardMaterial3D_revk6")
 mesh = SubResource("PrismMesh_mdcsh")
 
