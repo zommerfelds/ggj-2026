@@ -12,11 +12,13 @@ var current_step_is_left = false
 var walking_up = false
 var currently_heading_right = false
 var time_since_moved = 0.0
+var has_won = false
 
 func _ready() -> void:
 	%AnimationPlayer.play()
 
 func _physics_process(_delta):
+	if has_won: return
 	# Direction with controller or arrow keys (LR/UD)
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -55,6 +57,10 @@ func _physics_process(_delta):
 
 func set_anim_state(direction: Vector2):
 	%AnimationPlayer.speed_scale = 1.0
+	if has_won:
+		# TODO: Start celebration animation instead
+		%AnimationPlayer.current_animation = "idle"
+		return
 	if not direction.is_zero_approx():
 		if push_time > 0:
 			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
@@ -84,7 +90,7 @@ func maybe_push(delta: float, direction: Vector2):
 		var collision = get_slide_collision(i)
 		if collision != null:
 			if collision.get_collider() is Goal:
-				SignalBus.goal_reached.emit()
+				enter_win_state()
 				return
 
 	var c = get_last_slide_collision()
@@ -119,10 +125,14 @@ func maybe_push(delta: float, direction: Vector2):
 	else:
 		push_time = 0
 
-
 func isSpaceFree(global_pos: Vector3) -> bool:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsPointQueryParameters3D.new()
 	query.position = global_pos
 	var result = space_state.intersect_point(query)
 	return result.size() == 0
+
+func enter_win_state():
+	has_won = true
+	SignalBus.goal_reached.emit()
+	pass
