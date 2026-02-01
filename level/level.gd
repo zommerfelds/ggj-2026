@@ -162,6 +162,7 @@ func _ready() -> void:
 			add_bush(2,4)
 			add_bush(4,2)
 			add_bush(6,4)
+			add_bush(6,3)
 			add_bush(4,6)
 			add_bush(6,5)
 			
