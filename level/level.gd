@@ -146,7 +146,6 @@ func _ready() -> void:
 			add_box(1, 2)
 			add_plant(2, 0)
 			add_rotation_switch(1,0)
-			add_rotation_switch(2, 2)
 			add_bush(0, 1)
 			add_tall_bush(0, 2)
 			add_player(1, 1)

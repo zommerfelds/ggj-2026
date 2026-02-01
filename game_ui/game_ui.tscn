@@ -393,7 +393,6 @@ vertical_alignment = 1
 
 [node name="GameOver" type="Control" parent="Overlay" unique_id=1166846870]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -402,7 +401,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="WonLevelBackdrop" type="ColorRect" parent="Overlay/GameOver" unique_id=1272059266]
+[node name="GameOverBackdrop" type="ColorRect" parent="Overlay/GameOver" unique_id=1272059266]
 modulate = Color(1, 1, 1, 0.4627451)
 layout_mode = 1
 anchors_preset = 12
@@ -414,7 +413,7 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="WonLevelText" type="Label" parent="Overlay/GameOver" unique_id=1886395361]
+[node name="GameOverText" type="Label" parent="Overlay/GameOver" unique_id=1886395361]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -427,7 +426,7 @@ offset_right = 447.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 60
 text = "Congratulations!
 You have finished the game!"
 horizontal_alignment = 1
