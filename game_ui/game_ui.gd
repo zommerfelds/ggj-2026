@@ -12,7 +12,7 @@ var times_camera_rotated = 0
 var has_world_ended = false
 
 func _ready() -> void:
-	SignalBus.connect("goal_reached", next_level)
+	SignalBus.connect("goal_reached", goal_reached)
 	SignalBus.connect("end_world", end_world)
 	SignalBus.connect("can_rotate", set_can_rotate)
 	SignalBus.connect("player_moved", player_moved)
@@ -43,6 +43,8 @@ func next_level(delta: int = 1) -> void:
 	call_deferred("setup_level")
 
 func setup_level() -> void:
+	time_since_interaction = 0.0
+	%WonLevel.visible = false
 	has_world_ended = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
@@ -67,9 +69,17 @@ func end_world(source: Vector3) -> void:
 		%ParadoxLabel.visible = true
 	)
 
+func goal_reached():
+	%WonLevel.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_callback(func ():
+		next_level()
+	).set_delay(4.0)
+
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
 	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
+	instructionsEnabled = instructionsEnabled && !%WonLevel.visible
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
 	var device_name = Input.get_joy_name(0)
