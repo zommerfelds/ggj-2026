@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://blb85kpsjkbkv" path="res://Player/racoon/back tail.PNG" id="8_dm7nj"]
 [ext_resource type="Texture2D" uid="uid://0uhdojav3oll" path="res://Player/racoon/tail.PNG" id="8_s1rgi"]
 [ext_resource type="AudioStream" uid="uid://babw631m7ccta" path="res://sounds/535220__spycrah__grass-step-left.wav" id="16_7v5gs"]
+[ext_resource type="AudioStream" uid="uid://dpc4b05jo3f37" path="res://sounds/802695__vrymaa__furniture-drawers-open-close.wav" id="17_8sa4y"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
 radius = 0.25
@@ -1839,4 +1840,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_evw08")
 unique_name_in_owner = true
 volume_db = -9.155
 pitch_scale = 0.81
-max_polyphony = 4
+max_polyphony = 2
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1629612993]
+unique_name_in_owner = true
+stream = ExtResource("17_8sa4y")
+volume_db = -6.842

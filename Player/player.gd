@@ -117,6 +117,7 @@ func maybe_push(delta: float, direction: Vector2):
 			if (push_time > 0.2 and
 					(c.get_collider() is Plant or c.get_collider() is Box) and
 					isSpaceFree(nextPosition)):
+				%AudioStreamPlayer2.play()
 				var tween = get_tree().create_tween()
 				tween.tween_property(
 					c.get_collider(),
