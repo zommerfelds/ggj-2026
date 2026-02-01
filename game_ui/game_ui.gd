@@ -9,6 +9,7 @@ var level_index = 1
 var can_rotate = false
 var time_since_interaction = 0.0
 var times_camera_rotated = 0
+var has_world_ended = false
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", next_level)
@@ -42,12 +43,14 @@ func next_level(delta: int = 1) -> void:
 	call_deferred("setup_level")
 
 func setup_level() -> void:
+	has_world_ended = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
 	level.level_index = level_index
 	add_child(level)
 
 func end_world(source: Vector3) -> void:
+	has_world_ended = true
 	var paradox = paradox_void.instantiate()
 	paradox.position = source
 	level.add_child(paradox)
@@ -65,16 +68,16 @@ func end_world(source: Vector3) -> void:
 	)
 
 func updateInstructionsText():
-	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 2.0
-	var instructionsEnabled = level_index < 2 || time_since_interaction > 4.0
+	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
+	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
 	var device_name = Input.get_joy_name(0)
 	var model = "keyboard"
 	if (device_name.contains("PS3")
 			|| device_name.contains("PS4")
-		 	|| device_name.contains("PS5")
-		 	|| device_name.contains("DualSense")):
+			|| device_name.contains("PS5")
+			|| device_name.contains("DualSense")):
 		model = "playstation"
 	elif (device_name.contains("Xbox") || device_name.contains("XInput")):
 		model = "xbox"
