@@ -28,9 +28,10 @@ func _ready() -> void:
 			add_player(4, 1)
 		2:
 			grid_size = Vector3i(5, -1, 5)
-			add_goal(1, 1)
-			add_plant(2, 2)
-			add_player(1, 1)
+			add_goal(1, 2)
+			add_plant(2, 3)
+			add_plant(3, 2)
+			add_player(2, 1)
 		3:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(1, 1)
