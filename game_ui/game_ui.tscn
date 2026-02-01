@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
 [ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
-[ext_resource type="PackedScene" uid="uid://hsaxhgiytdhw" path="res://game_ui/joystick.tscn" id="4_vsxus"]
-[ext_resource type="PackedScene" uid="uid://bxsicl83w2dvo" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
+[ext_resource type="PackedScene" path="res://game_ui/joystick.tscn" id="4_vsxus"]
+[ext_resource type="PackedScene" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
@@ -487,6 +487,8 @@ theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 60
 text = "Congratulations!
 You have finished the game!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Joystick" parent="Overlay" unique_id=438829218 instance=ExtResource("4_vsxus")]
 layout_mode = 1
