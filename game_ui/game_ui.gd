@@ -32,6 +32,8 @@ func _process(delta) -> void:
 		next_level(-1)
 	if (Input.is_action_just_pressed("reset_level")):
 		reset_level()
+	if (%WonLevel.visible && Input.is_action_just_pressed("continue")):
+		next_level()
 
 func reset_level() -> void:
 	level.queue_free()
@@ -45,6 +47,7 @@ func next_level(delta: int = 1) -> void:
 func setup_level() -> void:
 	time_since_interaction = 0.0
 	%WonLevel.visible = false
+	%WonLevelInstruction.visible = false
 	has_world_ended = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
@@ -73,8 +76,9 @@ func goal_reached():
 	%WonLevel.visible = true
 	var tween = get_tree().create_tween()
 	tween.tween_callback(func ():
-		next_level()
-	).set_delay(4.0)
+		if %WonLevel.visible:
+			%WonLevelInstruction.visible = true
+	).set_delay(3.0)
 
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
@@ -105,6 +109,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = true
 			%RotationInstructionsController.visible = false
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = true
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = false
 		"controller":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = instructionsEnabled
@@ -113,6 +121,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = true
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = false
 		"playstation":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
@@ -121,6 +133,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = false
 			%RotationInstructionsPlaystation.visible = true
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = true
+			%WonLevelXbox.visible = false
 		"xbox":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
@@ -129,6 +145,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = true
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value
