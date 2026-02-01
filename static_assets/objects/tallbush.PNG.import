@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx6r6mv7s30wf"
-path.s3tc="res://.godot/imported/tallbush.PNG-768e63b9e2f7cc4c54644d89cf80cc8a.s3tc.ctex"
+path="res://.godot/imported/tallbush.PNG-768e63b9e2f7cc4c54644d89cf80cc8a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://static_assets/objects/tallbush.PNG"
-dest_files=["res://.godot/imported/tallbush.PNG-768e63b9e2f7cc4c54644d89cf80cc8a.s3tc.ctex"]
+dest_files=["res://.godot/imported/tallbush.PNG-768e63b9e2f7cc4c54644d89cf80cc8a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

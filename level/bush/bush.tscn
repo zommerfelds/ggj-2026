@@ -3,12 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://yew2cohc8jvq" path="res://static_assets/objects/bush.PNG" id="1_0uba7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_44x8d"]
-size = Vector2(1.09, 0.86)
+size = Vector2(1.83, 1.92)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivpvi"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
+transparency = 1
 albedo_texture = ExtResource("1_0uba7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_flje5"]
@@ -23,7 +21,7 @@ size = Vector3(0.95, 0.1, 0.95)
 transform = Transform3D(0.70710677, 0.61237246, 0.35355335, 0, 0.49999997, -0.86602545, -0.70710677, 0.61237246, 0.35355335, 0, 0, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="Face" unique_id=1193496304]
-transform = Transform3D(0.9999999, 5.9604645e-08, 0, 2.0861626e-07, 1.0000001, 0, -4.4703484e-08, -1.4901161e-08, 1.0000004, -0.015, 0.003, -0.326)
+transform = Transform3D(0.9999999, 5.9604645e-08, 0, 2.0861626e-07, 1.0000001, 0, -4.4703484e-08, -1.4901161e-08, 1.0000004, -0.015, 0.003, -0.576)
 mesh = SubResource("PlaneMesh_44x8d")
 surface_material_override/0 = SubResource("StandardMaterial3D_ivpvi")
 
