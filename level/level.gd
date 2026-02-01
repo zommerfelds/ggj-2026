@@ -20,7 +20,7 @@ func _ready() -> void:
 	level_name = "Level %d" % level_index
 	match level_index:
 		1:
-			level_name = "Level 1: Welcome"
+			level_name = "Level 1: Welcome!"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 1)
 			add_bush(2, 0)
@@ -29,7 +29,7 @@ func _ready() -> void:
 			add_bush(2, 3)
 			add_player(4, 1)
 		2:
-			level_name = "Level 2: Some objects can be pushed"
+			level_name = "Level 2: Boxes can be pushed"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_bush(4, 1)
@@ -43,6 +43,7 @@ func _ready() -> void:
 			add_bush(2, 0)
 			add_player(4, 2)
 		3:
+			level_name = "Level 3: Potted plants can also be pushed"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_tall_bush(0, 2)
@@ -52,6 +53,7 @@ func _ready() -> void:
 			add_tall_bush(4, 2)
 			add_player(2, 4)
 		4:
+			level_name = "Level 4: Something is missing?"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(1, 2)
 			add_plant(2, 3)
