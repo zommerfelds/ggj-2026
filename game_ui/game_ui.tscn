@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
 [ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
-[ext_resource type="PackedScene" path="res://game_ui/joystick.tscn" id="4_vsxus"]
-[ext_resource type="PackedScene" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
+[ext_resource type="PackedScene" uid="uid://hsaxhgiytdhw" path="res://game_ui/joystick.tscn" id="4_vsxus"]
+[ext_resource type="PackedScene" uid="uid://bxsicl83w2dvo" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
@@ -114,6 +114,24 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
 text = "Use ⇋ to walk   /   press ⇡ to restart the level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionsTouch" type="Label" parent="Overlay" unique_id=1602032677]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Use the on-screen joystick to move"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -245,6 +263,27 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
 text = "Press ↲ or ↳ to rotate the camera"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RotationInstructionsTouch" type="Label" parent="Overlay/RotationGroup" unique_id=91936786]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -447.5
+offset_top = -45.0
+offset_right = 447.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Press the bottom-right button to rotate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -391,6 +430,24 @@ text = "Press ↧ to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WonLevelTouch" type="Label" parent="Overlay/WonLevelInstruction" unique_id=957145392]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.5
+offset_top = 15.0
+offset_right = 447.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 82
+text = "Press the bottom-right button to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GameOver" type="Control" parent="Overlay" unique_id=1166846870]
 unique_name_in_owner = true
 visible = false
@@ -430,8 +487,6 @@ theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 60
 text = "Congratulations!
 You have finished the game!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Joystick" parent="Overlay" unique_id=438829218 instance=ExtResource("4_vsxus")]
 layout_mode = 1
@@ -451,9 +506,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -400.0
+offset_left = -300.0
 offset_top = -350.0
-offset_right = -200.0
+offset_right = -100.0
 offset_bottom = -150.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -464,9 +519,26 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -260.0
-offset_top = 120.0
-offset_right = -110.0
-offset_bottom = 270.0
+offset_left = -186.0
+offset_top = 166.0
+offset_right = -36.0
+offset_bottom = 316.0
 grow_horizontal = 0
 action_name = "reset_level"
+
+[node name="TouchButtonLabel" type="Label" parent="Overlay" unique_id=1722188073]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 94.0
+offset_right = -18.0
+offset_bottom = 161.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 0.36862746)
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -140,7 +140,7 @@ func _ready() -> void:
 
 			add_player(4, 4)
 		12:
-			level_name = "Dont get stucked!"
+			level_name = "Don't get stuck!"
 			grid_size = Vector3i(9, -1, 9)
 			add_goal(0, 0)
 			add_tall_bush(1,1)
@@ -162,6 +162,7 @@ func _ready() -> void:
 			add_bush(2,4)
 			add_bush(4,2)
 			add_bush(6,4)
+			add_bush(6,3)
 			add_bush(4,6)
 			add_bush(6,5)
 

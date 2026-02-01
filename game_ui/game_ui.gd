@@ -24,6 +24,7 @@ func _ready() -> void:
 		$Overlay/Joystick.free()
 		$Overlay/TouchButton.free()
 		$Overlay/TouchButtonReset.free()
+		$Overlay/TouchButtonLabel.free()
 
 
 func _process(delta) -> void:
@@ -110,55 +111,46 @@ func updateInstructionsText():
 			|| device_name.contains("Joy-Con")
 			|| device_name.contains("Joy Con")):
 		model = "controller"
+	elif is_touch_device():
+		model = "touch"
+
+	%InstructionsKeyboard.visible = false
+	%InstructionsController.visible = false
+	%InstructionsPlaystation.visible = false
+	%InstructionsXbox.visible = false
+	%InstructionsTouch.visible = false
+	%RotationInstructionsKeyboard.visible = false
+	%RotationInstructionsController.visible = false
+	%RotationInstructionsPlaystation.visible = false
+	%RotationInstructionsTouch.visible = false
+	%WonLevelKeyboard.visible = false
+	%WonLevelController.visible = false
+	%WonLevelPlaystation.visible = false
+	%WonLevelXbox.visible = false
+	%WonLevelTouch.visible = false
+
 	match model:
 		"keyboard":
 			%InstructionsKeyboard.visible = instructionsEnabled
-			%InstructionsController.visible = false
-			%InstructionsPlaystation.visible = false
-			%InstructionsXbox.visible = false
 			%RotationInstructionsKeyboard.visible = true
-			%RotationInstructionsController.visible = false
-			%RotationInstructionsPlaystation.visible = false
 			%WonLevelKeyboard.visible = true
-			%WonLevelController.visible = false
-			%WonLevelPlaystation.visible = false
-			%WonLevelXbox.visible = false
 		"controller":
-			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = instructionsEnabled
-			%InstructionsPlaystation.visible = false
-			%InstructionsXbox.visible = false
-			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
-			%RotationInstructionsPlaystation.visible = false
-			%WonLevelKeyboard.visible = false
 			%WonLevelController.visible = true
-			%WonLevelPlaystation.visible = false
-			%WonLevelXbox.visible = false
 		"playstation":
-			%InstructionsKeyboard.visible = false
-			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = instructionsEnabled
-			%InstructionsXbox.visible = false
-			%RotationInstructionsKeyboard.visible = false
-			%RotationInstructionsController.visible = false
 			%RotationInstructionsPlaystation.visible = true
-			%WonLevelKeyboard.visible = false
-			%WonLevelController.visible = false
 			%WonLevelPlaystation.visible = true
-			%WonLevelXbox.visible = false
 		"xbox":
-			%InstructionsKeyboard.visible = false
-			%InstructionsController.visible = false
-			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = instructionsEnabled
-			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
-			%RotationInstructionsPlaystation.visible = false
-			%WonLevelKeyboard.visible = false
-			%WonLevelController.visible = false
-			%WonLevelPlaystation.visible = false
 			%WonLevelXbox.visible = true
+		"touch":
+			%InstructionsTouch.visible = instructionsEnabled
+			%RotationInstructionsTouch.visible = true
+			%WonLevelTouch.visible = true
+
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value
