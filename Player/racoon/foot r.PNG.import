@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvqlhr7f6caty"
-path.s3tc="res://.godot/imported/foot r.PNG-3bc2ea4fd20568bfc9a95af2aeccfca4.s3tc.ctex"
+path="res://.godot/imported/foot r.PNG-3bc2ea4fd20568bfc9a95af2aeccfca4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Player/racoon/foot r.PNG"
-dest_files=["res://.godot/imported/foot r.PNG-3bc2ea4fd20568bfc9a95af2aeccfca4.s3tc.ctex"]
+dest_files=["res://.godot/imported/foot r.PNG-3bc2ea4fd20568bfc9a95af2aeccfca4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

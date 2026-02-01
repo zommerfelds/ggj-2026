@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cogs3fkrakoto"
-path.s3tc="res://.godot/imported/belly.PNG-94149ffed2e616924c86cce27b9250f4.s3tc.ctex"
+path="res://.godot/imported/belly.PNG-94149ffed2e616924c86cce27b9250f4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Player/racoon/belly.PNG"
-dest_files=["res://.godot/imported/belly.PNG-94149ffed2e616924c86cce27b9250f4.s3tc.ctex"]
+dest_files=["res://.godot/imported/belly.PNG-94149ffed2e616924c86cce27b9250f4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

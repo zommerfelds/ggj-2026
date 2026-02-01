@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InstructionsBackdrop" type="ColorRect" parent="Overlay" unique_id=634869812]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.4627451)
 layout_mode = 1
 anchors_preset = 12
@@ -140,5 +141,94 @@ text = "You have created a paradox! The world has ended.
 
 Press R to try again."
 label_settings = SubResource("LabelSettings_0osaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RotationGroup" type="Control" parent="Overlay" unique_id=367822945]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RotationInstructionsBackdrop" type="ColorRect" parent="Overlay/RotationGroup" unique_id=256949190]
+modulate = Color(1, 1, 1, 0.4627451)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = 40.0
+offset_right = 700.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, -1)
+color = Color(0.15637839, 0.22576961, 0.24399114, 1)
+
+[node name="RotationInstructionsKeyboard" type="Label" parent="Overlay/RotationGroup" unique_id=1138683550]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -45.0
+offset_right = 58.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Press ⑏ or ⑐ to rotate the camera"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RotationInstructionsController" type="Label" parent="Overlay/RotationGroup" unique_id=1156489318]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -45.0
+offset_right = 58.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Press ↖ or ↗ to rotate the camera"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RotationInstructionsPlaystation" type="Label" parent="Overlay/RotationGroup" unique_id=1356574684]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -45.0
+offset_right = 58.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Press ↲ or ↳ to rotate the camera"
 horizontal_alignment = 1
 vertical_alignment = 1

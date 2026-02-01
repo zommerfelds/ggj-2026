@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckr20igw5bgyj"
-path.s3tc="res://.godot/imported/back arm r.PNG-e21d187a949b321ca42bdc71fb119fd6.s3tc.ctex"
+path="res://.godot/imported/back arm r.PNG-e21d187a949b321ca42bdc71fb119fd6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Player/racoon/back arm r.PNG"
-dest_files=["res://.godot/imported/back arm r.PNG-e21d187a949b321ca42bdc71fb119fd6.s3tc.ctex"]
+dest_files=["res://.godot/imported/back arm r.PNG-e21d187a949b321ca42bdc71fb119fd6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
