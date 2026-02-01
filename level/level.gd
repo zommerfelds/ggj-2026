@@ -101,6 +101,7 @@ func _ready() -> void:
 			add_player(4, 0)
 			add_rotation_switch(4, 1)
 		9:
+			level_name = "Ramping up the challenge"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
 			add_bush(1, 4)
@@ -115,6 +116,7 @@ func _ready() -> void:
 
 			add_player(4, 4)
 		10:
+			level_name = "DEBUG: Paradox"
 			grid_size = Vector3i(4, -1, 4)
 			add_goal(3, 0)
 			add_box(1, 0)
