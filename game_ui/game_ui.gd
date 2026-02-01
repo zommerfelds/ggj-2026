@@ -109,6 +109,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = true
 			%RotationInstructionsController.visible = false
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = true
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = false
 		"controller":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = instructionsEnabled
@@ -117,6 +121,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = true
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = false
 		"playstation":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
@@ -125,6 +133,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = false
 			%RotationInstructionsPlaystation.visible = true
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = true
+			%WonLevelXbox.visible = false
 		"xbox":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
@@ -133,6 +145,10 @@ func updateInstructionsText():
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
 			%RotationInstructionsPlaystation.visible = false
+			%WonLevelKeyboard.visible = false
+			%WonLevelController.visible = false
+			%WonLevelPlaystation.visible = false
+			%WonLevelXbox.visible = true
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value

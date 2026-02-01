@@ -127,6 +127,7 @@ theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
 text = "Level 1"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ParadoxLabel" type="Label" parent="Overlay" unique_id=817727250]
 unique_name_in_owner = true
@@ -306,7 +307,8 @@ offset_bottom = 150.0
 grow_horizontal = 2
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="WonLevelText" type="Label" parent="Overlay/WonLevelInstruction" unique_id=564906781]
+[node name="WonLevelKeyboard" type="Label" parent="Overlay/WonLevelInstruction" unique_id=564906781]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -319,5 +321,59 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 82
 text = "Press ␺ to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WonLevelPlaystation" type="Label" parent="Overlay/WonLevelInstruction" unique_id=511513138]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.5
+offset_top = 15.0
+offset_right = 447.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 82
+text = "Press ⇣ to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WonLevelXbox" type="Label" parent="Overlay/WonLevelInstruction" unique_id=99646119]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.5
+offset_top = 15.0
+offset_right = 447.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 82
+text = "Press ⇓ to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WonLevelController" type="Label" parent="Overlay/WonLevelInstruction" unique_id=1677414383]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.5
+offset_top = 15.0
+offset_right = 447.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 82
+text = "Press ↧ to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
