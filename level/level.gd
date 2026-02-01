@@ -168,7 +168,8 @@ func _ready() -> void:
 	add_child(walls)
 	prototype.free()
 
-	$CameraPivot/Camera3D.size = max(grid_size.x, grid_size.z)
+	update_camera_size()
+	get_viewport().size_changed.connect(update_camera_size)
 
 
 func _process(delta: float) -> void:
@@ -216,3 +217,9 @@ func add_box(x, z) -> void:
 	var box = box_scene.instantiate()
 	box.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(box)
+
+
+func update_camera_size() -> void:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var ratio_constraint = min(1, viewport_size.x / viewport_size.y / 1.5)
+	$CameraPivot/Camera3D.size = max(grid_size.x, grid_size.z) / ratio_constraint
