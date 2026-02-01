@@ -102,15 +102,16 @@ func _ready() -> void:
 			add_rotation_switch(4, 1)
 		9:
 			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 0)
-			add_bush(0, 1)
+			add_goal(0, 4)
+			add_bush(1, 4)
+			add_bush(2, 4)
+			add_bush(0, 3)
 			add_bush(0, 2)
-			add_bush(1, 0)
-			add_bush(2, 0)
 
-			add_plant(2, 1)
+			add_plant(2, 3)
 			add_plant(2, 2)
 			add_plant(1, 2)
+			add_rotation_switch(4, 0)
 
 			add_player(4, 4)
 		10:
