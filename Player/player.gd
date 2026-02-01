@@ -16,10 +16,17 @@ func _ready() -> void:
 	%AnimationPlayer.play()
 
 func _physics_process(_delta):
-
+	# Direction with controller or arrow keys (LR/UD)
 	var direction = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")).limit_length(1.0)
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_forward", "move_back")).limit_length(1.0)
+	# Direction with QEAD (diagonal)
+	var direction_diag = Vector2(
+		Input.get_axis("move_up_left", "move_down_right"),
+		Input.get_axis("move_up_right", "move_down_left")).limit_length(1.0)
+
+	if direction_diag.length_squared() > direction.length_squared():
+		direction = direction_diag.rotated(PI / 4.0)
 
 	walking_up = direction.dot(Vector2.DOWN) > -0.1
 	if direction.x != 0.0 and absf(direction.x) > 0.1:
