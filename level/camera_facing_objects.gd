@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 		if world_has_ended:
 			child.process_mode = Node.PROCESS_MODE_DISABLED
 			return
-		if (child is Node3D && !(child is Player) && !(child is Plant)):
+		if (child is Node3D && !(child is Player) && !(child is Plant) && !(child is TallBush)):
 			var isObjectMasked = checkIfObjectIsMasked(child)
 			child.process_mode = Node.PROCESS_MODE_DISABLED if isObjectMasked else Node.PROCESS_MODE_INHERIT
 		if child is Node3D && !(child is Player):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vnogpx8q4gp6"]
 
 [ext_resource type="Texture2D" uid="uid://bx6r6mv7s30wf" path="res://static_assets/objects/tallbush.PNG" id="1_dp8ye"]
+[ext_resource type="Script" uid="uid://cqomwk64nny3q" path="res://level/tall_bush/tall_bush.gd" id="1_q4a2m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pfy1k"]
 size = Vector2(1.83, 1.92)
@@ -18,6 +19,7 @@ size = Vector3(0.95, 0.1, 0.95)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy1k"]
 
 [node name="TallBush" type="AnimatableBody3D" unique_id=1778761240]
+script = ExtResource("1_q4a2m")
 
 [node name="Face" type="Node3D" parent="." unique_id=1067390800]
 transform = Transform3D(0.70710677, 0.61237246, 0.35355335, 0, 0.49999997, -0.86602545, -0.70710677, 0.61237246, 0.35355335, 0, 0, 0)
