@@ -66,6 +66,17 @@ func _ready() -> void:
 			add_player(4, 1)
 			add_rotation_switch(4, 2)
 		6:
+			level_name = "On the third hand..."
+			grid_size = Vector3i(6, -1, 5)
+			add_goal(0, 4)
+			add_player(4, 2)
+			for x in 5:
+				add_bush(3, x)
+			add_tall_bush(4, 0)
+			add_tall_bush(1, 3)
+			add_rotation_switch(0, 0)
+			add_rotation_switch(5, 4)
+		7:
 			level_name = "What if I can't see it?"
 			grid_size = Vector3i(6, -1, 4)
 			add_goal(0, 0)
@@ -74,7 +85,7 @@ func _ready() -> void:
 			add_bush(2, 0)
 			add_plant(4, 2)
 			add_player(4, 0)
-		7:
+		8:
 			level_name = "What's with these bushes?"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
@@ -83,7 +94,7 @@ func _ready() -> void:
 			add_plant(2, 2)
 			add_player(0, 1)
 			add_rotation_switch(4, 2)
-		8:
+		9:
 			level_name = "It's getting crowded in here!"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(2, 2)
@@ -100,7 +111,7 @@ func _ready() -> void:
 
 			add_player(4, 0)
 			add_rotation_switch(4, 1)
-		9:
+		10:
 			level_name = "Ramping up the challenge"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
@@ -115,7 +126,7 @@ func _ready() -> void:
 			add_rotation_switch(4, 0)
 
 			add_player(4, 4)
-		10:
+		11:
 			level_name = "DEBUG: Paradox"
 			grid_size = Vector3i(4, -1, 4)
 			add_goal(3, 0)
