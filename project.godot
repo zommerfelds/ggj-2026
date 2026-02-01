@@ -20,6 +20,10 @@ config/icon="uid://bf2n3wel01tax"
 
 SignalBus="*uid://bthraps6rbgjm"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1920

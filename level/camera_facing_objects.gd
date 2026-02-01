@@ -5,7 +5,7 @@ extends Node3D
 var world_has_ended = false
 const RAY_LENGTH = 10000
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var cameraPivotRotationY = cameraPivot.rotation.y
 	for child in get_children():
 		if (child is Node3D):
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 				mesh.rotation.y = cameraPivotRotationY
 				mesh.rotation_degrees.x = 60
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for child in get_children():
 		if world_has_ended:
 			child.process_mode = Node.PROCESS_MODE_DISABLED

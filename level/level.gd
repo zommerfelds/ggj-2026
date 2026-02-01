@@ -206,7 +206,7 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(update_camera_size)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Floor/FloorMesh.position = $CameraPivot/FloorReference.global_position
 
 
