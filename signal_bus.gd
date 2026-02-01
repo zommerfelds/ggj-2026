@@ -18,3 +18,6 @@ signal camera_rotated()
 
 # When the player has completed the final level
 signal game_over()
+
+# Emitted when touch joystick moved.
+signal joystick_moved(Vector2)

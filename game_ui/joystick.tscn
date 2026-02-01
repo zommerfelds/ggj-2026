@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://hsaxhgiytdhw"]
+
+[ext_resource type="Script" uid="uid://d03upmluslx1n" path="res://game_ui/joystick.gd" id="1_w25ul"]
+
+[node name="Joystick" type="Control" unique_id=438829218]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w25ul")
