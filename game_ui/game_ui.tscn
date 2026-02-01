@@ -33,7 +33,8 @@ grow_vertical = 0
 scale = Vector2(1, -1)
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="Instructions" type="Label" parent="Overlay" unique_id=1849559164]
+[node name="InstructionsKeyboard" type="Label" parent="Overlay" unique_id=1849559164]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -45,9 +46,63 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
-text = "Use ␤ / ＱＥＡＤ / ⇋ to walk
-Press Ｒ / ⇡ / ↥ to restart the level"
+text = "Use ␤ or ＱＥＡＤ to walk   /   press Ｒ to restart the level"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionsController" type="Label" parent="Overlay" unique_id=609474270]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Use ⇋ to walk   /   press ↥ to restart the level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionsPlaystation" type="Label" parent="Overlay" unique_id=2146656926]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Use ⇋ to walk   /   press ⇡ to restart the level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionsXbox" type="Label" parent="Overlay" unique_id=255969360]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Use ⇋ to walk   /   press ⇑ to restart the level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelNameBackdrop" type="ColorRect" parent="Overlay" unique_id=1986285235]
 modulate = Color(1, 1, 1, 0.4627451)

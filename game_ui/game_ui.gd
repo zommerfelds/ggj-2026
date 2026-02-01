@@ -13,6 +13,7 @@ func _ready() -> void:
 	SignalBus.connect("end_world", end_world)
 
 func _process(delta) -> void:
+	updateInstructionsText()
 	if (Input.is_action_pressed("skip_level_1") && Input.is_action_just_pressed("skip_level_2")
 	 || Input.is_action_pressed("skip_level_2") && Input.is_action_just_pressed("skip_level_1")):
 		next_level()
@@ -54,3 +55,39 @@ func end_world(source: Vector3) -> void:
 		print("set visible")
 		%ParadoxLabel.visible = true
 	)
+
+func updateInstructionsText():
+	var device_name = Input.get_joy_name(0)
+	var model = "keyboard"
+	if (device_name.contains("PS3")
+			|| device_name.contains("PS4")
+		 	|| device_name.contains("PS5")):
+		model = "playstation"
+	elif (device_name.contains("Xbox") || device_name.contains("XInput")):
+		model = "xbox"
+	elif (device_name.contains("Controller")
+			|| device_name.contains("Gamepad")
+			|| device_name.contains("Joy-Con")
+			|| device_name.contains("Joy Con")):
+		model = "controller"
+	match model:
+		"keyboard":
+			%InstructionsKeyboard.visible = true
+			%InstructionsController.visible = false
+			%InstructionsPlaystation.visible = false
+			%InstructionsXbox.visible = false
+		"controller":
+			%InstructionsKeyboard.visible = false
+			%InstructionsController.visible = true
+			%InstructionsPlaystation.visible = false
+			%InstructionsXbox.visible = false
+		"playstation":
+			%InstructionsKeyboard.visible = false
+			%InstructionsController.visible = false
+			%InstructionsPlaystation.visible = true
+			%InstructionsXbox.visible = false
+		"xbox":
+			%InstructionsKeyboard.visible = false
+			%InstructionsController.visible = false
+			%InstructionsPlaystation.visible = false
+			%InstructionsXbox.visible = true
