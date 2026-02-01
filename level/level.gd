@@ -139,6 +139,35 @@ func _ready() -> void:
 			add_rotation_switch(4, 0)
 
 			add_player(4, 4)
+		12:
+			level_name = "Dont get stucked!"
+			grid_size = Vector3i(9, -1, 9)
+			add_goal(0, 0)
+			add_tall_bush(1,1)
+			
+			add_rotation_switch(4, 4)
+			
+			add_box(3,3)
+			add_box(3,4)
+			add_box(3,5)
+			
+			add_box(4,3)
+			add_box(4,5)
+			
+			add_box(5,4)
+			
+			add_bush(5,5)
+			add_bush(5,2)
+			add_bush(2,3)
+			add_bush(2,4)
+			add_bush(4,2)
+			add_bush(6,4)
+			add_bush(4,6)
+			add_bush(6,5)
+			
+			add_plant(6,6)
+			add_plant(1,7)
+			add_player(0, 8)
 		_:
 			level_name = "Game Over"
 			grid_size = Vector3i(3, -1, 3)
