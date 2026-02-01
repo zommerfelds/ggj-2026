@@ -13,6 +13,7 @@ config_version=5
 config/name="Out of Sight"
 run/main_scene="uid://dfevirow2ys32"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://btl7l4lkemg7x"
 config/icon="res://icon.svg"
 
 [autoload]
