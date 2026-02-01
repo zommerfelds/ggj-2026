@@ -41,7 +41,7 @@ script = ExtResource("2_ivpvi")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1005227411]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.1, 7)
 projection = 1
-size = 7.254
+size = 5.074
 
 [node name="FloorReference" type="Node3D" parent="CameraPivot" unique_id=799592643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

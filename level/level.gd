@@ -84,6 +84,8 @@ func _ready() -> void:
 			add_bush(2, 3)
 			add_bush(2, 2)
 			add_bush(1, 0)
+			add_bush(2, 0)
+			add_bush(4, 0)
 			add_tall_bush(4, 2)
 			add_box(1, 1)
 			add_goal(5, 4)
