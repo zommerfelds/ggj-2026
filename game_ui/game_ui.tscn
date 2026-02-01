@@ -20,6 +20,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ParadoxBackdrop" type="ColorRect" parent="Overlay" unique_id=1631992136]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ParadoxLabel" type="Label" parent="Overlay" unique_id=817727250]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Oops! You have created a paradox!
+
+The world has ended."
+label_settings = SubResource("LabelSettings_0osaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="InstructionsBackdrop" type="ColorRect" parent="Overlay" unique_id=634869812]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.4627451)
@@ -126,23 +154,6 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
 text = "Level 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParadoxLabel" type="Label" parent="Overlay" unique_id=817727250]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-text = "Oops! You have created a paradox!
-
-The world has ended."
-label_settings = SubResource("LabelSettings_0osaa")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -49,6 +49,7 @@ func setup_level() -> void:
 	%WonLevel.visible = false
 	%WonLevelInstruction.visible = false
 	has_world_ended = false
+	%ParadoxBackdrop.visible = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
 	level.level_index = level_index
@@ -69,6 +70,7 @@ func end_world(source: Vector3) -> void:
 	)
 	tween.tween_callback(func ():
 		print("set visible")
+		%ParadoxBackdrop.visible = true
 		%ParadoxLabel.visible = true
 	)
 
