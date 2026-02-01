@@ -278,3 +278,46 @@ text = "Awesome!
 You have reached the flag!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WonLevelInstruction" type="Control" parent="Overlay" unique_id=81414001]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 40.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WonLevelBackdrop" type="ColorRect" parent="Overlay/WonLevelInstruction" unique_id=1681257000]
+modulate = Color(1, 1, 1, 0.4627451)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -980.0
+offset_right = 940.0
+offset_bottom = 150.0
+grow_horizontal = 2
+color = Color(0.15637839, 0.22576961, 0.24399114, 1)
+
+[node name="WonLevelText" type="Label" parent="Overlay/WonLevelInstruction" unique_id=564906781]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.5
+offset_top = 15.0
+offset_right = 447.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 82
+text = "Press ␺ to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
