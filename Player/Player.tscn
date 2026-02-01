@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://drq5u3cf6oyi8" path="res://Player/racoon/back foot l.PNG" id="7_p7tob"]
 [ext_resource type="Texture2D" uid="uid://blb85kpsjkbkv" path="res://Player/racoon/back tail.PNG" id="8_dm7nj"]
 [ext_resource type="Texture2D" uid="uid://0uhdojav3oll" path="res://Player/racoon/tail.PNG" id="8_s1rgi"]
+[ext_resource type="AudioStream" uid="uid://babw631m7ccta" path="res://sounds/535220__spycrah__grass-step-left.wav" id="16_7v5gs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
 radius = 0.25
@@ -1446,6 +1447,36 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/17/type = "audio"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_7v5gs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/17/use_blend = true
+tracks/18/type = "audio"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_7v5gs")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/18/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3mea3"]
 resource_name = "walk_back"
@@ -1655,6 +1686,36 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/17/type = "audio"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_7v5gs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/17/use_blend = true
+tracks/18/type = "audio"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_7v5gs")
+}],
+"times": PackedFloat32Array(0.40000004)
+}
+tracks/18/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j23h2"]
 _data = {
@@ -1773,3 +1834,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_d7xyo")
 transform = Transform3D(0.9999994, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999994, -0.015415773, 0.4076495, -0.011498511)
 mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_evw08")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1602308569]
+volume_db = -9.155
+pitch_scale = 0.81
+max_polyphony = 4
