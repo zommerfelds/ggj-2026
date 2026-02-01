@@ -18,6 +18,12 @@ func _ready() -> void:
 	SignalBus.connect("player_moved", player_moved)
 	SignalBus.connect("camera_rotated", camera_rotated)
 
+	if not is_touch_device():
+		$Overlay/Joystick.free()
+		$Overlay/TouchButton.free()
+		$Overlay/TouchButtonReset.free()
+
+
 func _process(delta) -> void:
 	time_since_interaction += delta
 	updateInstructionsText()
@@ -32,7 +38,7 @@ func _process(delta) -> void:
 		next_level(-1)
 	if (Input.is_action_just_pressed("reset_level")):
 		reset_level()
-	if (%WonLevel.visible && Input.is_action_just_pressed("continue")):
+	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button"))):
 		next_level()
 
 func reset_level() -> void:
@@ -161,3 +167,16 @@ func player_moved():
 func camera_rotated():
 	time_since_interaction = 0.0
 	times_camera_rotated += 1
+
+
+static func is_touch_device() -> bool:
+	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+		return true
+
+	var window = JavaScriptBridge.get_interface("window")
+	if window:
+		var js_return = JavaScriptBridge.eval("(('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));")
+		if js_return == 1:
+			return true
+
+	return false

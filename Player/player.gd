@@ -13,9 +13,11 @@ var walking_up = false
 var currently_heading_right = false
 var time_since_moved = 0.0
 var has_won = false
+var joystick_direction = Vector2.ZERO
 
 func _ready() -> void:
 	%AnimationPlayer.play()
+	SignalBus.connect("joystick_moved", joystick_moved)
 
 func _physics_process(_delta):
 	if has_won: return
@@ -30,6 +32,9 @@ func _physics_process(_delta):
 
 	if direction_diag.length_squared() > direction.length_squared():
 		direction = direction_diag.rotated(PI / 4.0)
+
+	if joystick_direction.length_squared() > direction.length_squared():
+		direction = joystick_direction
 
 	walking_up = direction.dot(Vector2.DOWN) > -0.1
 	if direction.x != 0.0 and absf(direction.x) > 0.1:
@@ -54,6 +59,7 @@ func _physics_process(_delta):
 	maybe_push(_delta, direction)
 
 	set_anim_state(direction)
+
 
 func set_anim_state(direction: Vector2):
 	%AnimationPlayer.speed_scale = 1.0
@@ -135,3 +141,7 @@ func enter_win_state():
 	has_won = true
 	SignalBus.goal_reached.emit()
 	pass
+
+
+func joystick_moved(dir):
+	joystick_direction = dir

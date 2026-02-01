@@ -15,3 +15,6 @@ signal player_moved()
 
 # Emitted when the camera is rotated.
 signal camera_rotated()
+
+# Emitted when touch joystick moved.
+signal joystick_moved(Vector2)
