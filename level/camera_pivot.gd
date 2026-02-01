@@ -10,7 +10,7 @@ func _init() -> void:
 
 
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("rotate_right") and can_rotate):
+	if ((Input.is_action_just_pressed("rotate_right") || Input.is_action_just_pressed("touch_button")) and can_rotate):
 		SignalBus.camera_rotated.emit()
 		targetRotationY += 90
 		if (targetRotationY > 180):

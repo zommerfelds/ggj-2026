@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxsicl83w2dvo"]
+
+[ext_resource type="Script" uid="uid://dfl5vjicey4qd" path="res://game_ui/touch_button.gd" id="1_k8jme"]
+
+[node name="TouchButton" type="Control" unique_id=1659801594]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k8jme")
+action_name = "bomb"

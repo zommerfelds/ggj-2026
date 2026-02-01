@@ -10,6 +10,7 @@ var can_rotate = false
 var time_since_interaction = 0.0
 var times_camera_rotated = 0
 var has_world_ended = false
+var is_game_over = false
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", goal_reached)
@@ -17,6 +18,13 @@ func _ready() -> void:
 	SignalBus.connect("can_rotate", set_can_rotate)
 	SignalBus.connect("player_moved", player_moved)
 	SignalBus.connect("camera_rotated", camera_rotated)
+	SignalBus.connect("game_over", game_over)
+
+	if not is_touch_device():
+		$Overlay/Joystick.free()
+		$Overlay/TouchButton.free()
+		$Overlay/TouchButtonReset.free()
+
 
 func _process(delta) -> void:
 	time_since_interaction += delta
@@ -32,7 +40,7 @@ func _process(delta) -> void:
 		next_level(-1)
 	if (Input.is_action_just_pressed("reset_level")):
 		reset_level()
-	if (%WonLevel.visible && Input.is_action_just_pressed("continue")):
+	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button"))):
 		next_level()
 
 func reset_level() -> void:
@@ -85,7 +93,7 @@ func goal_reached():
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
 	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
-	instructionsEnabled = instructionsEnabled && !%WonLevel.visible
+	instructionsEnabled = instructionsEnabled && !%WonLevel.visible && !is_game_over
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
 	var device_name = Input.get_joy_name(0)
@@ -161,3 +169,21 @@ func player_moved():
 func camera_rotated():
 	time_since_interaction = 0.0
 	times_camera_rotated += 1
+
+func game_over():
+	$Overlay/LevelName.visible = false
+	$Overlay/LevelNameBackdrop.visible = false
+	is_game_over = true
+	%GameOver.visible = true
+
+static func is_touch_device() -> bool:
+	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+		return true
+
+	var window = JavaScriptBridge.get_interface("window")
+	if window:
+		var js_return = JavaScriptBridge.eval("(('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));")
+		if js_return == 1:
+			return true
+
+	return false
