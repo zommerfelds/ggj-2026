@@ -1,6 +1,3 @@
-extends Area3D
+extends CollisionObject3D
 
-
-func _on_body_entered(body: Node3D) -> void:
-	if body is Player:
-		SignalBus.goal_reached.emit()
+class_name Goal

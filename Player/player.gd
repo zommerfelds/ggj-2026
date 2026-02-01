@@ -75,6 +75,10 @@ func set_anim_state(direction: Vector2):
 func maybe_push(delta: float, direction: Vector2):
 	var c = get_last_slide_collision()
 	if c != null:
+		if c.get_collider() is Goal:
+			SignalBus.goal_reached.emit()
+			return
+
 		var n = c.get_normal()
 		var push_new = Vector3i.ZERO
 
