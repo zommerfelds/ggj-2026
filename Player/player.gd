@@ -98,7 +98,7 @@ func maybe_push(delta: float, direction: Vector2):
 
 		if push_new == push_direction and push_new != Vector3i.ZERO and Vector3(direction.x, 0, direction.y).dot(push_new) > 0.8:
 			push_time += delta
-			if (push_time > 0.4 and
+			if (push_time > 0.2 and
 					(c.get_collider() is Plant or c.get_collider() is Box) and
 					isSpaceFree(nextPosition)):
 				var tween = get_tree().create_tween()
