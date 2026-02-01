@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c6wp7clm68tok" path="res://level/floor/floor_texture.tres" id="1_7lnir"]
 [ext_resource type="Script" uid="uid://biecaw1ifj6ps" path="res://level/camera_facing_objects.gd" id="2_44x8d"]
 [ext_resource type="Script" uid="uid://lrt4ayitwhwa" path="res://level/camera_pivot.gd" id="2_ivpvi"]
+[ext_resource type="AudioStream" uid="uid://ddo3mps3ekimw" path="res://sounds/269288__kwahmah_02__swoosh26.wav" id="5_ktfr2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5gx2l"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -53,3 +54,7 @@ cameraPivot = NodePath("../CameraPivot")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346886582]
 environment = SubResource("Environment_vkbyq")
 camera_attributes = SubResource("CameraAttributesPhysical_7lnir")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2007002481]
+unique_name_in_owner = true
+stream = ExtResource("5_ktfr2")
