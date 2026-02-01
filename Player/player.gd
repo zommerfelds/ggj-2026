@@ -11,6 +11,7 @@ var push_time: float = 0.0
 var current_step_is_left = false
 var walking_up = false
 var currently_heading_right = false
+var time_since_moved = 0.0
 
 func _ready() -> void:
 	%AnimationPlayer.play()
@@ -43,6 +44,9 @@ func _physics_process(_delta):
 	const interpolation = 0.3
 	velocity.x = lerp(velocity.x, direction.x * speed, interpolation)
 	velocity.z = lerp(velocity.z, direction.y * speed, interpolation)
+
+	if velocity.length() > 0.01:
+		SignalBus.player_moved.emit()
 
 	move_and_slide()
 	maybe_push(_delta, direction)

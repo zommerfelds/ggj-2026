@@ -7,13 +7,18 @@ var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
 @onready var level = $Level
 var level_index = 1
 var can_rotate = false
+var time_since_interaction = 0.0
+var times_camera_rotated = 0
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", next_level)
 	SignalBus.connect("end_world", end_world)
 	SignalBus.connect("can_rotate", set_can_rotate)
+	SignalBus.connect("player_moved", player_moved)
+	SignalBus.connect("camera_rotated", camera_rotated)
 
 func _process(delta) -> void:
+	time_since_interaction += delta
 	updateInstructionsText()
 	$Overlay/LevelName.text = "Level %d" % level_index
 	if level.level_name != "":
@@ -60,7 +65,10 @@ func end_world(source: Vector3) -> void:
 	)
 
 func updateInstructionsText():
-	%RotationGroup.visible = can_rotate
+	var rotationHintEnabled = times_camera_rotated < 3 || time_since_interaction > 3.0
+	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0
+	%InstructionsBackdrop.visible = instructionsEnabled
+	%RotationGroup.visible = can_rotate && rotationHintEnabled
 	var device_name = Input.get_joy_name(0)
 	var model = "keyboard"
 	if (device_name.contains("PS3")
@@ -77,7 +85,7 @@ func updateInstructionsText():
 		model = "controller"
 	match model:
 		"keyboard":
-			%InstructionsKeyboard.visible = true
+			%InstructionsKeyboard.visible = instructionsEnabled
 			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = false
@@ -86,7 +94,7 @@ func updateInstructionsText():
 			%RotationInstructionsPlaystation.visible = false
 		"controller":
 			%InstructionsKeyboard.visible = false
-			%InstructionsController.visible = true
+			%InstructionsController.visible = instructionsEnabled
 			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = false
 			%RotationInstructionsKeyboard.visible = false
@@ -95,7 +103,7 @@ func updateInstructionsText():
 		"playstation":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
-			%InstructionsPlaystation.visible = true
+			%InstructionsPlaystation.visible = instructionsEnabled
 			%InstructionsXbox.visible = false
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = false
@@ -104,10 +112,17 @@ func updateInstructionsText():
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = false
-			%InstructionsXbox.visible = true
+			%InstructionsXbox.visible = instructionsEnabled
 			%RotationInstructionsKeyboard.visible = false
 			%RotationInstructionsController.visible = true
 			%RotationInstructionsPlaystation.visible = false
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value
+
+func player_moved():
+	time_since_interaction = 0.0
+
+func camera_rotated():
+	time_since_interaction = 0.0
+	times_camera_rotated += 1

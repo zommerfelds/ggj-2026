@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InstructionsBackdrop" type="ColorRect" parent="Overlay" unique_id=634869812]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.4627451)
 layout_mode = 1
 anchors_preset = 12
