@@ -2,4 +2,5 @@
 .godot/
 /android/
 /export/
-
+/export_opt/
+/html_templates/
