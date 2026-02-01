@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://blmm3d3qf1gsg"]
 
+[ext_resource type="AudioStream" uid="uid://cmgipmcxq23w5" path="res://sounds/416478__soundflakes__low_swoosh-7.wav" id="1_fk78e"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dshd"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -7,3 +9,8 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=973606734]
 material = SubResource("StandardMaterial3D_3dshd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=961764340]
+stream = ExtResource("1_fk78e")
+volume_db = 4.105
+autoplay = true
