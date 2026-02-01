@@ -63,10 +63,11 @@ func _ready() -> void:
 		6:
 			grid_size = Vector3i(6, -1, 4)
 			add_goal(0, 0)
-			for x in 4:
-				add_bush(1, x)
-			add_plant(4, 3)
-			add_player(4, 1)
+			for y in 6:
+				add_bush(y, 1)
+			add_bush(2, 0)
+			add_plant(4, 2)
+			add_player(4, 0)
 		7:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
