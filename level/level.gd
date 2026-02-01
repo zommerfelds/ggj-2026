@@ -21,23 +21,23 @@ func _ready() -> void:
 		1:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 1)
-			add_rock(2, 0)
-			add_rock(2, 1)
-			add_rock(2, 2)
-			add_rock(2, 3)
+			add_bush(2, 0)
+			add_bush(2, 1)
+			add_bush(2, 2)
+			add_bush(2, 3)
 			add_player(4, 1)
 		2:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
-			add_rock(4, 1)
+			add_bush(4, 1)
 			add_box(3, 1)
 			add_box(3, 2)
-			add_rock(3, 3)
+			add_bush(3, 3)
 			add_box(2, 2)
-			add_rock(1, 2)
-			add_rock(1, 3)
-			add_rock(1, 4)
-			add_rock(2, 0)
+			add_bush(1, 2)
+			add_bush(1, 3)
+			add_bush(1, 4)
+			add_bush(2, 0)
 			add_player(4, 2)
 		3:
 			grid_size = Vector3i(5, -1, 5)
@@ -64,24 +64,24 @@ func _ready() -> void:
 			grid_size = Vector3i(6, -1, 4)
 			add_goal(0, 0)
 			for x in 4:
-				add_rock(1, x)
+				add_bush(1, x)
 			add_plant(4, 3)
 			add_player(4, 1)
 		7:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
-			add_rock(1, 4)
-			add_rock(0, 3)
+			add_bush(1, 4)
+			add_bush(0, 3)
 			add_plant(2, 2)
 			add_player(0, 1)
 			add_rotation_switch(4, 2)
 		8:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(2, 2)
-			add_rock(2, 3)
-			add_rock(3, 2)
-			add_rock(2, 1)
-			add_rock(1, 2)
+			add_bush(2, 3)
+			add_bush(3, 2)
+			add_bush(2, 1)
+			add_bush(1, 2)
 
 			add_plant(1, 1)
 			add_plant(1, 3)
@@ -94,10 +94,10 @@ func _ready() -> void:
 		9:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
-			add_rock(0, 1)
-			add_rock(0, 2)
-			add_rock(1, 0)
-			add_rock(2, 0)
+			add_bush(0, 1)
+			add_bush(0, 2)
+			add_bush(1, 0)
+			add_bush(2, 0)
 
 			add_plant(2, 1)
 			add_plant(2, 2)
@@ -115,7 +115,7 @@ func _ready() -> void:
 			add_player(3, 3)
 		_:
 			grid_size = Vector3i(6, -1, 6)
-			add_rock(1, 3)
+			add_bush(1, 3)
 			add_box(3, 1)
 			add_plant(2, 2)
 			add_goal(1, 1)
@@ -156,7 +156,7 @@ func add_player(x, z) -> void:
 	$Objects.add_child(player)
 
 
-func add_rock(x, z) -> void:
+func add_bush(x, z) -> void:
 	var rock = rock_scene.instantiate()
 	rock.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(rock)
