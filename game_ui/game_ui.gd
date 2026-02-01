@@ -61,7 +61,8 @@ func updateInstructionsText():
 	var model = "keyboard"
 	if (device_name.contains("PS3")
 			|| device_name.contains("PS4")
-		 	|| device_name.contains("PS5")):
+		 	|| device_name.contains("PS5")
+		 	|| device_name.contains("DualSense")):
 		model = "playstation"
 	elif (device_name.contains("Xbox") || device_name.contains("XInput")):
 		model = "xbox"
