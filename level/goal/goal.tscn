@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://djus3q4uij4ww"]
 
 [ext_resource type="Script" uid="uid://bv5pagkg2obhn" path="res://level/goal/goal.gd" id="1_mdcsh"]
+[ext_resource type="Texture2D" uid="uid://k43covq1bwdj" path="res://static_assets/objects/flag.PNG" id="2_5n1eg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_revk6"]
 albedo_color = Color(1, 0.73333335, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_mdcsh"]
 size = Vector3(1, 0.7, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lkwkp"]
+size = Vector2(2.74, 1.96)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
+transparency = 1
+albedo_texture = ExtResource("2_5n1eg")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5n1eg"]
 height = 1.0
@@ -17,8 +25,17 @@ script = ExtResource("1_mdcsh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=396005036]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.35493994, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_revk6")
 mesh = SubResource("PrismMesh_mdcsh")
+
+[node name="Face" type="Node3D" parent="." unique_id=2014777487]
+transform = Transform3D(0.35355338, 0.30618623, 0.17677668, 0, 0.49999997, -0.86602545, -0.35355338, 0.30618623, 0.17677668, 0, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="Face" unique_id=207992270]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0.134, 0, -0.511)
+mesh = SubResource("PlaneMesh_lkwkp")
+surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=207175327]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, 0)
