@@ -1673,43 +1673,43 @@ size = Vector2(2, 1.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j2ni"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.268
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_tok1r")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mea3"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.242
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_ddoul")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v5gs"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.209
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_vlldt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sa4y"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.302
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("5_s1rgi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nb2p"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.324
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("6_j23h2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7xyo"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.17
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("7_0j2ni")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evw08"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.15
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("8_s1rgi")
 
