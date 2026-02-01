@@ -43,14 +43,14 @@ func _ready() -> void:
 			add_player(4, 2)
 		3:
 			level_name = "Potted plants can be pushed, too!"
-			grid_size = Vector3i(5, -1, 5)
+			grid_size = Vector3i(5, -1, 6)
 			add_goal(0, 0)
-			add_tall_bush(0, 2)
-			add_tall_bush(1, 2)
-			add_tall_bush(2, 2)
-			add_plant(3, 2)
-			add_tall_bush(4, 2)
-			add_player(2, 4)
+			add_tall_bush(0, 3)
+			add_tall_bush(1, 3)
+			add_tall_bush(2, 3)
+			add_plant(3, 3)
+			add_tall_bush(4, 3)
+			add_player(2, 5)
 		4:
 			level_name = "Is something hiding here?"
 			grid_size = Vector3i(5, -1, 5)
