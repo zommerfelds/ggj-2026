@@ -24,6 +24,7 @@ func _ready() -> void:
 		$Overlay/Joystick.free()
 		$Overlay/TouchButton.free()
 		$Overlay/TouchButtonReset.free()
+		$Overlay/TouchButtonLabel.free()
 
 
 func _process(delta) -> void:
