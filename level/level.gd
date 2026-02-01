@@ -14,11 +14,13 @@ var tall_bush_scene = preload("res://level/tall_bush/tall_bush.tscn")
 
 # Only X and Z matter for the grid size
 var grid_size: Vector3i = Vector3i(6, -1, 8)
+var level_name = ""
 
 func _ready() -> void:
-
+	level_name = "Level %d" % level_index
 	match level_index:
 		1:
+			level_name = "Level 1: Welcome"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 1)
 			add_bush(2, 0)
@@ -27,6 +29,7 @@ func _ready() -> void:
 			add_bush(2, 3)
 			add_player(4, 1)
 		2:
+			level_name = "Level 2: Some objects can be pushed"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_bush(4, 1)
