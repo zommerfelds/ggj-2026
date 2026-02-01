@@ -68,13 +68,13 @@ func _ready() -> void:
 		6:
 			level_name = "What if I can't see it?"
 			grid_size = Vector3i(6, -1, 5)
-			add_goal(0, 4)
+			add_goal(0, 1)
 			add_player(4, 2)
 			for x in 5:
 				add_bush(3, x)
 			add_tall_bush(4, 0)
-			add_tall_bush(1, 3)
-			add_rotation_switch(0, 0)
+			add_tall_bush(1, 0)
+			add_rotation_switch(0, 4)
 			add_rotation_switch(5, 4)
 		7:
 			level_name = "Magic Trick"
