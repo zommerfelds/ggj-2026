@@ -65,8 +65,8 @@ func end_world(source: Vector3) -> void:
 	)
 
 func updateInstructionsText():
-	var rotationHintEnabled = times_camera_rotated < 3 || time_since_interaction > 3.0
-	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0
+	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 2.0
+	var instructionsEnabled = level_index < 2 || time_since_interaction > 4.0
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
 	var device_name = Input.get_joy_name(0)
