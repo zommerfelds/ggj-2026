@@ -50,6 +50,7 @@ func _physics_process(_delta):
 	set_anim_state(direction)
 
 func set_anim_state(direction: Vector2):
+	%AnimationPlayer.speed_scale = 1.0
 	if not direction.is_zero_approx():
 		if push_time > 0:
 			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
@@ -60,6 +61,7 @@ func set_anim_state(direction: Vector2):
 				just_switched = true
 
 			%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
+			%AnimationPlayer.speed_scale = max(velocity.length(), 1.0) * 0.5
 
 			if just_switched and current_step_is_left:
 				%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
