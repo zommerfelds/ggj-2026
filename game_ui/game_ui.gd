@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	updateInstructionsText()
+	$Overlay/LevelName.text = level.level_name
 	if (Input.is_action_pressed("skip_level_1") && Input.is_action_just_pressed("skip_level_2")
 	 || Input.is_action_pressed("skip_level_2") && Input.is_action_just_pressed("skip_level_1")):
 		next_level()
@@ -30,7 +31,6 @@ func reset_level() -> void:
 func next_level(delta: int = 1) -> void:
 	level.queue_free()
 	level_index += delta
-	$Overlay/LevelName.text = "Level %d" % level_index
 	call_deferred("setup_level")
 
 func setup_level() -> void:
