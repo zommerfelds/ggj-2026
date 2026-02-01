@@ -393,6 +393,7 @@ vertical_alignment = 1
 
 [node name="GameOver" type="Control" parent="Overlay" unique_id=1166846870]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
