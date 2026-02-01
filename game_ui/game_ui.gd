@@ -6,11 +6,12 @@ var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
 
 @onready var level = $Level
 var level_index = 1
-
+var can_rotate = false
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", next_level)
 	SignalBus.connect("end_world", end_world)
+	SignalBus.connect("can_rotate", set_can_rotate)
 
 func _process(delta) -> void:
 	updateInstructionsText()
@@ -59,6 +60,7 @@ func end_world(source: Vector3) -> void:
 	)
 
 func updateInstructionsText():
+	%RotationGroup.visible = can_rotate
 	var device_name = Input.get_joy_name(0)
 	var model = "keyboard"
 	if (device_name.contains("PS3")
@@ -79,18 +81,33 @@ func updateInstructionsText():
 			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = false
+			%RotationInstructionsKeyboard.visible = true
+			%RotationInstructionsController.visible = false
+			%RotationInstructionsPlaystation.visible = false
 		"controller":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = true
 			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = false
+			%RotationInstructionsKeyboard.visible = false
+			%RotationInstructionsController.visible = true
+			%RotationInstructionsPlaystation.visible = false
 		"playstation":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = true
 			%InstructionsXbox.visible = false
+			%RotationInstructionsKeyboard.visible = false
+			%RotationInstructionsController.visible = false
+			%RotationInstructionsPlaystation.visible = true
 		"xbox":
 			%InstructionsKeyboard.visible = false
 			%InstructionsController.visible = false
 			%InstructionsPlaystation.visible = false
 			%InstructionsXbox.visible = true
+			%RotationInstructionsKeyboard.visible = false
+			%RotationInstructionsController.visible = true
+			%RotationInstructionsPlaystation.visible = false
+
+func set_can_rotate(new_value: bool):
+	can_rotate = new_value
