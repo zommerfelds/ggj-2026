@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
+[ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
@@ -19,7 +20,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=1986285235]
+[node name="InstructionsBackdrop" type="ColorRect" parent="Overlay" unique_id=634869812]
+modulate = Color(1, 1, 1, 0.4627451)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, -1)
+color = Color(0.15637839, 0.22576961, 0.24399114, 1)
+
+[node name="Instructions" type="Label" parent="Overlay" unique_id=1849559164]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_h0okc")
+theme_override_font_sizes/font_size = 48
+text = "Use ␤ / ＱＥＡＤ / ⇋ to walk
+Press Ｒ / ⇡ / ↥ to restart the level"
+horizontal_alignment = 1
+
+[node name="LevelNameBackdrop" type="ColorRect" parent="Overlay" unique_id=1986285235]
 modulate = Color(1, 1, 1, 0.4627451)
 layout_mode = 1
 offset_right = 191.0
