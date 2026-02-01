@@ -15,3 +15,6 @@ signal player_moved()
 
 # Emitted when the camera is rotated.
 signal camera_rotated()
+
+# When the player has completed the final level
+signal game_over()

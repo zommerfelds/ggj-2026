@@ -16,6 +16,7 @@ var has_won = false
 
 func _ready() -> void:
 	%AnimationPlayer.play()
+	SignalBus.connect("game_over", game_over)
 
 func _physics_process(_delta):
 	if has_won: return
@@ -135,3 +136,7 @@ func enter_win_state():
 	has_won = true
 	SignalBus.goal_reached.emit()
 	pass
+
+func game_over():
+	has_won = true
+	set_anim_state(Vector2(0,0))

@@ -140,15 +140,18 @@ func _ready() -> void:
 
 			add_player(4, 4)
 		_:
-			level_name = "DEBUG: Paradox"
-			grid_size = Vector3i(4, -1, 4)
-			add_goal(3, 0)
-			add_box(1, 0)
-			add_box(0, 1)
-			add_box(3, 2)
-			add_box(1, 1)
-			add_plant(1, 2)
-			add_player(3, 3)
+			level_name = "Game Over"
+			grid_size = Vector3i(3, -1, 3)
+			add_goal(2, 1)
+			add_box(1, 2)
+			add_plant(2, 0)
+			add_rotation_switch(1,0)
+			add_rotation_switch(2, 2)
+			add_bush(0, 1)
+			add_tall_bush(0, 2)
+			add_player(1, 1)
+			add_bush(0, 0)
+			SignalBus.game_over.emit()
 
 	# Resize floor:
 	$Floor/FloorMesh.mesh.size = Vector2(grid_size.x, grid_size.z)
