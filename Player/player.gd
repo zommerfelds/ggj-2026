@@ -51,7 +51,9 @@ func _physics_process(_delta):
 
 func set_anim_state(direction: Vector2):
 	if not direction.is_zero_approx():
-		if not %AnimationPlayer.current_animation.begins_with("push"):
+		if push_time > 0:
+			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
+		else:
 			var just_switched = false
 			if not %AnimationPlayer.current_animation.begins_with("walk"):
 				current_step_is_left = not current_step_is_left
@@ -61,13 +63,14 @@ func set_anim_state(direction: Vector2):
 
 			if just_switched and current_step_is_left:
 				%AnimationPlayer.seek(0.4) # This is half of the walk cycle...
-
 		%Face.scale.x = 1 if %AnimationPlayer.current_animation.ends_with("back") == currently_heading_right else -1
-	else:
+
+	elif not %AnimationPlayer.current_animation.begins_with("idle"):
 		if %AnimationPlayer.current_animation.ends_with("back"):
 			%AnimationPlayer.current_animation = "idle_back"
 		else:
 			%AnimationPlayer.current_animation = "idle"
+
 
 func maybe_push(delta: float, direction: Vector2):
 	var c = get_last_slide_collision()
@@ -84,7 +87,6 @@ func maybe_push(delta: float, direction: Vector2):
 		var nextPosition = (c.get_collider() as Node3D).global_position + Vector3(push_new)
 
 		if push_new == push_direction and push_new != Vector3i.ZERO and Vector3(direction.x, 0, direction.y).dot(push_new) > 0.8:
-			%AnimationPlayer.current_animation = "push" if walking_up else "push_back"
 			push_time += delta
 			if (push_time > 0.4 and
 					(c.get_collider() is Plant or c.get_collider() is Box) and
@@ -101,7 +103,6 @@ func maybe_push(delta: float, direction: Vector2):
 			push_time = 0
 			push_direction = push_new
 	else:
-		%AnimationPlayer.current_animation = "walk" if walking_up else "walk_back"
 		push_time = 0
 
 
