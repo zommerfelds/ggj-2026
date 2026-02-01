@@ -139,9 +139,12 @@ func isSpaceFree(global_pos: Vector3) -> bool:
 	return result.size() == 0
 
 func enter_win_state():
+	if has_won:
+		return
+	%AudioStreamPlayer.stream = preload("res://sounds/274182__littlerobotsoundfactory__jingle_win_synth_05.wav")
+	%AudioStreamPlayer.play()
 	has_won = true
 	SignalBus.goal_reached.emit()
-	pass
 
 func game_over():
 	has_won = true

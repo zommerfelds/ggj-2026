@@ -1836,6 +1836,7 @@ mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_evw08")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1602308569]
+unique_name_in_owner = true
 volume_db = -9.155
 pitch_scale = 0.81
 max_polyphony = 4
