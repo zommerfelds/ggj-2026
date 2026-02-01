@@ -58,8 +58,7 @@ func _physics_process(_delta):
 func set_anim_state(direction: Vector2):
 	%AnimationPlayer.speed_scale = 1.0
 	if has_won:
-		# TODO: Start celebration animation instead
-		%AnimationPlayer.current_animation = "idle"
+		%AnimationPlayer.current_animation = "happy"
 		return
 	if not direction.is_zero_approx():
 		if push_time > 0:
