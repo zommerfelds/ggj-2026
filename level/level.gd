@@ -29,32 +29,45 @@ func _ready() -> void:
 		2:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
+			add_rock(4, 1)
+			add_box(3, 1)
+			add_box(3, 2)
+			add_rock(3, 3)
+			add_box(2, 2)
+			add_rock(1, 2)
+			add_rock(1, 3)
+			add_rock(1, 4)
+			add_rock(2, 0)
+			add_player(4, 2)
+		3:
+			grid_size = Vector3i(5, -1, 5)
+			add_goal(0, 0)
 			add_tall_bush(0, 2)
 			add_tall_bush(1, 2)
 			add_tall_bush(2, 2)
 			add_plant(3, 2)
 			add_tall_bush(4, 2)
 			add_player(2, 4)
-		3:
+		4:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(1, 2)
 			add_plant(2, 3)
 			add_plant(4, 2)
 			add_player(3, 1)
-		4:
+		5:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(1, 1)
 			add_tall_bush(2, 2)
 			add_player(4, 1)
 			add_rotation_switch(4, 2)
-		5:
+		6:
 			grid_size = Vector3i(6, -1, 4)
 			add_goal(0, 0)
 			for x in 4:
 				add_rock(1, x)
 			add_plant(4, 3)
 			add_player(4, 1)
-		6:
+		7:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
 			add_rock(1, 4)
@@ -62,7 +75,7 @@ func _ready() -> void:
 			add_plant(2, 2)
 			add_player(0, 1)
 			add_rotation_switch(4, 2)
-		7:
+		8:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(2, 2)
 			add_rock(2, 3)
@@ -78,7 +91,7 @@ func _ready() -> void:
 
 			add_player(4, 0)
 			add_rotation_switch(4, 1)
-		8:
+		9:
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 0)
 			add_rock(0, 1)
@@ -91,7 +104,7 @@ func _ready() -> void:
 			add_plant(1, 2)
 
 			add_player(4, 4)
-		9:
+		10:
 			grid_size = Vector3i(4, -1, 4)
 			add_goal(3, 0)
 			add_box(1, 0)
