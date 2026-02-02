@@ -77,7 +77,7 @@ func _ready() -> void:
 			add_rotation_switch(0, 4)
 			add_rotation_switch(5, 4)
 		7:
-			level_name = "Magic Trick"
+			level_name = "Magic trick"
 			grid_size = Vector3i(6, -1, 5)
 			add_player(0, 4)
 			add_bush(2, 4)
@@ -108,6 +108,26 @@ func _ready() -> void:
 			add_player(0, 1)
 			add_rotation_switch(4, 2)
 		10:
+			level_name = "Two layers"
+			grid_size = Vector3i(7, -1, 5)
+			for i in range(5):
+				add_bush(1, i)
+				add_bush(3, i)
+			add_plant(5, 1)
+			add_plant(5, 3)
+			add_goal(0, 2)
+			add_player(6, 2)
+		11:
+			level_name = "To rotate or not to rotate"
+			grid_size = Vector3i(5, -1, 4)
+			for i in range(4):
+				add_bush(3, i)
+			add_plant(0, 2)
+			add_rotation_switch(1, 1)
+			add_tall_bush(2, 0)
+			add_goal(4, 2)
+			add_player(2, 2)
+		12:
 			level_name = "It's getting crowded in here!"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(2, 2)
@@ -124,7 +144,7 @@ func _ready() -> void:
 
 			add_player(4, 0)
 			add_rotation_switch(4, 1)
-		11:
+		13:
 			level_name = "Ramping up the challenge"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 4)
@@ -139,7 +159,7 @@ func _ready() -> void:
 			add_rotation_switch(4, 0)
 
 			add_player(4, 4)
-		12:
+		14:
 			level_name = "Palace garden"
 			grid_size = Vector3i(7, -1, 7)
 			add_plant(3, 5)
@@ -155,13 +175,11 @@ func _ready() -> void:
 			add_plant(4, 0)
 			add_plant(2, 0)
 			add_goal(3, 1)
-			#add_bush(2, 1)
-			#add_bush(4, 1)
 			add_bush(2, 4)
 			add_bush(4, 4)
 			add_bush(1, 5)
 			add_bush(5, 5)
-		13:
+		15:
 			level_name = "Tall bushes all around"
 			grid_size = Vector3i(5, -1, 7)
 			add_bush(1, 0)
@@ -179,7 +197,25 @@ func _ready() -> void:
 			add_tall_bush(4, 4)
 			add_bush(2, 5)
 			add_bush(0, 6)
-		14:
+		99:
+			level_name = "WIP by czom"
+			grid_size = Vector3i(6, -1, 8)
+			add_bush(3, 0)
+			add_goal(4, 0)
+			add_bush(3, 1)
+			add_bush(4, 1)
+			add_bush(5, 1)
+			add_tall_bush(0, 2)
+			for i in range(6):
+				add_bush(i, 3)
+			add_plant(2, 4)
+			add_rotation_switch(3, 5)
+			add_tall_bush(2, 6)
+			add_plant(4, 6)
+			add_bush(5, 6)
+			add_bush(4, 7)
+			add_player(3, 7)
+		16:
 			level_name = "How do I get out of this?"
 			grid_size = Vector3i(5, -1, 5)
 			add_bush(2, 4)
@@ -195,7 +231,7 @@ func _ready() -> void:
 			add_tall_bush(0, 1)
 			add_bush(1, 0)
 			add_player(0, 4)
-		15:
+		17:
 			level_name = "Don't get stuck!"
 			grid_size = Vector3i(9, -1, 9)
 			add_goal(0, 0)
@@ -226,7 +262,7 @@ func _ready() -> void:
 			add_plant(1,7)
 			add_player(0, 8)
 		_:
-			level_name = "Game Over"
+			level_name = "Game over"
 			grid_size = Vector3i(3, -1, 3)
 			add_goal(2, 1)
 			add_box(1, 2)
