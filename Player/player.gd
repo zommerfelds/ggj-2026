@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var speed = 4
+@export var speed = 2.5
 @export var camera: Camera3D
 
 
@@ -39,21 +39,25 @@ func _physics_process(_delta):
 	if joystick_direction.length_squared() > direction.length_squared():
 		direction = joystick_direction
 
-	walking_up = direction.dot(Vector2.DOWN) > -0.1
-	if direction.x != 0.0 and absf(direction.x) > 0.1:
-		currently_heading_right = direction.x > 0.0
-
 	direction = direction.rotated(-camera.global_rotation.y)
 
-
-	var direction3D = Vector3(direction.x, 0, direction.y)
-	if (direction3D - Vector3(push_direction)).length() < 0.3:
+	var pushing_angle = rad_to_deg(
+		Vector3(direction.x, 0, direction.y)
+			.angle_to(Vector3(push_direction))
+	)
+	var is_pushing = push_direction.length() > 0.1 && direction.length() > 0.1 && pushing_angle < 45.1
+	if is_pushing:
 		direction = Vector2(push_direction.x, push_direction.z)
+
+	var screen_direction = direction.rotated(camera.global_rotation.y)
+	walking_up = screen_direction.dot(Vector2.DOWN) > -0.1
+	if screen_direction.x != 0.0 and absf(screen_direction.x) > 0.1:
+		currently_heading_right = screen_direction.x > 0.0
 
 	# Smoothly ramp up/down the velocity.
 	const interpolation = 0.3
-	velocity.x = lerp(velocity.x, direction.x * speed, interpolation)
-	velocity.z = lerp(velocity.z, direction.y * speed, interpolation)
+	velocity.x = 0 if is_pushing else lerp(velocity.x, direction.x * speed, interpolation)
+	velocity.z = 0 if is_pushing else lerp(velocity.z, direction.y * speed, interpolation)
 
 	if velocity.length() > 0.01:
 		SignalBus.player_moved.emit()
@@ -102,37 +106,45 @@ func maybe_push(delta: float, direction: Vector2):
 				return
 
 	var c = get_last_slide_collision()
-	if c != null:
-		var n = c.get_normal()
-		var push_new = Vector3i.ZERO
+	if c == null:
+		push_direction = Vector3i.ZERO
+		push_time = 0
+		return
 
-		var dirs = [Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, 1)]
-		for dir in dirs:
-			if n.dot(dir) < -0.8:
-				push_new = dir
-				break
+	var n = c.get_normal()
+	var push_new = Vector3i.ZERO
+	var collider_position = (c.get_collider() as Node3D).global_position
 
-		var nextPosition = (c.get_collider() as Node3D).global_position + Vector3(push_new)
+	var dirs = [Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, 1)]
+	for dir in dirs:
+		if n.dot(dir) < -0.8:
+			push_new = dir
+			break
 
-		if push_new == push_direction and push_new != Vector3i.ZERO and Vector3(direction.x, 0, direction.y).dot(push_new) > 0.8:
-			push_time += delta
-			if (push_time > 0.2 and
-					(c.get_collider() is Plant or c.get_collider() is Box) and
-					isSpaceFree(nextPosition)):
-				%AudioStreamPlayer2.play()
-				var tween = get_tree().create_tween()
-				tween.tween_property(
-					c.get_collider(),
-					"position",
-					c.get_collider().position + Vector3(push_direction),
-					0.3
-				)
-				push_time = 0
-		else:
+	var canBePushed = (c.get_collider() is Plant or c.get_collider() is Box)
+	var center_distance = global_position.distance_to(collider_position)
+
+	if !canBePushed || center_distance > 0.8:
+		push_direction = Vector3i.ZERO
+		push_time = 0
+		return
+
+	if push_new == push_direction and push_new != Vector3i.ZERO and Vector3(direction.x, 0, direction.y).dot(push_new) > 0.8:
+		push_time += delta
+		var nextPosition = collider_position + Vector3(push_new)
+		if (push_time > 0.5 and isSpaceFree(nextPosition)):
+			%AudioStreamPlayer2.play()
+			var tween = get_tree().create_tween()
+			tween.tween_property(
+				c.get_collider(),
+				"position",
+				c.get_collider().position + Vector3(push_direction),
+				0.3
+			)
 			push_time = 0
-			push_direction = push_new
 	else:
 		push_time = 0
+		push_direction = push_new
 
 func isSpaceFree(global_pos: Vector3) -> bool:
 	var space_state = get_world_3d().direct_space_state
