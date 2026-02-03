@@ -14,14 +14,16 @@ var currently_heading_right = false
 var time_since_moved = 0.0
 var has_won = false
 var joystick_direction = Vector2.ZERO
+var can_move = true
 
 func _ready() -> void:
 	%AnimationPlayer.play()
 	SignalBus.connect("game_over", game_over)
 	SignalBus.connect("joystick_moved", joystick_moved)
+	SignalBus.connect("is_camera_rotating", on_is_camera_rotating)
 
 func _physics_process(_delta):
-	if has_won: return
+	if has_won || !can_move: return
 	# Direction with controller or arrow keys (LR/UD)
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -153,3 +155,6 @@ func game_over():
 
 func joystick_moved(dir):
 	joystick_direction = dir
+
+func on_is_camera_rotating(is_rotating: bool):
+	can_move = !is_rotating

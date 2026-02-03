@@ -3,7 +3,12 @@ extends Node3D
 @export var cameraPivot: Node3D
 
 var world_has_ended = false
+var is_camera_rotating = false
+
 const RAY_LENGTH = 10000
+
+func _ready() -> void:
+	SignalBus.connect("is_camera_rotating", on_is_camera_rotating)
 
 func _process(_delta: float) -> void:
 	var cameraPivotRotationY = cameraPivot.rotation.y
@@ -28,6 +33,8 @@ func _physics_process(_delta: float) -> void:
 				SignalBus.end_world.emit((child as Node3D).global_position)
 
 func checkIfObjectIsMasked(object: Node3D) -> bool:
+	if is_camera_rotating && object is RotationSwitch:
+		return false
 	var space_state = object.get_world_3d().direct_space_state
 	var directionToCamera = Vector3(0,0.577,1).rotated(Vector3(0,1,0), cameraPivot.rotation.y)
 	var target = object.global_position + directionToCamera * RAY_LENGTH
@@ -42,3 +49,6 @@ func checkForParadox(object: Node3D) -> bool:
 	query.position = object.global_position
 	var result = space_state.intersect_point(query)
 	return result.size() > 1
+
+func on_is_camera_rotating(is_rotating: bool):
+	is_camera_rotating = is_rotating

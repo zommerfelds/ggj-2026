@@ -78,9 +78,9 @@ func end_world(source: Vector3) -> void:
 		1.5
 	)
 	tween.tween_callback(func ():
-		print("set visible")
-		%ParadoxBackdrop.visible = true
-		%ParadoxLabel.visible = true
+		if has_world_ended:
+			%ParadoxBackdrop.visible = true
+			%ParadoxLabel.visible = true
 	)
 
 func goal_reached():

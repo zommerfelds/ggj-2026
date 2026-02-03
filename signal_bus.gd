@@ -21,3 +21,6 @@ signal game_over()
 
 # Emitted when touch joystick moved.
 signal joystick_moved(Vector2)
+
+# Emitted when the camera starts or stops rotating
+signal is_camera_rotating(bool)
