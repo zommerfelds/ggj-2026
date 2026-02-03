@@ -132,13 +132,13 @@ func _ready() -> void:
 			add_player(6, 2)
 		12:
 			level_name = "To rotate or not to rotate"
-			grid_size = Vector3i(5, -1, 4)
+			grid_size = Vector3i(4, -1, 5)
 			for i in range(4):
-				add_bush(3, i)
-			add_plant(0, 2)
+				add_bush(i, 3)
+			add_plant(2, 0)
 			add_rotation_switch(1, 1)
-			add_tall_bush(2, 0)
-			add_goal(4, 2)
+			add_tall_bush(0, 2)
+			add_goal(2, 4)
 			add_player(2, 2)
 		13:
 			level_name = "It's getting crowded in here!"
