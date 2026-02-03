@@ -52,12 +52,12 @@ func _physics_process(_delta):
 	if velocity.length() > 0.1:
 		var velocity2D = Vector2(velocity.x, velocity.z)
 		var screen_direction_velocity = velocity2D.rotated(camera.global_rotation.y)
-		walking_up = screen_direction_velocity.dot(Vector2.DOWN) > -0.1
+		walking_up = screen_direction_velocity.dot(Vector2.DOWN) > -0.01
 		if screen_direction_velocity.x != 0.0 and absf(screen_direction_velocity.x) > 0.1:
 			currently_heading_right = screen_direction_velocity.x > 0.0
 	else:
 		var screen_direction = direction.rotated(camera.global_rotation.y)
-		walking_up = screen_direction.dot(Vector2.DOWN) > -0.1
+		walking_up = screen_direction.dot(Vector2.DOWN) > -0.01
 		if screen_direction.x != 0.0 and absf(screen_direction.x) > 0.1:
 			currently_heading_right = screen_direction.x > 0.0
 
