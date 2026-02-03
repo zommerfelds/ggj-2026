@@ -22,9 +22,8 @@
 radius = 0.25
 height = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qydi"]
-radius = 0.25
-height = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sa4y"]
+size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="Animation" id="Animation_j23h2"]
 length = 0.001
@@ -1785,7 +1784,7 @@ mesh = SubResource("CapsuleMesh_l2ndj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=495696465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_3qydi")
+shape = SubResource("BoxShape3D_8sa4y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=138778755]
 unique_name_in_owner = true

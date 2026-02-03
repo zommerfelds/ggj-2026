@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var speed = 2.5
+const speed = 2.5
 @export var camera: Camera3D
 
 
@@ -49,10 +49,17 @@ func _physics_process(_delta):
 	if is_pushing:
 		direction = Vector2(push_direction.x, push_direction.z)
 
-	var screen_direction = direction.rotated(camera.global_rotation.y)
-	walking_up = screen_direction.dot(Vector2.DOWN) > -0.1
-	if screen_direction.x != 0.0 and absf(screen_direction.x) > 0.1:
-		currently_heading_right = screen_direction.x > 0.0
+	if velocity.length() > 0.1:
+		var velocity2D = Vector2(velocity.x, velocity.z)
+		var screen_direction_velocity = velocity2D.rotated(camera.global_rotation.y)
+		walking_up = screen_direction_velocity.dot(Vector2.DOWN) > -0.1
+		if screen_direction_velocity.x != 0.0 and absf(screen_direction_velocity.x) > 0.1:
+			currently_heading_right = screen_direction_velocity.x > 0.0
+	else:
+		var screen_direction = direction.rotated(camera.global_rotation.y)
+		walking_up = screen_direction.dot(Vector2.DOWN) > -0.1
+		if screen_direction.x != 0.0 and absf(screen_direction.x) > 0.1:
+			currently_heading_right = screen_direction.x > 0.0
 
 	# Smoothly ramp up/down the velocity.
 	const interpolation = 0.3
