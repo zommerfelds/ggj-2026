@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://chce6h7ihyutk"]
+
+[ext_resource type="Script" uid="uid://cojk4hinfu4yc" path="res://level/rotation_switch/rotation_switch.gd" id="1_r2pap"]
+[ext_resource type="Texture2D" uid="uid://cqlmxrdypbum5" path="res://level/teleport/teleport_tile.png" id="2_c551g"]
+[ext_resource type="Texture2D" uid="uid://c0whliklf4ryw" path="res://level/teleport/teleport_tile_enabled.png" id="3_c0xj6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vkbyq"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5djy"]
+transparency = 1
+albedo_texture = ExtResource("2_c551g")
+emission_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vkbyq"]
+height = 1.0
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7i66"]
+transparency = 1
+albedo_texture = ExtResource("3_c0xj6")
+emission_enabled = true
+
+[node name="RotationSwitch" type="Area3D" unique_id=331435693]
+script = ExtResource("1_r2pap")
+
+[node name="Regular" type="MeshInstance3D" parent="." unique_id=2115822638]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010375977, 0)
+mesh = SubResource("PlaneMesh_vkbyq")
+surface_material_override/0 = SubResource("StandardMaterial3D_q5djy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=579231684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_vkbyq")
+
+[node name="Enabled" type="MeshInstance3D" parent="." unique_id=1604728209]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010375977, 0)
+visible = false
+mesh = SubResource("PlaneMesh_vkbyq")
+surface_material_override/0 = SubResource("StandardMaterial3D_i7i66")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

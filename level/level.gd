@@ -8,6 +8,7 @@ var plant_scene = preload("res://level/plant/plant.tscn")
 var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
 var rotation_switch_scene = preload("res://level/rotation_switch/rotation_switch.tscn")
+var teleport_scene = preload("uid://chce6h7ihyutk")
 var box_scene = preload("res://level/box/box.tscn")
 var tall_bush_scene = preload("res://level/tall_bush/tall_bush.tscn")
 
@@ -18,6 +19,14 @@ var level_name = ""
 
 func _ready() -> void:
 	match level_index:
+		0:
+			level_name = "Test level"
+			grid_size = Vector3i(5, -1, 5)
+			add_goal(0, 1)
+			add_bush(2, 0)
+			add_teleport(2, 2)
+			add_teleport(4, 2)
+			add_player(4, 1)
 		1:
 			level_name = "Welcome!"
 			grid_size = Vector3i(5, -1, 5)
@@ -365,6 +374,12 @@ func add_rotation_switch(x, z) -> void:
 	var rotation_switch = rotation_switch_scene.instantiate()
 	rotation_switch.position = Vector3(x + 0.5, 0, z + 0.5)
 	$Objects.add_child(rotation_switch)
+
+
+func add_teleport(x, z) -> void:
+	var teleport = teleport_scene.instantiate()
+	teleport.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(teleport)
 
 
 func add_box(x, z) -> void:
