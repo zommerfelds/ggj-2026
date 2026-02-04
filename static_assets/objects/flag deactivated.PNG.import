@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://06273k7jxie1"
-path.s3tc="res://.godot/imported/flag deactivated.PNG-431907393ce2dd9b4a1afe2ad35a7df7.s3tc.ctex"
+path="res://.godot/imported/flag deactivated.PNG-431907393ce2dd9b4a1afe2ad35a7df7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://static_assets/objects/flag deactivated.PNG"
-dest_files=["res://.godot/imported/flag deactivated.PNG-431907393ce2dd9b4a1afe2ad35a7df7.s3tc.ctex"]
+dest_files=["res://.godot/imported/flag deactivated.PNG-431907393ce2dd9b4a1afe2ad35a7df7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
