@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://0obkkupagfq0"]
+
+[ext_resource type="Script" uid="uid://5vvj1msdbsgj" path="res://level/torch/torch.gd" id="1_2y8ul"]
+[ext_resource type="Texture2D" uid="uid://ctaorvybh6xi0" path="res://static_assets/objects/torch.PNG" id="2_2y8ul"]
+[ext_resource type="Texture2D" uid="uid://c3lingmupi53w" path="res://static_assets/objects/torch 2.PNG" id="3_3rwjf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_revk6"]
+albedo_color = Color(1, 0.73333335, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mdcsh"]
+size = Vector3(1, 0.7, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lkwkp"]
+size = Vector2(2.74, 1.96)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
+transparency = 1
+albedo_texture = ExtResource("2_2y8ul")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl4yb"]
+transparency = 1
+albedo_texture = ExtResource("3_3rwjf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rwjf"]
+size = Vector3(0.95, 1, 0.95)
+
+[sub_resource type="Animation" id="Animation_iirux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/mesh:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/mesh2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r0kb8"]
+resource_name = "flame"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/mesh:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/mesh2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22840"]
+_data = {
+&"RESET": SubResource("Animation_iirux"),
+&"flame": SubResource("Animation_r0kb8")
+}
+
+[node name="Goal" type="StaticBody3D" unique_id=942483746]
+script = ExtResource("1_2y8ul")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=396005036]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.35493994, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_revk6")
+mesh = SubResource("PrismMesh_mdcsh")
+
+[node name="Face" type="Node3D" parent="." unique_id=2014777487]
+transform = Transform3D(0.35355338, 0.30618623, 0.17677668, 0, 0.49999997, -0.86602545, -0.35355338, 0.30618623, 0.17677668, 0, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="Face" unique_id=207992270]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0.134, 0, -0.511)
+mesh = SubResource("PlaneMesh_lkwkp")
+surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
+
+[node name="mesh2" type="MeshInstance3D" parent="Face" unique_id=101726324]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0.134, 0, -0.511)
+visible = false
+mesh = SubResource("PlaneMesh_lkwkp")
+surface_material_override/0 = SubResource("StandardMaterial3D_sl4yb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=259683396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3rwjf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1993283595]
+libraries/ = SubResource("AnimationLibrary_22840")
+autoplay = &"flame"

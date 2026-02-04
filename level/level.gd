@@ -7,6 +7,7 @@ var rock_scene = preload("uid://gspapybfyiaj")
 var plant_scene = preload("res://level/plant/plant.tscn")
 var goal_scene = preload("res://level/goal/goal.tscn")
 var player_scene = preload("res://Player/Player.tscn")
+var torch_scene = preload("uid://0obkkupagfq0")
 var rotation_switch_scene = preload("res://level/rotation_switch/rotation_switch.tscn")
 var teleport_scene = preload("uid://chce6h7ihyutk")
 var box_scene = preload("res://level/box/box.tscn")
@@ -23,10 +24,13 @@ func _ready() -> void:
 			level_name = "Test level"
 			grid_size = Vector3i(5, -1, 5)
 			add_goal(0, 1)
-			add_bush(2, 0)
-			add_teleport(2, 2)
-			add_teleport(4, 2)
-			add_player(4, 1)
+			for i in range(5):
+				add_bush(2, i)
+			add_teleport(0, 3)
+			add_teleport(4, 3)
+			add_player(4, 4)
+			add_torch(3, 0)
+			add_plant(4, 1)
 		1:
 			level_name = "Welcome!"
 			grid_size = Vector3i(5, -1, 5)
@@ -367,7 +371,16 @@ func add_tall_bush(x, z) -> void:
 func add_goal(x, z) -> void:
 	var goal = goal_scene.instantiate()
 	goal.position = Vector3(x + 0.5, 0, z + 0.5)
+	# TODO: remove this hack once the disable flag state is implemented
+	if level_index == 0:
+		goal.disable_flag()
 	$Objects.add_child(goal)
+
+
+func add_torch(x, z) -> void:
+	var obj = torch_scene.instantiate()
+	obj.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(obj)
 
 
 func add_rotation_switch(x, z) -> void:
@@ -377,9 +390,9 @@ func add_rotation_switch(x, z) -> void:
 
 
 func add_teleport(x, z) -> void:
-	var teleport = teleport_scene.instantiate()
-	teleport.position = Vector3(x + 0.5, 0, z + 0.5)
-	$Objects.add_child(teleport)
+	var obj = teleport_scene.instantiate()
+	obj.position = Vector3(x + 0.5, 0, z + 0.5)
+	$Objects.add_child(obj)
 
 
 func add_box(x, z) -> void:

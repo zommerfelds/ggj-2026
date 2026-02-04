@@ -7,3 +7,4 @@
 
 # Krita backup files
 *.png~
+*-autosave.kra
