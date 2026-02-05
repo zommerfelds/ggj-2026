@@ -64,20 +64,23 @@ grow_vertical = 0
 scale = Vector2(1, -1)
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="InstructionsKeyboard" type="Label" parent="Overlay" unique_id=1849559164]
+[node name="InstructionsKeyboard" type="RichTextLabel" parent="Overlay" unique_id=1302463457]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_top = -126.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 48
-text = "Use ␤ or ＱＷＡＳ to walk   /   press Ｒ to restart the level"
+theme_override_fonts/normal_font = ExtResource("3_h0okc")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Use[font_size=100] ␤ [/font_size]or ＱＷＡＳ to walk   /   press Ｒ to restart the level"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -196,15 +199,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -700.0
-offset_top = 40.0
+offset_top = 51.0
 offset_right = 700.0
-offset_bottom = 120.0
+offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, -1)
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="RotationInstructionsKeyboard" type="Label" parent="Overlay/RotationGroup" unique_id=1138683550]
+[node name="RotationInstructionsKeyboard" type="RichTextLabel" parent="Overlay/RotationGroup" unique_id=1781631362]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -212,15 +215,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -45.0
-offset_right = 58.0
-offset_bottom = 45.0
+offset_left = -766.0
+offset_top = -59.0
+offset_right = 761.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 48
-text = "Press ⑏ or ⑐ to rotate the camera"
+theme_override_fonts/normal_font = ExtResource("3_h0okc")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Press[font_size=80] ⑏ [/font_size]or[font_size=80] ⑐ [/font_size]to rotate the camera"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -359,7 +364,7 @@ offset_bottom = 150.0
 grow_horizontal = 2
 color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
-[node name="WonLevelKeyboard" type="Label" parent="Overlay/WonLevelInstruction" unique_id=564906781]
+[node name="WonLevelKeyboard" type="RichTextLabel" parent="Overlay/WonLevelInstruction" unique_id=1716612313]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -367,12 +372,14 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -447.5
 offset_top = 15.0
-offset_right = 447.5
+offset_right = 448.5
 offset_bottom = 134.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 82
-text = "Press ␺ to continue"
+theme_override_fonts/normal_font = ExtResource("3_h0okc")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Press[font_size=100] ␺ [/font_size]to continue"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -389,7 +396,7 @@ offset_right = 447.5
 offset_bottom = 134.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 82
+theme_override_font_sizes/font_size = 64
 text = "Press ⇣ to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -407,7 +414,7 @@ offset_right = 447.5
 offset_bottom = 134.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 82
+theme_override_font_sizes/font_size = 64
 text = "Press ⇓ to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -425,26 +432,27 @@ offset_right = 447.5
 offset_bottom = 134.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 82
+theme_override_font_sizes/font_size = 64
 text = "Press ↧ to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WonLevelTouch" type="Label" parent="Overlay/WonLevelInstruction" unique_id=957145392]
+[node name="WonLevelTouch" type="RichTextLabel" parent="Overlay/WonLevelInstruction" unique_id=661853060]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -447.5
-offset_top = 15.0
-offset_right = 447.5
-offset_bottom = 134.0
+offset_left = -489.0
+offset_top = 27.0
+offset_right = 482.0
+offset_bottom = 146.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 48
-text = "Press the bottom-right button to continue"
+theme_override_fonts/normal_font = ExtResource("3_h0okc")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Press [img=100]res://game_ui/next_level.png[/img] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
