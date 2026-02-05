@@ -271,7 +271,7 @@ text = "Press ↲ or ↳ to rotate the camera"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RotationInstructionsTouch" type="Label" parent="Overlay/RotationGroup" unique_id=91936786]
+[node name="RotationInstructionsTouch" type="RichTextLabel" parent="Overlay/RotationGroup" unique_id=370415279]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -282,13 +282,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -447.5
 offset_top = -45.0
-offset_right = 447.5
+offset_right = 489.5
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_h0okc")
-theme_override_font_sizes/font_size = 48
-text = "Press a button to rotate the camera"
+theme_override_fonts/normal_font = ExtResource("3_h0okc")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Press [img=80]res://level/rotation_switch/rotation_switch.png[/img] to rotate the camera"
 horizontal_alignment = 1
 vertical_alignment = 1
 
