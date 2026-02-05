@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="PackedScene" uid="uid://bwcfww0n68buj" path="res://level/level.tscn" id="1_dfl03"]
 [ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
-[ext_resource type="PackedScene" path="res://game_ui/joystick.tscn" id="4_vsxus"]
-[ext_resource type="PackedScene" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
+[ext_resource type="PackedScene" uid="uid://hsaxhgiytdhw" path="res://game_ui/joystick.tscn" id="4_vsxus"]
+[ext_resource type="PackedScene" uid="uid://bxsicl83w2dvo" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
@@ -283,7 +283,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_h0okc")
 theme_override_font_sizes/font_size = 48
-text = "Press the bottom-right button to rotate"
+text = "Press a button to rotate the camera"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -501,7 +501,7 @@ offset_right = 300.0
 offset_bottom = -150.0
 grow_vertical = 0
 
-[node name="TouchButton" parent="Overlay" unique_id=1659801594 instance=ExtResource("5_ytni6")]
+[node name="TouchButtonRight" parent="Overlay" unique_id=1659801594 instance=ExtResource("5_ytni6")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -514,7 +514,22 @@ offset_right = -100.0
 offset_bottom = -150.0
 grow_horizontal = 0
 grow_vertical = 0
-action_name = "touch_button"
+action_name = "touch_button_right"
+
+[node name="TouchButtonLeft" parent="Overlay" unique_id=1607451192 instance=ExtResource("5_ytni6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -548.0
+offset_top = -350.0
+offset_right = -348.0
+offset_bottom = -150.0
+grow_horizontal = 0
+grow_vertical = 0
+action_name = "touch_button_left"
 
 [node name="TouchButtonReset" parent="Overlay" unique_id=1884044270 instance=ExtResource("5_ytni6")]
 layout_mode = 1

@@ -3,6 +3,8 @@ extends Node
 
 var level_preload = preload("res://level/level.tscn")
 var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
+var rotate_texture: Texture2D = load("res://level/rotation_switch/rotation_switch.png")
+var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
 
 @onready var level = $Level
 var level_index = 1
@@ -20,9 +22,12 @@ func _ready() -> void:
 	SignalBus.connect("camera_rotated", camera_rotated)
 	SignalBus.connect("game_over", game_over)
 
+	set_can_rotate(false)
+
 	if not is_touch_device():
 		$Overlay/Joystick.free()
-		$Overlay/TouchButton.free()
+		$Overlay/TouchButtonLeft.free()
+		$Overlay/TouchButtonRight.free()
 		$Overlay/TouchButtonReset.free()
 		$Overlay/TouchButtonLabel.free()
 
@@ -41,7 +46,7 @@ func _process(delta) -> void:
 		next_level(-1)
 	if (Input.is_action_just_pressed("reset_level")):
 		reset_level()
-	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button"))):
+	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button_right"))):
 		next_level()
 
 func reset_level() -> void:
@@ -63,6 +68,7 @@ func setup_level() -> void:
 	level = level_preload.instantiate()
 	level.level_index = level_index
 	add_child(level)
+	update_buttons()
 
 func end_world(source: Vector3) -> void:
 	has_world_ended = true
@@ -90,6 +96,8 @@ func goal_reached():
 		if %WonLevel.visible:
 			%WonLevelInstruction.visible = true
 	).set_delay(3.0)
+	update_buttons()
+
 
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
@@ -154,6 +162,26 @@ func updateInstructionsText():
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value
+	update_buttons()
+
+
+func update_buttons():
+	if not is_touch_device():
+		return
+
+	var left_active = can_rotate
+	var right_active = can_rotate or %WonLevel.visible
+
+	$Overlay/TouchButtonLeft.set_texture(rotate_texture if can_rotate else null, true)
+	$Overlay/TouchButtonLeft.visible = left_active
+	$Overlay/TouchButtonLeft.disabled = !left_active
+	$Overlay/TouchButtonLeft.queue_redraw()
+
+	$Overlay/TouchButtonRight.set_texture(rotate_texture if can_rotate else next_level_texture, false)
+	$Overlay/TouchButtonRight.visible = right_active
+	$Overlay/TouchButtonRight.disabled = !right_active
+	$Overlay/TouchButtonLeft.queue_redraw()
+
 
 func player_moved():
 	time_since_interaction = 0.0

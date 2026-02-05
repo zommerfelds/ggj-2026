@@ -9,3 +9,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_k8jme")
 action_name = "bomb"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=613846067]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 190.0
+pivot_offset = Vector2(90, 90)
+expand_mode = 1

@@ -11,12 +11,12 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	if can_rotate and tween == null:
-		if Input.is_action_just_pressed("rotate_right") || Input.is_action_just_pressed("touch_button"):
+		if Input.is_action_just_pressed("rotate_right") || Input.is_action_just_pressed("touch_button_right"):
 			SignalBus.camera_rotated.emit()
 			%AudioStreamPlayer.play()
 			targetRotationY += 90
 			_start_rotation()
-		if Input.is_action_just_pressed("rotate_left"):
+		if (Input.is_action_just_pressed("rotate_left") || Input.is_action_just_pressed("touch_button_left")):
 			SignalBus.camera_rotated.emit()
 			%AudioStreamPlayer.play()
 			targetRotationY -= 90
