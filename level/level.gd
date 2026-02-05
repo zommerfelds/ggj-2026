@@ -402,6 +402,21 @@ func add_box(x, z) -> void:
 
 
 func update_camera_size() -> void:
+	# By default, the camera size scales with the window height, so to
+	# support wide windows (scale limited in y dimension) we wouldn't
+	# need to do anything special, just set a fixed camera size. To
+	# support tall screens, we compute size_limit_x based on the
+	# viewport aspect ratio, and the final value is chosen to show the
+	# whole scene in both x and y dimensions.
+	#
+	# The magic numbers are based on how the isometric perspecive results
+	# in X and Y direction, with some (imperfect) fudging for the tallness
+	# of trees.
+
 	var viewport_size = get_viewport().get_visible_rect().size
-	var ratio_constraint = min(1, viewport_size.x / viewport_size.y / 1.5)
-	$CameraPivot/Camera3D.size = max(grid_size.x, grid_size.z) / ratio_constraint
+	var level_size = grid_size.x + grid_size.z
+
+	var size_limit_x = level_size / 1.42 / (viewport_size.x / viewport_size.y)
+	var size_limit_y = level_size / 2.1
+
+	$CameraPivot/Camera3D.size = max(size_limit_y, size_limit_x)
