@@ -28,7 +28,7 @@ func _start_rotation() -> void:
 	SignalBus.is_camera_rotating.emit(true)
 	var rotationDiff = wrapf(targetRotationY - rotation_degrees.y, -180, 180)
 	tween = get_tree().create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS) # For some reason this is needed to make the camera not twitching at the beginning and end
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS) # For some reason this is needed to make the camera not twitch at the beginning and end
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "rotation_degrees:y", rotation_degrees.y + rotationDiff, 1.0)
 	await tween.finished
