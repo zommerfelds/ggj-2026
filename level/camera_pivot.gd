@@ -34,7 +34,6 @@ func _start_rotation() -> void:
 	await tween.finished
 	tween = null
 	SignalBus.is_camera_rotating.emit(false)
-	
 
 
 func set_can_rotate(new_value: bool) -> void:
