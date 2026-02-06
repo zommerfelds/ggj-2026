@@ -33,19 +33,20 @@ func _ready() -> void:
 		$Overlay/TouchButtonReset.free()
 		$Overlay/TouchButtonLabel.free()
 
-
-func _process(delta) -> void:
+func _physics_process(_delta: float) -> void:
 	var should_rewind = Input.is_action_pressed("rewind") && !%WonLevel.visible
 	if (is_rewinding != should_rewind) && can_interrupt():
 		is_rewinding = should_rewind
 		SignalBus.is_rewinding.emit(is_rewinding)
-
 	if is_rewinding:
-		updateInstructionsText()
 		rewind()
-		return
 	else:
 		record()
+
+func _process(delta) -> void:
+	if is_rewinding:
+		updateInstructionsText()
+		return
 
 	time_since_interaction += delta
 	updateInstructionsText()

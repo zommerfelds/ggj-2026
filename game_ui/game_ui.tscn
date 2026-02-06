@@ -9,6 +9,7 @@
 font_size = 50
 
 [node name="GameUI" type="Node" unique_id=607135136]
+process_physics_priority = 10
 script = ExtResource("1_0osaa")
 
 [node name="Overlay" type="Control" parent="." unique_id=384996768]
