@@ -10,6 +10,9 @@ signal can_rotate(bool)
 # End the world. Param denotes the source of the end.
 signal end_world(Vector3)
 
+# Un-End the world.
+signal un_end_world()
+
 # Emitted when the player moves.
 signal player_moved()
 

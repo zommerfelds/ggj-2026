@@ -4,11 +4,14 @@ extends Node3D
 
 var world_has_ended = false
 var is_camera_rotating = false
+var is_rewinding = false
 
 const RAY_LENGTH = 10000
 
 func _ready() -> void:
 	SignalBus.connect("is_camera_rotating", on_is_camera_rotating)
+	SignalBus.connect("un_end_world", un_end_world)
+	SignalBus.connect("is_rewinding", on_is_rewinding)
 
 func _process(_delta: float) -> void:
 	var cameraPivotRotationY = cameraPivot.rotation.y
@@ -20,13 +23,13 @@ func _process(_delta: float) -> void:
 				mesh.rotation_degrees.x = 60
 
 func _physics_process(_delta: float) -> void:
+	if world_has_ended || is_rewinding:
+		return
 	for child in get_children():
-		if world_has_ended:
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-			return
 		if (child is Node3D && !(child is Player) && !(child is Plant) && !(child is TallBush)):
 			var isObjectMasked = checkIfObjectIsMasked(child)
 			child.process_mode = Node.PROCESS_MODE_DISABLED if isObjectMasked else Node.PROCESS_MODE_INHERIT
+	for child in get_children():
 		if child is Node3D && !(child is Player):
 			if checkForParadox(child as Node3D):
 				world_has_ended = true
@@ -48,7 +51,15 @@ func checkForParadox(object: Node3D) -> bool:
 	var query = PhysicsPointQueryParameters3D.new()
 	query.position = object.global_position
 	var result = space_state.intersect_point(query)
-	return result.size() > 1
+	return result.filter(
+		func(r): return !checkIfObjectIsMasked(r["collider"])
+	).size() > 1
 
 func on_is_camera_rotating(is_rotating: bool):
 	is_camera_rotating = is_rotating
+
+func un_end_world():
+	world_has_ended = false
+
+func on_is_rewinding(is_rewinding_: bool):
+	is_rewinding = is_rewinding_

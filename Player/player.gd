@@ -15,6 +15,7 @@ var time_since_moved = 0.0
 var has_won = false
 var joystick_direction = Vector2.ZERO
 var can_move = true
+var has_world_ended = false
 
 var state_history = []
 
@@ -24,9 +25,11 @@ func _ready() -> void:
 	SignalBus.connect("joystick_moved", joystick_moved)
 	SignalBus.connect("is_camera_rotating", on_is_camera_rotating)
 	SignalBus.connect("is_rewinding", on_is_rewinding)
+	SignalBus.connect("end_world", end_world)
+	SignalBus.connect("un_end_world", on_un_end_world)
 
 func _physics_process(_delta):
-	if has_won || !can_move: return
+	if has_won || !can_move || has_world_ended: return
 	# Direction with controller or arrow keys (LR/UD)
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -179,6 +182,14 @@ func on_is_rewinding(is_rewinding: bool):
 	can_move = !is_rewinding
 	if !is_rewinding:
 		%AnimationPlayer.play()
+
+func end_world(_v: Vector3):
+	velocity = Vector3.ZERO
+	set_anim_state(Vector2.ZERO)
+	has_world_ended = true
+
+func on_un_end_world():
+	has_world_ended = false
 
 func save_state():
 	state_history.push_back({

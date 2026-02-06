@@ -14,6 +14,9 @@ var times_camera_rotated = 0
 var has_world_ended = false
 var is_game_over = false
 var is_rewinding = false
+var paradox: Node3D
+var tween: Tween
+var state_history = []
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", goal_reached)
@@ -78,6 +81,11 @@ func setup_level() -> void:
 	%WonLevel.visible = false
 	%WonLevelInstruction.visible = false
 	has_world_ended = false
+	if tween != null:
+		tween.kill()
+	tween = null
+	paradox = null
+	state_history = []
 	%ParadoxBackdrop.visible = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
@@ -86,28 +94,31 @@ func setup_level() -> void:
 	update_buttons()
 
 func end_world(source: Vector3) -> void:
+	if has_world_ended:
+		return
 	has_world_ended = true
-	var paradox = paradox_void.instantiate()
+	time_since_interaction = 0.0
+	paradox = paradox_void.instantiate()
 	paradox.position = source
 	level.add_child(paradox)
 	var targetSize = 3 * max(level.grid_size.x, level.grid_size.z)
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(
 		paradox,
 		"scale",
 		Vector3(targetSize, targetSize, targetSize),
-		1.5
+		1.4
 	)
-	tween.tween_callback(func ():
-		if has_world_ended:
-			%ParadoxBackdrop.visible = true
-			%ParadoxLabel.visible = true
-	)
+	await tween.finished
+	tween = null
+	if has_world_ended:
+		%ParadoxBackdrop.visible = true
+		%ParadoxLabel.visible = true
 
 func goal_reached():
 	%WonLevel.visible = true
-	var tween = get_tree().create_tween()
-	tween.tween_callback(func ():
+	var won_level_tween = get_tree().create_tween()
+	won_level_tween.tween_callback(func ():
 		if %WonLevel.visible:
 			%WonLevelInstruction.visible = true
 	).set_delay(3.0)
@@ -117,7 +128,7 @@ func goal_reached():
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
 	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
-	rotationHintEnabled = rotationHintEnabled && !is_rewinding
+	rotationHintEnabled = rotationHintEnabled && !is_rewinding && !has_world_ended
 	instructionsEnabled = instructionsEnabled && !%WonLevel.visible && !is_game_over
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
@@ -234,12 +245,32 @@ func record(node: Node = self):
 	for child in node.get_children():
 		record(child)
 
+func is_interruptible() -> bool:
+	return tween == null && !(is_rewinding && has_world_ended)
+
 func load_state():
 	time_since_interaction = 0.0
+	if state_history.is_empty():
+		if has_world_ended:
+			has_world_ended = false
+			SignalBus.un_end_world.emit()
+		if paradox != null:
+			level.remove_child(paradox)
+			paradox.queue_free()
+			paradox = null
+	else:
+		var state = state_history.pop_back()
+		paradox.scale = state["paradox.scale"]
+		%ParadoxBackdrop.visible = state["%ParadoxBackdrop.visible"]
+		%ParadoxLabel.visible = state["%ParadoxLabel.visible"]
 
 func save_state():
-	# Nothing to save here
-	pass
+	if has_world_ended:
+		state_history.push_back({
+			"paradox.scale": paradox.scale,
+			"%ParadoxBackdrop.visible": %ParadoxBackdrop.visible,
+			"%ParadoxLabel.visible": %ParadoxLabel.visible,
+		})
 
 static func is_touch_device() -> bool:
 	if OS.get_name() == "Android" || OS.get_name() == "iOS":

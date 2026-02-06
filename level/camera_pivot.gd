@@ -4,6 +4,7 @@ var targetRotationY = 45
 
 var can_rotate = false
 var is_rewinding = false
+var has_world_ended = false
 var tween: Tween
 
 var state_history = []
@@ -11,10 +12,12 @@ var state_history = []
 func _init() -> void:
 	SignalBus.connect("can_rotate", set_can_rotate)
 	SignalBus.connect("is_rewinding", on_is_rewinding)
+	SignalBus.connect("end_world", end_world)
+	SignalBus.connect("un_end_world", on_un_end_world)
 
 
 func _process(_delta: float) -> void:
-	if can_rotate and !is_rewinding and tween == null:
+	if can_rotate and !is_rewinding and tween == null and !has_world_ended:
 		if Input.is_action_just_pressed("rotate_right") || Input.is_action_just_pressed("touch_button_right"):
 			SignalBus.camera_rotated.emit()
 			%AudioStreamPlayer.play()
@@ -45,6 +48,12 @@ func set_can_rotate(new_value: bool) -> void:
 
 func on_is_rewinding(is_rewinding_: bool):
 	is_rewinding = is_rewinding_
+
+func end_world(_v: Vector3):
+	has_world_ended = true
+
+func on_un_end_world():
+	has_world_ended = false
 
 func is_interruptible() -> bool:
 	return (
