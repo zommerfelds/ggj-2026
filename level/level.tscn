@@ -48,7 +48,7 @@ size = 5.074
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Objects" type="Node3D" parent="." unique_id=1812326925 node_paths=PackedStringArray("cameraPivot")]
-process_physics_priority = -1
+process_physics_priority = 1
 script = ExtResource("2_44x8d")
 cameraPivot = NodePath("../CameraPivot")
 
