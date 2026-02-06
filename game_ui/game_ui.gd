@@ -6,7 +6,7 @@ var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
 var rotate_texture: Texture2D = load("res://level/rotation_switch/rotation_switch.png")
 var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
 
-@onready var level = $Level
+var level: Node
 var level_index = LevelSelector.get_res().level
 var can_rotate = false
 var time_since_interaction = 0.0
