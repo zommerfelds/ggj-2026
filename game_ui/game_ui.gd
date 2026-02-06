@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	var should_rewind = Input.is_action_pressed("rewind") && !%WonLevel.visible
-	if is_rewinding != should_rewind:
+	if (is_rewinding != should_rewind) && can_interrupt():
 		is_rewinding = should_rewind
 		SignalBus.is_rewinding.emit(is_rewinding)
 
@@ -211,6 +211,15 @@ func game_over():
 	is_game_over = true
 	%GameOver.visible = true
 
+func can_interrupt(node: Node = self):
+	if (node.has_method("is_interruptible")):
+		var can_interrupt_node = node.is_interruptible()
+		if !can_interrupt_node:
+			return false
+	for child in node.get_children():
+		if !can_interrupt(child):
+			return false
+	return true
 
 func rewind(node: Node = self):
 	if (node.has_method("load_state")):
