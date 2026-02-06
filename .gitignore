@@ -11,4 +11,8 @@
 *noexport*
 
 # This file is the current selected level in the editor, and doesn't need to be tracked.
+<<<<<<< HEAD
 addons/level_selector/selected_level.tres
+=======
+/addons/level_selector/selected_level.tres
+>>>>>>> 22e1226006a4689b63b61fd896b19a9949a6a668

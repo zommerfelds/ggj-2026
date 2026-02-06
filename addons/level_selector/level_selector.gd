@@ -28,7 +28,6 @@ func _read_text_and_update_level(offset_to_add: int = 0) -> void:
 	config.level = _level
 	ResourceSaver.save(config, "res://addons/level_selector/selected_level.tres")
 
-	print("Level set to ", _level)
 	_update_text()
 
 
