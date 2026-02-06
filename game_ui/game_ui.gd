@@ -40,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 		SignalBus.is_rewinding.emit(is_rewinding)
 	if is_rewinding:
 		rewind()
-	else:
+	elif time_since_interaction < 1.5:
 		record()
 
 func _process(delta) -> void:
