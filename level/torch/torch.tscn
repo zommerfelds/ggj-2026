@@ -4,22 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ctaorvybh6xi0" path="res://static_assets/objects/torch.PNG" id="2_2y8ul"]
 [ext_resource type="Texture2D" uid="uid://c3lingmupi53w" path="res://static_assets/objects/torch 2.PNG" id="3_3rwjf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_revk6"]
-albedo_color = Color(1, 0.73333335, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_mdcsh"]
-size = Vector3(1, 0.7, 0.2)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_lkwkp"]
 size = Vector2(1.74, 1.85)
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
 transparency = 1
 albedo_texture = ExtResource("2_2y8ul")
+billboard_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl4yb"]
 transparency = 1
 albedo_texture = ExtResource("3_3rwjf")
+billboard_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3rwjf"]
 size = Vector3(0.95, 1, 0.95)
@@ -29,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Face/mesh:visible")
+tracks/0/path = NodePath("mesh:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Face/mesh2:visible")
+tracks/1/path = NodePath("mesh2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -58,7 +55,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Face/mesh:visible")
+tracks/0/path = NodePath("mesh:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Face/mesh2:visible")
+tracks/1/path = NodePath("mesh2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,25 +83,16 @@ _data = {
 &"flame": SubResource("Animation_r0kb8")
 }
 
-[node name="Goal" type="StaticBody3D" unique_id=942483746]
+[node name="Torch" type="StaticBody3D" unique_id=942483746]
 script = ExtResource("1_2y8ul")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=396005036]
-transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.35493994, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_revk6")
-mesh = SubResource("PrismMesh_mdcsh")
-
-[node name="Face" type="Node3D" parent="." unique_id=2014777487]
-transform = Transform3D(0.35355338, 0.30618623, 0.17677668, 0, 0.49999997, -0.86602545, -0.35355338, 0.30618623, 0.17677668, 0, 0, 0)
-
-[node name="mesh" type="MeshInstance3D" parent="Face" unique_id=207992270]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=207992270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
 mesh = SubResource("PlaneMesh_lkwkp")
 surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
 
-[node name="mesh2" type="MeshInstance3D" parent="Face" unique_id=101726324]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
+[node name="mesh2" type="MeshInstance3D" parent="." unique_id=101726324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
 visible = false
 mesh = SubResource("PlaneMesh_lkwkp")
 surface_material_override/0 = SubResource("StandardMaterial3D_sl4yb")

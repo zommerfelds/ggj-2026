@@ -5,10 +5,12 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pfy1k"]
 size = Vector2(1.74, 1.85)
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkbyq"]
 transparency = 1
 albedo_texture = ExtResource("1_dp8ye")
+billboard_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ygib"]
 size = Vector3(0.95, 1, 0.95)
@@ -21,11 +23,8 @@ size = Vector3(0.95, 0.1, 0.95)
 [node name="TallBush" type="AnimatableBody3D" unique_id=1778761240]
 script = ExtResource("1_q4a2m")
 
-[node name="Face" type="Node3D" parent="." unique_id=1067390800]
-transform = Transform3D(0.70710677, 0.61237246, 0.35355335, 0, 0.49999997, -0.86602545, -0.70710677, 0.61237246, 0.35355335, 0, 0, 0)
-
-[node name="Face" type="MeshInstance3D" parent="Face" unique_id=1465043738]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, -0.58)
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=1465043738]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0.66, 0)
 mesh = SubResource("PlaneMesh_pfy1k")
 surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 

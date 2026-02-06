@@ -3,13 +3,6 @@
 [ext_resource type="Script" path="res://level/plant/plant.gd" id="1_7ygib"]
 [ext_resource type="Texture2D" uid="uid://c1rjhricwabaw" path="res://static_assets/objects/tree.PNG" id="2_7ygib"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_pfy1k"]
-size = Vector2(1.74, 1.85)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkbyq"]
-transparency = 1
-albedo_texture = ExtResource("2_7ygib")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ygib"]
 size = Vector3(0.95, 1, 0.95)
 
@@ -18,16 +11,17 @@ size = Vector3(0.95, 0.1, 0.95)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy1k"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_7ygib"]
+size = Vector2(1.74, 1.85)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfy1k"]
+transparency = 1
+albedo_texture = ExtResource("2_7ygib")
+billboard_mode = 1
+
 [node name="Plant" type="AnimatableBody3D" unique_id=1778761240]
 script = ExtResource("1_7ygib")
-
-[node name="Face" type="Node3D" parent="." unique_id=1067390800]
-transform = Transform3D(0.70710677, 0.61237246, 0.35355335, 0, 0.49999997, -0.86602545, -0.70710677, 0.61237246, 0.35355335, 0, 0, 0)
-
-[node name="Face" type="MeshInstance3D" parent="Face" unique_id=1465043738]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, -0.58)
-mesh = SubResource("PlaneMesh_pfy1k")
-surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1478916422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -46,3 +40,8 @@ collision_mask = 2
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.816, 0)
 shape = SubResource("BoxShape3D_pfy1k")
 debug_color = Color(0.89639103, 0.00019213796, 0.7736155, 1)
+
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=45602095]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0.66, 0)
+mesh = SubResource("PlaneMesh_7ygib")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfy1k")

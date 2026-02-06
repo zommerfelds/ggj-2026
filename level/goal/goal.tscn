@@ -12,14 +12,17 @@ size = Vector3(1, 0.7, 0.2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lkwkp"]
 size = Vector2(1.74, 1.85)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
-transparency = 1
-albedo_texture = ExtResource("2_5n1eg")
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6ebo"]
 transparency = 1
 albedo_texture = ExtResource("3_lkwkp")
+billboard_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
+transparency = 1
+albedo_texture = ExtResource("2_5n1eg")
+billboard_mode = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5n1eg"]
 height = 1.0
@@ -34,21 +37,18 @@ visible = false
 material_override = SubResource("StandardMaterial3D_revk6")
 mesh = SubResource("PrismMesh_mdcsh")
 
-[node name="Face" type="Node3D" parent="." unique_id=2014777487]
-transform = Transform3D(0.70710677, 0.4629101, 0.5345225, 0, 0.75592893, -0.6546537, -0.70710677, 0.4629101, 0.5345225, 0, 0, 0)
-
-[node name="meshActive" type="MeshInstance3D" parent="Face" unique_id=207992270]
+[node name="meshDisabled" type="MeshInstance3D" parent="." unique_id=961930617]
 unique_name_in_owner = true
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
-mesh = SubResource("PlaneMesh_lkwkp")
-surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
-
-[node name="meshDisabled" type="MeshInstance3D" parent="Face" unique_id=961930617]
-unique_name_in_owner = true
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.66, 0)
 visible = false
 mesh = SubResource("PlaneMesh_lkwkp")
 surface_material_override/0 = SubResource("StandardMaterial3D_j6ebo")
+
+[node name="meshActive" type="MeshInstance3D" parent="." unique_id=207992270]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
+mesh = SubResource("PlaneMesh_lkwkp")
+surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=207175327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
