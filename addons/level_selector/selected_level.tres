@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SelectedLevel" format=3 uid="uid://ci210e50e1331"]
+
+[ext_resource type="Script" uid="uid://b1ra1tpe5y3td" path="res://addons/level_selector/selected_level.gd" id="1_t6wjq"]
+
+[resource]
+script = ExtResource("1_t6wjq")
+level = 8

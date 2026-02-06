@@ -7,7 +7,7 @@ var rotate_texture: Texture2D = load("res://level/rotation_switch/rotation_switc
 var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
 
 @onready var level = $Level
-var level_index = 1
+var level_index = LevelSelector.get_res().level
 var can_rotate = false
 var time_since_interaction = 0.0
 var times_camera_rotated = 0
@@ -22,6 +22,7 @@ func _ready() -> void:
 	SignalBus.connect("camera_rotated", camera_rotated)
 	SignalBus.connect("game_over", game_over)
 
+	setup_level()
 	set_can_rotate(false)
 
 	if not is_touch_device():

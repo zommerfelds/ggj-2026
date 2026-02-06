@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cds33iaqmh7nm"]
+
+[ext_resource type="Script" uid="uid://csvt567sn3qpr" path="res://addons/level_selector/level_selector.gd" id="1_ejwk7"]
+
+[node name="LevelSelector" type="HBoxContainer" unique_id=1040297055]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ejwk7")
+
+[node name="Label" type="Label" parent="." unique_id=1856021398]
+layout_mode = 2
+text = "Level"
+
+[node name="ButtonPrev" type="Button" parent="." unique_id=1124336718]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<"
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=156994574]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+text = "1"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="ButtonNext" type="Button" parent="." unique_id=351400637]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">"
