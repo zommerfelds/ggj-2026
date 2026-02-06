@@ -11,7 +11,7 @@ albedo_color = Color(1, 0.73333335, 0, 1)
 size = Vector3(1, 0.7, 0.2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lkwkp"]
-size = Vector2(2.74, 1.96)
+size = Vector2(1.74, 1.85)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20dql"]
 transparency = 1
@@ -99,12 +99,12 @@ mesh = SubResource("PrismMesh_mdcsh")
 transform = Transform3D(0.35355338, 0.30618623, 0.17677668, 0, 0.49999997, -0.86602545, -0.35355338, 0.30618623, 0.17677668, 0, 0, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="Face" unique_id=207992270]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0.134, 0, -0.511)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
 mesh = SubResource("PlaneMesh_lkwkp")
 surface_material_override/0 = SubResource("StandardMaterial3D_20dql")
 
 [node name="mesh2" type="MeshInstance3D" parent="Face" unique_id=101726324]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0.134, 0, -0.511)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, -5.9604645e-08, 1.0000001, 0, 0, -0.58)
 visible = false
 mesh = SubResource("PlaneMesh_lkwkp")
 surface_material_override/0 = SubResource("StandardMaterial3D_sl4yb")

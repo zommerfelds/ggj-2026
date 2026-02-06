@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://vnogpx8q4gp6"]
 
 [ext_resource type="Texture2D" uid="uid://bx6r6mv7s30wf" path="res://static_assets/objects/tallbush.PNG" id="1_dp8ye"]
-[ext_resource type="Script" uid="uid://cqomwk64nny3q" path="res://level/tall_bush/tall_bush.gd" id="1_q4a2m"]
+[ext_resource type="Script" path="res://level/tall_bush/tall_bush.gd" id="1_q4a2m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pfy1k"]
-size = Vector2(1.83, 1.92)
+size = Vector2(1.74, 1.85)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkbyq"]
 transparency = 1
@@ -25,7 +25,7 @@ script = ExtResource("1_q4a2m")
 transform = Transform3D(0.70710677, 0.61237246, 0.35355335, 0, 0.49999997, -0.86602545, -0.70710677, 0.61237246, 0.35355335, 0, 0, 0)
 
 [node name="Face" type="MeshInstance3D" parent="Face" unique_id=1465043738]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0.05, -0.65)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, -0.58)
 mesh = SubResource("PlaneMesh_pfy1k")
 surface_material_override/0 = SubResource("StandardMaterial3D_vkbyq")
 
