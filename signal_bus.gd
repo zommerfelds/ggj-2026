@@ -24,3 +24,6 @@ signal joystick_moved(Vector2)
 
 # Emitted when the camera starts or stops rotating
 signal is_camera_rotating(bool)
+
+# Emitted when the game starts or stops rewinding
+signal is_rewinding(bool)

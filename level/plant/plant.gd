@@ -1,2 +1,2 @@
-extends AnimatableBody3D
+extends PushableObject
 class_name Plant

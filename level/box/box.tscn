@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vnwygsoogwao"]
 
-[ext_resource type="Script" uid="uid://dp0pnha7qa5sy" path="res://level/box/box.gd" id="1_qs454"]
+[ext_resource type="Script" uid="uid://dp0pnha7qa5sy" path="res://level/pushable_object/pushable_object.gd" id="1_qs454"]
 [ext_resource type="Texture2D" uid="uid://ef7d61a2tont" path="res://static_assets/objects/box.PNG" id="2_qs454"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_44x8d"]
@@ -16,6 +16,7 @@ billboard_mode = 1
 size = Vector3(0.95, 1, 0.95)
 
 [sub_resource type="BoxMesh" id="BoxMesh_flje5"]
+size = Vector3(0.95, 0.1, 0.95)
 
 [node name="Box" type="StaticBody3D" unique_id=490074602]
 script = ExtResource("1_qs454")

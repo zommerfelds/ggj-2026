@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g12b070v6eli"]
 
-[ext_resource type="Script" path="res://level/plant/plant.gd" id="1_7ygib"]
+[ext_resource type="Script" uid="uid://dpjea5wfnyido" path="res://level/plant/plant.gd" id="1_7ygib"]
 [ext_resource type="Texture2D" uid="uid://c1rjhricwabaw" path="res://static_assets/objects/tree.PNG" id="2_7ygib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ygib"]

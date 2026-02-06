@@ -13,6 +13,7 @@ var time_since_interaction = 0.0
 var times_camera_rotated = 0
 var has_world_ended = false
 var is_game_over = false
+var is_rewinding = false
 
 func _ready() -> void:
 	SignalBus.connect("goal_reached", goal_reached)
@@ -34,6 +35,18 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
+	var should_rewind = Input.is_action_pressed("rewind") && !%WonLevel.visible
+	if is_rewinding != should_rewind:
+		is_rewinding = should_rewind
+		SignalBus.is_rewinding.emit(is_rewinding)
+
+	if is_rewinding:
+		updateInstructionsText()
+		rewind()
+		return
+	else:
+		record()
+
 	time_since_interaction += delta
 	updateInstructionsText()
 	$Overlay/LevelName.text = "Level %d" % level_index
@@ -103,6 +116,7 @@ func goal_reached():
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
 	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
+	rotationHintEnabled = rotationHintEnabled && !is_rewinding
 	instructionsEnabled = instructionsEnabled && !%WonLevel.visible && !is_game_over
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
@@ -196,6 +210,26 @@ func game_over():
 	$Overlay/LevelNameBackdrop.visible = false
 	is_game_over = true
 	%GameOver.visible = true
+
+
+func rewind(node: Node = self):
+	if (node.has_method("load_state")):
+		node.load_state()
+	for child in node.get_children():
+		rewind(child)
+
+func record(node: Node = self):
+	if (node.has_method("save_state")):
+		node.save_state()
+	for child in node.get_children():
+		record(child)
+
+func load_state():
+	time_since_interaction = 0.0
+
+func save_state():
+	# Nothing to save here
+	pass
 
 static func is_touch_device() -> bool:
 	if OS.get_name() == "Android" || OS.get_name() == "iOS":

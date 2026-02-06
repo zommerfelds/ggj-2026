@@ -16,11 +16,14 @@ var has_won = false
 var joystick_direction = Vector2.ZERO
 var can_move = true
 
+var state_history = []
+
 func _ready() -> void:
 	%AnimationPlayer.play()
 	SignalBus.connect("game_over", game_over)
 	SignalBus.connect("joystick_moved", joystick_moved)
 	SignalBus.connect("is_camera_rotating", on_is_camera_rotating)
+	SignalBus.connect("is_rewinding", on_is_rewinding)
 
 func _physics_process(_delta):
 	if has_won || !can_move: return
@@ -128,7 +131,7 @@ func maybe_push(delta: float, direction: Vector2):
 			push_new = dir
 			break
 
-	var canBePushed = (c.get_collider() is Plant or c.get_collider() is Box)
+	var canBePushed = (c.get_collider().has_method("perform_push"))
 	var center_distance = global_position.distance_to(collider_position)
 
 	if !canBePushed || center_distance > 0.8:
@@ -141,13 +144,7 @@ func maybe_push(delta: float, direction: Vector2):
 		var nextPosition = collider_position + Vector3(push_new)
 		if (push_time > 0.5 and isSpaceFree(nextPosition)):
 			%AudioStreamPlayer2.play()
-			var tween = get_tree().create_tween()
-			tween.tween_property(
-				c.get_collider(),
-				"position",
-				c.get_collider().position + Vector3(push_direction),
-				0.3
-			)
+			c.get_collider().perform_push(Vector3(push_direction))
 			push_time = 0
 	else:
 		push_time = 0
@@ -177,3 +174,40 @@ func joystick_moved(dir):
 
 func on_is_camera_rotating(is_rotating: bool):
 	can_move = !is_rotating
+
+func on_is_rewinding(is_rewinding: bool):
+	can_move = !is_rewinding
+	if !is_rewinding:
+		%AnimationPlayer.play()
+
+func save_state():
+	state_history.push_back({
+		"position": position,
+		"current_animation": %AnimationPlayer.current_animation,
+		"animation_speed_scale": %AnimationPlayer.speed_scale,
+		"current_animation_position": %AnimationPlayer.current_animation_position,
+		"current_step_is_left": current_step_is_left,
+		"walking_up": walking_up,
+		"currently_heading_right": currently_heading_right,
+		"face_scale_x": %Face.scale.x,
+	})
+
+func load_state():
+	%AnimationPlayer.pause()
+	var state = state_history.pop_back()
+	if state == null:
+		return
+
+	position = state["position"]
+	%AnimationPlayer.current_animation = state["current_animation"]
+	%AnimationPlayer.speed_scale = state["animation_speed_scale"]
+	%AnimationPlayer.seek(state["current_animation_position"], true)
+	current_step_is_left = state["current_step_is_left"]
+	walking_up = state["walking_up"]
+	currently_heading_right = state["currently_heading_right"]
+	%Face.scale.x = state["face_scale_x"]
+
+	# Always reset timers and push direction
+	time_since_moved = 0.0
+	push_time = 0.0
+	push_direction = Vector3i.ZERO
