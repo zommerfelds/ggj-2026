@@ -30,7 +30,6 @@ func _ready() -> void:
 	setup_level()
 	set_can_rotate(false)
 
-	print("ui ready")
 	if not Platform.is_touch_device:
 		$Overlay/Touch.free()
 
