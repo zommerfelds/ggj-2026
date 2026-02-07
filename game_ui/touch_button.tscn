@@ -8,7 +8,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_k8jme")
-action_name = "bomb"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=613846067]
 visible = false

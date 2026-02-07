@@ -5,6 +5,7 @@ var level_preload = preload("res://level/level.tscn")
 var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
 var rotate_texture: Texture2D = load("res://level/rotation_switch/rotation_switch.png")
 var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
+var home_texture: Texture2D = load("res://game_ui/home_button.png")
 
 var level: Node
 var level_index = LevelSelector.get_res().level
@@ -29,12 +30,9 @@ func _ready() -> void:
 	setup_level()
 	set_can_rotate(false)
 
+	print("ui ready")
 	if not Platform.is_touch_device:
-		$Overlay/Joystick.free()
-		$Overlay/TouchButtonLeft.free()
-		$Overlay/TouchButtonRight.free()
-		$Overlay/TouchButtonReset.free()
-		$Overlay/TouchButtonLabel.free()
+		$Overlay/Touch.free()
 
 func _physics_process(_delta: float) -> void:
 	var should_rewind = Input.is_action_pressed("rewind") && !%WonLevel.visible
@@ -180,18 +178,20 @@ func update_buttons():
 	if not Platform.is_touch_device:
 		return
 
+	%TouchButtonHome.set_texture(home_texture, false)
+
 	var left_active = can_rotate
 	var right_active = can_rotate or %WonLevel.visible
 
-	$Overlay/TouchButtonLeft.set_texture(rotate_texture if can_rotate else null, true)
-	$Overlay/TouchButtonLeft.visible = left_active
-	$Overlay/TouchButtonLeft.disabled = !left_active
-	$Overlay/TouchButtonLeft.queue_redraw()
+	%TouchButtonLeft.set_texture(rotate_texture if can_rotate else null, true)
+	%TouchButtonLeft.visible = left_active
+	%TouchButtonLeft.disabled = !left_active
+	%TouchButtonLeft.queue_redraw()
 
-	$Overlay/TouchButtonRight.set_texture(rotate_texture if can_rotate else next_level_texture, false)
-	$Overlay/TouchButtonRight.visible = right_active
-	$Overlay/TouchButtonRight.disabled = !right_active
-	$Overlay/TouchButtonLeft.queue_redraw()
+	%TouchButtonRight.set_texture(rotate_texture if can_rotate else next_level_texture, false)
+	%TouchButtonRight.visible = right_active
+	%TouchButtonRight.disabled = !right_active
+	%TouchButtonRight.queue_redraw()
 
 
 func player_moved():

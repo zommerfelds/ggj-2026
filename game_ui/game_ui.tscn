@@ -498,7 +498,15 @@ You have finished the game!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Joystick" parent="Overlay" unique_id=438829218 instance=ExtResource("4_vsxus")]
+[node name="Touch" type="Control" parent="Overlay" unique_id=1138865484]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TouchJoystick" parent="Overlay/Touch" unique_id=438829218 instance=ExtResource("4_vsxus")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -509,7 +517,8 @@ offset_right = 300.0
 offset_bottom = -150.0
 grow_vertical = 0
 
-[node name="TouchButtonRight" parent="Overlay" unique_id=1659801594 instance=ExtResource("5_ytni6")]
+[node name="TouchButtonRight" parent="Overlay/Touch" unique_id=1659801594 instance=ExtResource("5_ytni6")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -524,7 +533,8 @@ grow_horizontal = 0
 grow_vertical = 0
 action_name = "touch_button_right"
 
-[node name="TouchButtonLeft" parent="Overlay" unique_id=1607451192 instance=ExtResource("5_ytni6")]
+[node name="TouchButtonLeft" parent="Overlay/Touch" unique_id=1607451192 instance=ExtResource("5_ytni6")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -539,7 +549,17 @@ grow_horizontal = 0
 grow_vertical = 0
 action_name = "touch_button_left"
 
-[node name="TouchButtonReset" parent="Overlay" unique_id=1884044270 instance=ExtResource("5_ytni6")]
+[node name="TouchButtonHome" parent="Overlay/Touch" unique_id=363934257 instance=ExtResource("5_ytni6")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 170.0
+offset_bottom = 250.0
+event_action = "menu"
+
+[node name="TouchButtonReset" parent="Overlay/Touch" unique_id=1884044270 instance=ExtResource("5_ytni6")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -551,7 +571,7 @@ offset_bottom = 316.0
 grow_horizontal = 0
 action_name = "reset_level"
 
-[node name="TouchButtonLabel" type="Label" parent="Overlay" unique_id=1722188073]
+[node name="TouchButtonLabel" type="Label" parent="Overlay/Touch" unique_id=1722188073]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
