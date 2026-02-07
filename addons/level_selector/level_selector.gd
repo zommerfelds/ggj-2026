@@ -12,24 +12,24 @@ static func get_res() -> SelectedLevel:
 	return config
 
 
-var _level = get_res().level
-
 func _ready() -> void:
 	%ButtonNext.connect("pressed", _read_text_and_update_level.bind(1))
 	%ButtonPrev.connect("pressed", _read_text_and_update_level.bind(-1))
-	%LineEdit.connect("text_submitted", _read_text_and_update_level.bind(0).unbind(1))
-	_update_text()
+	%LineEdit.connect("text_changed", _read_text_and_update_level.bind(0).unbind(1))
+	_update_text(get_res().level)
 
 
 func _read_text_and_update_level(offset_to_add: int = 0) -> void:
-	_level = int(%LineEdit.text) + offset_to_add
+	var level = int(%LineEdit.text) + offset_to_add
 
+	print("Setting start level to ", level)
 	var config = get_res()
-	config.level = _level
+	config.level = level
 	ResourceSaver.save(config, "res://addons/level_selector/selected_level.tres")
 
-	_update_text()
+	_update_text(level)
 
 
-func _update_text() -> void:
-	%LineEdit.text = str(_level)
+func _update_text(level: int) -> void:
+	if %LineEdit.text != str(level):
+		%LineEdit.text = str(level)
