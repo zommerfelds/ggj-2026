@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 var level_preload = preload("res://level/level.tscn")

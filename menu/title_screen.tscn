@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bnjy1lngmrfe3"]
+
+[ext_resource type="Theme" uid="uid://bl83ik5enqoyy" path="res://menu/menu_theme.tres" id="1_lxdol"]
+[ext_resource type="Script" uid="uid://cjmwsb4x8xm0c" path="res://menu/title_screen.gd" id="1_vio6n"]
+[ext_resource type="Texture2D" uid="uid://btl7l4lkemg7x" path="res://static_assets/racoon_full.png" id="2_1hn3b"]
+
+[sub_resource type="Theme" id="Theme_1hn3b"]
+
+[node name="TitleScreen" type="Control" unique_id=344763899]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lxdol")
+script = ExtResource("1_vio6n")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1343875941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.94, 0.94, 1)
+
+[node name="Raccoon" type="TextureRect" parent="." unique_id=721377011]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 0
+offset_left = 919.0
+offset_top = 1.0
+offset_right = 1919.0
+offset_bottom = 1201.0
+texture = ExtResource("2_1hn3b")
+expand_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1943547376]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 215.0
+offset_right = 953.0
+offset_bottom = 673.0
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="VBox" unique_id=1201879428]
+layout_mode = 2
+theme = SubResource("Theme_1hn3b")
+theme_override_font_sizes/font_size = 100
+text = "Out of Sight"
+
+[node name="Buttons" type="VBoxContainer" parent="VBox" unique_id=1756493604]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Play" type="Button" parent="VBox/Buttons" unique_id=226321139]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="SelectLevel" type="Button" parent="VBox/Buttons" unique_id=1280405161]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Select Level"
+
+[node name="Settings" type="Button" parent="VBox/Buttons" unique_id=2017212227]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+
+[node name="Credits" type="Button" parent="VBox/Buttons" unique_id=2144170289]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Credits"
+
+[node name="Padding" type="Label" parent="VBox" unique_id=1386330715]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBox/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBox/Buttons/SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Credits" to="." method="_on_credits_pressed"]

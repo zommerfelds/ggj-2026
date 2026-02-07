@@ -8,12 +8,19 @@
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
 
-[node name="GameUI" type="Node" unique_id=607135136]
+[node name="GameUI" type="Control" unique_id=686140746]
+process_mode = 1
 process_physics_priority = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0osaa")
 
 [node name="Overlay" type="Control" parent="." unique_id=384996768]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,7 +71,6 @@ color = Color(0.15637839, 0.22576961, 0.24399114, 1)
 
 [node name="InstructionsKeyboard" type="RichTextLabel" parent="Overlay" unique_id=1302463457]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

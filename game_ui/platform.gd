@@ -14,6 +14,8 @@ enum InputDevice {
 
 var is_touch_device = false # Set once during startup
 var current_input_device: InputDevice = InputDevice.KEYBOARD # Can change while running
+# TODO: Persist in user settings.
+var sound_enabled = true
 
 
 func _init() -> void:
@@ -49,3 +51,8 @@ func detect_input_device(_device_id: int = 0, _connected: bool = true):
 		current_input_device = InputDevice.TOUCH
 	else:
 		current_input_device = InputDevice.KEYBOARD
+
+
+func set_sound_enabled(new_value: bool):
+	sound_enabled = new_value
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), not sound_enabled)

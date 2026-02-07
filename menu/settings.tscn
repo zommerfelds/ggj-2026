@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c61od4a1i2eth"]
+
+[ext_resource type="Theme" uid="uid://bl83ik5enqoyy" path="res://menu/menu_theme.tres" id="1_2j7bf"]
+[ext_resource type="Script" uid="uid://d2fq6hc21mswx" path="res://menu/settings.gd" id="2_fqw17"]
+
+[node name="Settings" type="Control" unique_id=577224066]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2j7bf")
+script = ExtResource("2_fqw17")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1866838268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.94, 0.94, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=289043990]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBox" unique_id=492411169]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Settings"
+
+[node name="Buttons" type="VBoxContainer" parent="VBox" unique_id=505043305]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Sound" type="Button" parent="VBox/Buttons" unique_id=1845652699]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sound: ON"
+
+[node name="Confirm" type="Button" parent="VBox/Buttons" unique_id=1568981475]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBox/Buttons/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Confirm" to="." method="_on_confirm_pressed"]

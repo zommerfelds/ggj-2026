@@ -30,3 +30,7 @@ signal is_camera_rotating(bool)
 
 # Emitted when the game starts or stops rewinding
 signal is_rewinding(bool)
+
+# Emitted to change between game/menu/settings etc screens
+# TODO: enum?
+signal change_screen(String)
