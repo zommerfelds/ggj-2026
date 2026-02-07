@@ -14,11 +14,20 @@ func _draw():
 	var center = size / 2
 	var r = size.x / 2
 	draw_circle(center, r, WHITEISH, false, LINE_WIDTH, true)
+
+	# touch_button is @tool-enabled for drawing but accessing actions will result in error messages.
+	if Engine.is_editor_hint():
+		return
+
 	if Input.is_action_pressed(action_name):
 		draw_circle(center, r + LINE_WIDTH / 2, WHITEISH, true, -1.0, true)
 
 
 func _input(event):
+	# touch_button is @tool-enabled for drawing but accessing actions will result in error messages.
+	if Engine.is_editor_hint():
+		return
+
 	if event is InputEventScreenTouch:
 		handle_touch(event)
 	elif event is InputEventScreenDrag:

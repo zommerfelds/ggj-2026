@@ -27,6 +27,10 @@ func _draw():
 
 
 func _input(event):
+	# touch_button is @tool-enabled for drawing but accessing actions will result in error messages.
+	if Engine.is_editor_hint():
+		return
+
 	if event is InputEventScreenTouch:
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
