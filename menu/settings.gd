@@ -4,18 +4,13 @@ extends Control
 func _ready() -> void:
 	# Make mouse hover move the focus so hovering works the same as keyboard/controller focus moves:
 	for b in $VBox/Buttons.get_children():
-		b.mouse_entered.connect(button_entered.bind(b))
+		MenuCommon.hover_to_focus(b)
 
 	visibility_changed.connect(update_state)
 	get_viewport().size_changed.connect(update_layout)
 
 	update_state()
 	update_layout()
-
-
-func button_entered(b) -> void:
-	if not b.disabled:
-		b.grab_focus.call_deferred()
 
 
 func update_layout() -> void:

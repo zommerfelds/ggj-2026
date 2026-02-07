@@ -14,5 +14,6 @@ func change_screen(screen: String) -> void:
 	$TitleScreen.visible = screen == "menu"
 	$Settings.visible = screen == "settings"
 	$GameUI.visible = screen == "game"
+	$Credits.visible = screen == "credits"
 
 	get_tree().paused = screen != "game"

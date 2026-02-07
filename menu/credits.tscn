@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c125dvknyqh7r"]
+
+[ext_resource type="Theme" uid="uid://bl83ik5enqoyy" path="res://menu/menu_theme.tres" id="1_nidem"]
+[ext_resource type="Script" uid="uid://1c8ufirarua3" path="res://menu/credits.gd" id="2_x2hwc"]
+
+[node name="Credits" type="Control" unique_id=188921157]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nidem")
+script = ExtResource("2_x2hwc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1324493827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.94, 0.94, 1)
+
+[node name="Title" type="Label" parent="." unique_id=358404223]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 80.0
+offset_right = 1920.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 100
+text = "Out of Sight"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="." unique_id=1067486083]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 240.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=2088357299]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -642.0
+offset_top = -116.0
+offset_right = -35.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_constants/separation = 40
+alignment = 2
+
+[node name="More" type="Button" parent="Buttons" unique_id=226544220]
+unique_name_in_owner = true
+layout_mode = 2
+text = "More"
+
+[node name="OK" type="Button" parent="Buttons" unique_id=1688064823]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Buttons/More" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Buttons/OK" to="." method="_on_ok_pressed"]

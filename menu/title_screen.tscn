@@ -74,7 +74,6 @@ text = "Settings"
 [node name="Credits" type="Button" parent="VBox/Buttons" unique_id=2144170289]
 unique_name_in_owner = true
 layout_mode = 2
-disabled = true
 text = "Credits"
 
 [node name="Padding" type="Label" parent="VBox" unique_id=1386330715]
