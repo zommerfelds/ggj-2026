@@ -29,7 +29,7 @@ func _ready() -> void:
 	setup_level()
 	set_can_rotate(false)
 
-	if not is_touch_device():
+	if not Platform.is_touch_device:
 		$Overlay/Joystick.free()
 		$Overlay/TouchButtonLeft.free()
 		$Overlay/TouchButtonRight.free()
@@ -132,22 +132,6 @@ func updateInstructionsText():
 	instructionsEnabled = instructionsEnabled && !%WonLevel.visible && !is_game_over
 	%InstructionsBackdrop.visible = instructionsEnabled
 	%RotationGroup.visible = can_rotate && rotationHintEnabled
-	var device_name = Input.get_joy_name(0)
-	var model = "keyboard"
-	if (device_name.contains("PS3")
-			|| device_name.contains("PS4")
-			|| device_name.contains("PS5")
-			|| device_name.contains("DualSense")):
-		model = "playstation"
-	elif (device_name.contains("Xbox") || device_name.contains("XInput")):
-		model = "xbox"
-	elif (device_name.contains("Controller")
-			|| device_name.contains("Gamepad")
-			|| device_name.contains("Joy-Con")
-			|| device_name.contains("Joy Con")):
-		model = "controller"
-	elif is_touch_device():
-		model = "touch"
 
 	%InstructionsKeyboard.visible = false
 	%InstructionsController.visible = false
@@ -164,24 +148,24 @@ func updateInstructionsText():
 	%WonLevelXbox.visible = false
 	%WonLevelTouch.visible = false
 
-	match model:
-		"keyboard":
+	match Platform.current_input_device:
+		Platform.InputDevice.KEYBOARD:
 			%InstructionsKeyboard.visible = instructionsEnabled
 			%RotationInstructionsKeyboard.visible = true
 			%WonLevelKeyboard.visible = true
-		"controller":
+		Platform.InputDevice.CONTROLLER:
 			%InstructionsController.visible = instructionsEnabled
 			%RotationInstructionsController.visible = true
 			%WonLevelController.visible = true
-		"playstation":
+		Platform.InputDevice.PLAYSTATION:
 			%InstructionsPlaystation.visible = instructionsEnabled
 			%RotationInstructionsPlaystation.visible = true
 			%WonLevelPlaystation.visible = true
-		"xbox":
+		Platform.InputDevice.XBOX:
 			%InstructionsXbox.visible = instructionsEnabled
 			%RotationInstructionsController.visible = true
 			%WonLevelXbox.visible = true
-		"touch":
+		Platform.InputDevice.TOUCH:
 			%InstructionsTouch.visible = instructionsEnabled
 			%RotationInstructionsTouch.visible = true
 			%WonLevelTouch.visible = true
@@ -193,7 +177,7 @@ func set_can_rotate(new_value: bool):
 
 
 func update_buttons():
-	if not is_touch_device():
+	if not Platform.is_touch_device:
 		return
 
 	var left_active = can_rotate
@@ -271,15 +255,3 @@ func save_state():
 			"%ParadoxBackdrop.visible": %ParadoxBackdrop.visible,
 			"%ParadoxLabel.visible": %ParadoxLabel.visible,
 		})
-
-static func is_touch_device() -> bool:
-	if OS.get_name() == "Android" || OS.get_name() == "iOS":
-		return true
-
-	var window = JavaScriptBridge.get_interface("window")
-	if window:
-		var js_return = JavaScriptBridge.eval("(('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));")
-		if js_return == 1:
-			return true
-
-	return false
