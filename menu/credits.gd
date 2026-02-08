@@ -62,7 +62,7 @@ func _on_next_pressed() -> void:
 
 
 func _on_ok_pressed() -> void:
-	SignalBus.change_screen.emit("menu")
+	SignalBus.change_screen.emit(SignalBus.Screen.MENU)
 
 
 func _on_visibility_changed() -> void:

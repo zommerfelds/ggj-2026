@@ -15,19 +15,19 @@ func _on_visibility_changed() -> void:
 
 
 func _on_play_pressed() -> void:
-	SignalBus.change_screen.emit("game")
+	SignalBus.change_screen.emit(SignalBus.Screen.GAME)
 
 
 func _on_select_level_pressed() -> void:
-	print("select level pressed")
+	SignalBus.change_screen.emit(SignalBus.Screen.SELECT_LEVEL)
 
 
 func _on_settings_pressed() -> void:
-	SignalBus.change_screen.emit("settings")
+	SignalBus.change_screen.emit(SignalBus.Screen.SETTINGS)
 
 
 func _on_credits_pressed() -> void:
-	SignalBus.change_screen.emit("credits")
+	SignalBus.change_screen.emit(SignalBus.Screen.CREDITS)
 
 
 func update_layout() -> void:

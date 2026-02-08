@@ -26,6 +26,7 @@ func _ready() -> void:
 	SignalBus.connect("player_moved", player_moved)
 	SignalBus.connect("camera_rotated", camera_rotated)
 	SignalBus.connect("game_over", game_over)
+	SignalBus.connect("select_level", select_level)
 
 	setup_level()
 	set_can_rotate(false)
@@ -72,6 +73,12 @@ func next_level(delta: int = 1) -> void:
 	level.queue_free()
 	level_index += delta
 	call_deferred("setup_level")
+
+func select_level(index: int) -> void:
+	level.queue_free()
+	level_index = index
+	call_deferred("setup_level")
+
 
 func setup_level() -> void:
 	time_since_interaction = 0.0

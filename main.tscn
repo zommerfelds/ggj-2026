@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bnjy1lngmrfe3" path="res://menu/title_screen.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c61od4a1i2eth" path="res://menu/settings.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c125dvknyqh7r" path="res://menu/credits.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dxq4gc2nmd8rl" path="res://menu/select_level.tscn" id="6_7mycd"]
 
 [node name="Main" type="Control" unique_id=666934256]
 process_mode = 3
@@ -28,5 +29,9 @@ visible = false
 layout_mode = 1
 
 [node name="Credits" parent="." unique_id=188921157 instance=ExtResource("5_lquwl")]
+visible = false
+layout_mode = 1
+
+[node name="SelectLevel" parent="." unique_id=1656137094 instance=ExtResource("6_7mycd")]
 visible = false
 layout_mode = 1

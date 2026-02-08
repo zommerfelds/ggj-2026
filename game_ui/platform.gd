@@ -56,3 +56,9 @@ func detect_input_device(_device_id: int = 0, _connected: bool = true):
 func set_sound_enabled(new_value: bool):
 	sound_enabled = new_value
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), not sound_enabled)
+
+
+func any_controller() -> bool:
+	return (current_input_device == InputDevice.PLAYSTATION or
+		current_input_device == InputDevice.XBOX or
+		current_input_device == InputDevice.CONTROLLER)

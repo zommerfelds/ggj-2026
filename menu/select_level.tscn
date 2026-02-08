@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://dxq4gc2nmd8rl"]
+
+[ext_resource type="Theme" uid="uid://bl83ik5enqoyy" path="res://menu/menu_theme.tres" id="1_knmpk"]
+[ext_resource type="Script" uid="uid://c1ji6vtic8xah" path="res://menu/select_level.gd" id="2_yri7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yri7s"]
+bg_color = Color(0.36646652, 0.595334, 0.9686318, 1)
+draw_center = false
+
+[sub_resource type="Gradient" id="Gradient_yri7s"]
+offsets = PackedFloat32Array(0, 0.8238748)
+colors = PackedColorArray(0.9411765, 0.9411765, 0.9411765, 0, 0.94, 0.94, 0.94, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nr1ji"]
+gradient = SubResource("Gradient_yri7s")
+width = 32
+height = 32
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yri7s"]
+gradient = SubResource("Gradient_yri7s")
+width = 32
+height = 32
+fill_to = Vector2(0, 1)
+
+[node name="SelectLevel" type="Control" unique_id=1656137094]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_knmpk")
+script = ExtResource("2_yri7s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=797752749]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.94, 0.94, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=113143804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPane" type="MarginContainer" parent="HBoxContainer" unique_id=1726095415]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 32
+
+[node name="ColorRectDebug" type="ColorRect" parent="HBoxContainer/LeftPane" unique_id=1806737109]
+visible = false
+layout_mode = 2
+color = Color(1, 0.42000002, 0.42000002, 1)
+
+[node name="Chapters" type="VBoxContainer" parent="HBoxContainer/LeftPane" unique_id=246355009]
+layout_mode = 2
+
+[node name="Padding" type="Label" parent="HBoxContainer/LeftPane/Chapters" unique_id=811126647]
+layout_mode = 2
+
+[node name="SidewaysChapter" type="Label" parent="HBoxContainer/LeftPane/Chapters" unique_id=604017504]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+text = "C
+h
+a
+p
+t
+e
+r
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chapter1" type="Button" parent="HBoxContainer/LeftPane/Chapters" unique_id=1068971463]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Chapter 1"
+
+[node name="Chapter2" type="Button" parent="HBoxContainer/LeftPane/Chapters" unique_id=675886460]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../Back")
+toggle_mode = true
+text = "Chapter 2"
+
+[node name="Back" type="Button" parent="HBoxContainer/LeftPane" unique_id=1919723965]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../Chapters/Chapter2")
+text = "Back"
+
+[node name="RightPane" type="Control" parent="HBoxContainer" unique_id=1388431714]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/RightPane" unique_id=1548227664]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yri7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RightPane/ScrollContainer" unique_id=111862420]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="Levels" type="VBoxContainer" parent="HBoxContainer/RightPane/ScrollContainer/MarginContainer" unique_id=1213201406]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPane/ScrollContainer/MarginContainer/Levels" unique_id=907898647]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Button2" type="Button" parent="HBoxContainer/RightPane/ScrollContainer/MarginContainer/Levels" unique_id=2113570833]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Button3" type="Button" parent="HBoxContainer/RightPane/ScrollContainer/MarginContainer/Levels" unique_id=819037320]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Button4" type="Button" parent="HBoxContainer/RightPane/ScrollContainer/MarginContainer/Levels" unique_id=2018535272]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="FadeTop" type="TextureRect" parent="HBoxContainer/RightPane" unique_id=139940880]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_nr1ji")
+
+[node name="FadeBottom" type="TextureRect" parent="HBoxContainer/RightPane" unique_id=61860436]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0)
+texture = SubResource("GradientTexture2D_yri7s")
+
+[connection signal="pressed" from="HBoxContainer/LeftPane/Chapters/Chapter1" to="." method="_on_chapter_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPane/Chapters/Chapter2" to="." method="_on_chapter_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPane/Back" to="." method="_on_back_pressed"]

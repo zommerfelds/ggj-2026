@@ -36,4 +36,4 @@ func update_state() -> void:
 
 
 func _on_confirm_pressed() -> void:
-	SignalBus.change_screen.emit("menu")
+	SignalBus.change_screen.emit(SignalBus.Screen.MENU)
