@@ -2,6 +2,7 @@ extends Node3D
 class_name Level
 
 
+@export var chapter_index: int = 1
 @export var level_index: int = 0
 
 var rock_scene = preload("uid://gspapybfyiaj")
@@ -16,11 +17,12 @@ var tall_bush_scene = preload("res://level/tall_bush/tall_bush.tscn")
 
 
 # Only X and Z matter for the grid size
-var grid_size: Vector3i = Vector3i(6, -1, 8)
-var level_name = ""
+var grid_size: Vector3i
+var level_name: String
 
 func _ready() -> void:
-	var level_data = chapter_1[clamp(level_index, 0, chapter_1.size() - 1)]
+	var chapter = chapters[clamp(chapter_index, 0, chapters.size() - 1)]
+	var level_data = chapter[clamp(level_index, 0, chapter.size() - 1)]
 	level_name = level_data.name
 	grid_size = level_data.grid_size
 	level_data.populate(self)
@@ -53,6 +55,23 @@ func _process(_delta: float) -> void:
 	$Floor/FloorMesh.position = $CameraPivot/FloorReference.global_position
 
 
+# Returns [chapter, level] of the level "delta" steps away (-1, 0 or 1).
+static func level_offset(chapter: int, level: int, delta: int) -> Array[int]:
+	var new_level = level + delta
+
+	if new_level < 0:
+		# Go to last level of previous chapter
+		var new_chap = clamp(chapter - 1, 0, chapters.size() - 1)
+		return [new_chap, chapters[new_chap].size() - 1]
+
+	if new_level > chapters[chapter].size() - 1:
+		# Go to first level of next chapter
+		var new_chap = clamp(chapter + 1, 0, chapters.size() - 1)
+		return [new_chap, 0]
+
+	return [chapter, new_level]
+
+
 func add_player(x, z) -> void:
 	var player = player_scene.instantiate()
 	player.position = Vector3(x + 0.5, 0.0, z + 0.5)
@@ -78,11 +97,10 @@ func add_tall_bush(x, z) -> void:
 	$Objects.add_child(tall_bush)
 
 
-func add_goal(x, z) -> void:
+func add_goal(x, z, disabled = false) -> void:
 	var goal = goal_scene.instantiate()
 	goal.position = Vector3(x + 0.5, 0, z + 0.5)
-	# TODO: remove this hack once the disable flag state is implemented
-	if level_index == 0:
+	if disabled:
 		goal.disable_flag()
 	$Objects.add_child(goal)
 
@@ -148,9 +166,9 @@ class LevelData:
 		populator.call(l)
 
 
-static var chapter_1: Array[LevelData] = [
+static var chapter_0: Array[LevelData] = [
 	LevelData.new("Test level", 5, 5, func(l: Level):
-		l.add_goal(0, 1)
+		l.add_goal(0, 1, true)
 		for i in range(5):
 			l.add_bush(2, i)
 		l.add_teleport(0, 3)
@@ -159,7 +177,9 @@ static var chapter_1: Array[LevelData] = [
 		l.add_torch(3, 0)
 		l.add_plant(4, 1)
 		),
+	]
 
+static var chapter_1: Array[LevelData] = [
 	LevelData.new("Welcome!", 5, 5, func(l: Level):
 		l.add_goal(0, 1)
 		l.add_bush(2, 0)
@@ -281,7 +301,9 @@ static var chapter_1: Array[LevelData] = [
 		l.add_goal(2, 4)
 		l.add_player(2, 2),
 		),
+	]
 
+static var chapter_2: Array[LevelData] = [
 	LevelData.new("It's getting crowded in here!", 5, 5, func(l: Level):
 		l.add_goal(2, 2)
 		l.add_bush(2, 3)
@@ -430,7 +452,9 @@ static var chapter_1: Array[LevelData] = [
 		l.add_plant(1,7)
 		l.add_player(0, 8),
 		),
+	]
 
+static var chapter_coda: Array[LevelData] = [
 	LevelData.new("Game over", 3, 3, func(l: Level):
 		l.add_goal(2, 1)
 		l.add_box(1, 2)
@@ -441,5 +465,6 @@ static var chapter_1: Array[LevelData] = [
 		l.add_player(1, 1)
 		l.add_bush(0, 0)
 		SignalBus.game_over.emit()
-		),
-	]
+		)]
+
+static var chapters = [chapter_0, chapter_1, chapter_2, chapter_coda]

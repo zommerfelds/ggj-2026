@@ -7,6 +7,7 @@ var base_button_size
 # Last mouse motion. Used to distinguish focus moves from mouse-hover versus
 # keyboard/controller since only the latter should cause automatic scrolling.
 var using_mouse_frame = 0
+var current_chapter = 1
 
 
 func _ready() -> void:
@@ -30,7 +31,7 @@ func update_state() -> void:
 		default_button.grab_focus.call_deferred()
 
 
-func update_list(levels) -> void:
+func update_list() -> void:
 	for child in %Levels.get_children():
 		%Levels.remove_child(child)
 		child.queue_free()
@@ -38,15 +39,16 @@ func update_list(levels) -> void:
 	for i in 2:  # Hacky top padding
 		%Levels.add_child(Label.new())
 
-	for i in levels:
-		var level = Level.chapter_1[i]
+	var levels = Level.chapters[current_chapter]
+	for i in levels.size():
+		var level = levels[i]
 		var b = Button.new()
-		b.text = "%d: %s" % [i, level.name]
+		b.text = "%d: %s" % [i + 1, level.name]
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.pressed.connect(level_selected.bind(i))
 		%Levels.add_child(b)
 		MenuCommon.hover_to_focus(b)
-		if i == levels[0]:
+		if i == 0:
 			default_button = b
 	for i in 3:  # Hacky bottom padding
 		%Levels.add_child(Label.new())
@@ -98,7 +100,7 @@ func update_layout() -> void:
 
 
 func level_selected(index: int):
-	SignalBus.select_level.emit(index)
+	SignalBus.select_level.emit(current_chapter, index)
 	SignalBus.change_screen.emit(SignalBus.Screen.GAME)
 
 
@@ -109,10 +111,12 @@ func _on_back_pressed() -> void:
 func _on_chapter_1_pressed() -> void:
 	%Chapter1.button_pressed = true
 	%Chapter2.button_pressed = false
-	update_list(range(1, 12 + 1))
+	current_chapter = 1
+	update_list()
 
 
 func _on_chapter_2_pressed() -> void:
 	%Chapter1.button_pressed = false
 	%Chapter2.button_pressed = true
-	update_list(range(13, 20 + 1))
+	current_chapter = 2
+	update_list()

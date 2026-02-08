@@ -17,27 +17,52 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ejwk7")
 
-[node name="Label" type="Label" parent="." unique_id=1856021398]
+[node name="LabelChapter" type="Label" parent="." unique_id=1474786003]
 layout_mode = 2
-text = "Level"
+text = "Chapter"
 
-[node name="ButtonPrev" type="Button" parent="." unique_id=1124336718]
+[node name="PrevChapter" type="Button" parent="." unique_id=585591434]
 unique_name_in_owner = true
 layout_mode = 2
 text = "<"
 
-[node name="LineEdit" type="LineEdit" parent="." unique_id=156994574]
+[node name="TextChapter" type="LineEdit" parent="." unique_id=1852857808]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
-text = "10"
+text = "0"
 context_menu_enabled = false
 emoji_menu_enabled = false
 selecting_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 
-[node name="ButtonNext" type="Button" parent="." unique_id=351400637]
+[node name="NextChapter" type="Button" parent="." unique_id=1461805681]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">"
+
+[node name="LabelLevel" type="Label" parent="." unique_id=1856021398]
+layout_mode = 2
+text = "Level"
+
+[node name="PrevLevel" type="Button" parent="." unique_id=1124336718]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<"
+
+[node name="TextLevel" type="LineEdit" parent="." unique_id=156994574]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+text = "12"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="NextLevel" type="Button" parent="." unique_id=351400637]
 unique_name_in_owner = true
 layout_mode = 2
 text = ">"

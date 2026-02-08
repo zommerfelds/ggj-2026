@@ -8,6 +8,7 @@ var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
 var home_texture: Texture2D = load("res://game_ui/home_button.png")
 
 var level: Node
+var chapter_index = LevelSelector.get_res().chapter
 var level_index = LevelSelector.get_res().level
 var can_rotate = false
 var time_since_interaction = 0.0
@@ -51,9 +52,9 @@ func _process(delta) -> void:
 
 	time_since_interaction += delta
 	updateInstructionsText()
-	$Overlay/LevelName.text = "Level %d" % level_index
+	$Overlay/LevelName.text = "Level %d:%d" % [chapter_index, level_index + 1]
 	if level.level_name != "":
-		$Overlay/LevelName.text = $Overlay/LevelName.text + ": %s" % level.level_name
+		$Overlay/LevelName.text = $Overlay/LevelName.text + " | %s" % level.level_name
 	if (Input.is_action_pressed("skip_level_1") && Input.is_action_just_pressed("skip_level_2")
 	 || Input.is_action_pressed("skip_level_2") && Input.is_action_just_pressed("skip_level_1")):
 		next_level()
@@ -65,17 +66,20 @@ func _process(delta) -> void:
 	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button_right"))):
 		next_level()
 
+
 func reset_level() -> void:
 	level.queue_free()
 	call_deferred("setup_level")
 
-func next_level(delta: int = 1) -> void:
-	level.queue_free()
-	level_index += delta
-	call_deferred("setup_level")
 
-func select_level(index: int) -> void:
+func next_level(delta: int = 1) -> void:
+	var new = Level.level_offset(chapter_index, level_index, delta)
+	select_level(new[0], new[1])
+
+
+func select_level(chapter: int, index: int) -> void:
 	level.queue_free()
+	chapter_index = chapter
 	level_index = index
 	call_deferred("setup_level")
 
@@ -93,6 +97,7 @@ func setup_level() -> void:
 	%ParadoxBackdrop.visible = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
+	level.chapter_index = chapter_index
 	level.level_index = level_index
 	add_child(level)
 	update_buttons()
