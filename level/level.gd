@@ -19,301 +19,10 @@ var grid_size: Vector3i = Vector3i(6, -1, 8)
 var level_name = ""
 
 func _ready() -> void:
-	match level_index:
-		0:
-			level_name = "Test level"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 1)
-			for i in range(5):
-				add_bush(2, i)
-			add_teleport(0, 3)
-			add_teleport(4, 3)
-			add_player(4, 4)
-			add_torch(3, 0)
-			add_plant(4, 1)
-		1:
-			level_name = "Welcome!"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 1)
-			add_bush(2, 0)
-			add_bush(2, 1)
-			add_bush(2, 2)
-			add_bush(2, 3)
-			add_player(4, 1)
-		2:
-			level_name = "Boxes can be pushed!"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 0)
-			add_bush(4, 1)
-			add_box(3, 1)
-			add_box(3, 2)
-			add_bush(3, 3)
-			add_box(2, 2)
-			add_bush(1, 2)
-			add_bush(1, 3)
-			add_bush(1, 4)
-			add_bush(2, 0)
-			add_player(4, 2)
-		3:
-			level_name = "Potted plants can be pushed, too!"
-			grid_size = Vector3i(5, -1, 6)
-			add_goal(0, 0)
-			add_tall_bush(0, 3)
-			add_tall_bush(1, 3)
-			add_tall_bush(2, 3)
-			add_plant(3, 3)
-			add_tall_bush(4, 3)
-			add_player(2, 5)
-		4:
-			level_name = "Is something hiding here?"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(1, 2)
-			add_plant(2, 3)
-			add_plant(4, 2)
-			add_player(3, 1)
-		5:
-			level_name = "Where did it go?"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 3)
-			add_player(3, 2)
-			add_bush(0, 1)
-			add_bush(0, 2)
-			add_bush(2, 1)
-			add_bush(2, 2)
-			add_bush(2, 3)
-			add_bush(3, 3)
-			add_bush(4, 3)
-			add_plant(1, 1)
-		6:
-			level_name = "Perspective matters!"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(1, 1)
-			add_tall_bush(2, 2)
-			add_player(4, 1)
-			add_rotation_switch(4, 2)
-		7:
-			level_name = "What if I can't see it?"
-			grid_size = Vector3i(6, -1, 5)
-			add_goal(0, 1)
-			add_player(4, 2)
-			for x in 5:
-				add_bush(3, x)
-			add_tall_bush(4, 0)
-			add_tall_bush(1, 0)
-			add_rotation_switch(0, 4)
-			add_rotation_switch(5, 4)
-		8:
-			level_name = "Magic trick"
-			grid_size = Vector3i(6, -1, 5)
-			add_player(0, 4)
-			add_bush(2, 4)
-			add_bush(2, 3)
-			add_bush(2, 2)
-			add_bush(1, 0)
-			add_bush(2, 0)
-			add_bush(4, 0)
-			add_tall_bush(4, 2)
-			add_box(1, 1)
-			add_goal(5, 4)
-		9:
-			level_name = "Push to hide"
-			grid_size = Vector3i(6, -1, 4)
-			add_goal(0, 0)
-			for y in 6:
-				add_bush(y, 1)
-			add_bush(2, 0)
-			add_plant(4, 2)
-			add_player(4, 0)
-		10:
-			level_name = "A pair of bushes"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 4)
-			add_bush(1, 4)
-			add_bush(0, 3)
-			add_plant(2, 2)
-			add_player(0, 1)
-			add_rotation_switch(4, 2)
-		11:
-			level_name = "Two layers"
-			grid_size = Vector3i(7, -1, 5)
-			for i in range(5):
-				add_bush(1, i)
-				add_bush(3, i)
-			add_plant(5, 1)
-			add_plant(5, 3)
-			add_goal(0, 2)
-			add_player(6, 2)
-		12:
-			level_name = "To rotate or not to rotate"
-			grid_size = Vector3i(4, -1, 5)
-			for i in range(4):
-				add_bush(i, 3)
-			add_plant(2, 0)
-			add_rotation_switch(1, 1)
-			add_tall_bush(0, 2)
-			add_goal(2, 4)
-			add_player(2, 2)
-		13:
-			level_name = "It's getting crowded in here!"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(2, 2)
-			add_bush(2, 3)
-			add_bush(3, 2)
-			add_bush(2, 1)
-			add_bush(1, 2)
-
-			add_plant(1, 1)
-			add_plant(1, 3)
-			add_plant(3, 1)
-			add_plant(3, 3)
-			add_plant(1, 4)
-
-			add_player(4, 0)
-			add_rotation_switch(4, 1)
-		14:
-			level_name = "Ramping up the challenge"
-			grid_size = Vector3i(5, -1, 5)
-			add_goal(0, 4)
-			add_bush(1, 4)
-			add_bush(2, 4)
-			add_bush(0, 3)
-			add_bush(0, 2)
-
-			add_plant(2, 3)
-			add_plant(2, 2)
-			add_plant(1, 2)
-			add_rotation_switch(4, 0)
-
-			add_player(4, 4)
-		15:
-			level_name = "Palace garden"
-			grid_size = Vector3i(7, -1, 7)
-			add_plant(3, 5)
-			add_player(6, 6)
-			add_rotation_switch(3, 4)
-			for i in range(2, 5):
-				add_bush(i, 3)
-			for i in range(0, 4):
-				add_bush(1, i)
-				add_bush(5, i)
-			add_plant(4, 2)
-			add_plant(2, 2)
-			add_plant(4, 0)
-			add_plant(2, 0)
-			add_goal(3, 1)
-			add_bush(2, 4)
-			add_bush(4, 4)
-			add_bush(1, 5)
-			add_bush(5, 5)
-		16:
-			level_name = "Tall bushes all around"
-			grid_size = Vector3i(5, -1, 7)
-			add_bush(1, 0)
-			add_rotation_switch(0, 1)
-			add_tall_bush(2, 1)
-			add_tall_bush(4, 1)
-			add_tall_bush(2, 2)
-			add_goal(3, 2)
-			add_tall_bush(0, 3)
-			add_plant(2, 3)
-			add_bush(3, 3)
-			add_tall_bush(4, 3)
-			add_tall_bush(1, 4)
-			add_player(3, 4)
-			add_tall_bush(4, 4)
-			add_bush(2, 5)
-			add_bush(0, 6)
-		17:
-			level_name = "Too late"
-			grid_size = Vector3i(8, -1, 6)
-			add_bush(7, 3)
-			add_goal(7, 4)
-			add_bush(6, 3)
-			add_bush(6, 4)
-			add_bush(6, 5)
-			add_tall_bush(5, 0)
-			for i in range(6):
-				add_bush(4, i)
-			add_plant(3, 2)
-			add_rotation_switch(2, 3)
-			add_tall_bush(1, 2)
-			add_plant(1, 4)
-			add_bush(1, 5)
-			add_bush(0, 4)
-			add_player(0, 0)
-		18:
-			level_name = "Soko soko"
-			grid_size = Vector3i(5, -1, 5)
-			add_bush(0, 1)
-			add_bush(1, 0)
-			add_goal(0, 0)
-			add_player(4, 0)
-			add_plant(3, 1)
-			add_box(2, 2)
-			add_box(1, 2)
-			add_box(2, 1)
-			add_bush(1, 1)
-			add_box(3, 0)
-			add_bush(2, 3)
-			add_box(3, 3)
-		19:
-			level_name = "How do I get out of this?"
-			grid_size = Vector3i(5, -1, 5)
-			add_bush(2, 4)
-			add_rotation_switch(4, 3)
-			add_plant(3, 3)
-			add_tall_bush(2, 3)
-			add_tall_bush(0, 3)
-			add_tall_bush(2, 2)
-			add_goal(1, 2)
-			add_bush(4, 1)
-			add_plant(2, 1)
-			add_bush(1, 1)
-			add_tall_bush(0, 1)
-			add_bush(1, 0)
-			add_player(0, 4)
-		20:
-			level_name = "Don't get stuck!"
-			grid_size = Vector3i(9, -1, 9)
-			add_goal(0, 0)
-			add_tall_bush(1,1)
-
-			add_rotation_switch(4, 4)
-
-			add_box(3,3)
-			add_box(3,4)
-			add_box(3,5)
-
-			add_box(4,3)
-			add_box(4,5)
-
-			add_box(5,4)
-
-			add_bush(5,5)
-			add_bush(5,2)
-			add_bush(2,3)
-			add_bush(2,4)
-			add_bush(4,2)
-			add_bush(6,4)
-			add_bush(6,3)
-			add_bush(4,6)
-			add_bush(6,5)
-
-			add_plant(6,6)
-			add_plant(1,7)
-			add_player(0, 8)
-		_:
-			level_name = "Game over"
-			grid_size = Vector3i(3, -1, 3)
-			add_goal(2, 1)
-			add_box(1, 2)
-			add_plant(2, 0)
-			add_rotation_switch(1,0)
-			add_bush(0, 1)
-			add_tall_bush(0, 2)
-			add_player(1, 1)
-			add_bush(0, 0)
-			SignalBus.game_over.emit()
+	var level_data = chapter_1[clamp(level_index, 0, chapter_1.size() - 1)]
+	level_name = level_data.name
+	grid_size = level_data.grid_size
+	level_data.populate()
 
 	# Resize floor:
 	$Floor/FloorMesh.mesh.size = Vector2(grid_size.x, grid_size.z)
@@ -420,3 +129,316 @@ func update_camera_size() -> void:
 	var size_limit_y = level_size / 2.1
 
 	$CameraPivot/Camera3D.size = max(size_limit_y, size_limit_x)
+
+
+# Container for the information about a single level.
+class LevelData:
+	var name: String
+	var grid_size: Vector3i
+	# Function to populate the level grid
+	var populator: Callable
+
+	func _init(n, x, z, pop):
+		name = n
+		grid_size = Vector3i(x, -1, z)
+		populator = pop
+
+	func populate():
+		populator.call()
+
+
+var chapter_1: Array[LevelData] = [
+	LevelData.new("Test level", 5, 5, func():
+		add_goal(0, 1)
+		for i in range(5):
+			add_bush(2, i)
+		add_teleport(0, 3)
+		add_teleport(4, 3)
+		add_player(4, 4)
+		add_torch(3, 0)
+		add_plant(4, 1)
+		),
+
+	LevelData.new("Welcome!", 5, 5, func():
+		add_goal(0, 1)
+		add_bush(2, 0)
+		add_bush(2, 1)
+		add_bush(2, 2)
+		add_bush(2, 3)
+		add_player(4, 1)
+		),
+
+	LevelData.new("Boxes can be pushed!", 5, 5, func():
+		add_goal(0, 0)
+		add_bush(4, 1)
+		add_box(3, 1)
+		add_box(3, 2)
+		add_bush(3, 3)
+		add_box(2, 2)
+		add_bush(1, 2)
+		add_bush(1, 3)
+		add_bush(1, 4)
+		add_bush(2, 0)
+		add_player(4, 2)
+		),
+
+	LevelData.new("Potted plants can be pushed, too!", 5, 6, func():
+		add_goal(0, 0)
+		add_tall_bush(0, 3)
+		add_tall_bush(1, 3)
+		add_tall_bush(2, 3)
+		add_plant(3, 3)
+		add_tall_bush(4, 3)
+		add_player(2, 5)
+		),
+
+	LevelData.new("Is something hiding here?", 5, 5, func():
+		add_goal(1, 2)
+		add_plant(2, 3)
+		add_plant(4, 2)
+		add_player(3, 1),
+		),
+
+	LevelData.new("Where did it go?", 5, 5, func():
+		add_goal(0, 3)
+		add_player(3, 2)
+		add_bush(0, 1)
+		add_bush(0, 2)
+		add_bush(2, 1)
+		add_bush(2, 2)
+		add_bush(2, 3)
+		add_bush(3, 3)
+		add_bush(4, 3)
+		add_plant(1, 1),
+		),
+
+	LevelData.new("Perspective matters!", 5, 5, func():
+		add_goal(1, 1)
+		add_tall_bush(2, 2)
+		add_player(4, 1)
+		add_rotation_switch(4, 2),
+		),
+
+	LevelData.new("What if I can't see it?", 6, 5, func():
+		add_goal(0, 1)
+		add_player(4, 2)
+		for x in 5:
+			add_bush(3, x)
+		add_tall_bush(4, 0)
+		add_tall_bush(1, 0)
+		add_rotation_switch(0, 4)
+		add_rotation_switch(5, 4),
+		),
+
+	LevelData.new("Magic trick", 6, 5, func():
+		add_player(0, 4)
+		add_bush(2, 4)
+		add_bush(2, 3)
+		add_bush(2, 2)
+		add_bush(1, 0)
+		add_bush(2, 0)
+		add_bush(4, 0)
+		add_tall_bush(4, 2)
+		add_box(1, 1)
+		add_goal(5, 4),
+		),
+
+	LevelData.new("Push to hide", 6, 4, func():
+		add_goal(0, 0)
+		for y in 6:
+			add_bush(y, 1)
+		add_bush(2, 0)
+		add_plant(4, 2)
+		add_player(4, 0),
+		),
+
+	LevelData.new("A pair of bushes", 5, 5, func():
+		add_goal(0, 4)
+		add_bush(1, 4)
+		add_bush(0, 3)
+		add_plant(2, 2)
+		add_player(0, 1)
+		add_rotation_switch(4, 2),
+		),
+
+	LevelData.new("Two layers", 7, 5, func():
+		for i in range(5):
+			add_bush(1, i)
+			add_bush(3, i)
+		add_plant(5, 1)
+		add_plant(5, 3)
+		add_goal(0, 2)
+		add_player(6, 2),
+		),
+
+	LevelData.new("To rotate or not to rotate", 4, 5, func():
+		for i in range(4):
+			add_bush(i, 3)
+		add_plant(2, 0)
+		add_rotation_switch(1, 1)
+		add_tall_bush(0, 2)
+		add_goal(2, 4)
+		add_player(2, 2),
+		),
+
+	LevelData.new("It's getting crowded in here!", 5, 5, func():
+		add_goal(2, 2)
+		add_bush(2, 3)
+		add_bush(3, 2)
+		add_bush(2, 1)
+		add_bush(1, 2)
+
+		add_plant(1, 1)
+		add_plant(1, 3)
+		add_plant(3, 1)
+		add_plant(3, 3)
+		add_plant(1, 4)
+
+		add_player(4, 0)
+		add_rotation_switch(4, 1),
+		),
+
+	LevelData.new("Ramping up the challenge", 5, 5, func():
+		add_goal(0, 4)
+		add_bush(1, 4)
+		add_bush(2, 4)
+		add_bush(0, 3)
+		add_bush(0, 2)
+
+		add_plant(2, 3)
+		add_plant(2, 2)
+		add_plant(1, 2)
+		add_rotation_switch(4, 0)
+
+		add_player(4, 4),
+		),
+
+	LevelData.new("Palace garden", 7, 7, func():
+		add_plant(3, 5)
+		add_player(6, 6)
+		add_rotation_switch(3, 4)
+		for i in range(2, 5):
+			add_bush(i, 3)
+		for i in range(0, 4):
+			add_bush(1, i)
+			add_bush(5, i)
+		add_plant(4, 2)
+		add_plant(2, 2)
+		add_plant(4, 0)
+		add_plant(2, 0)
+		add_goal(3, 1)
+		add_bush(2, 4)
+		add_bush(4, 4)
+		add_bush(1, 5)
+		add_bush(5, 5),
+		),
+
+	LevelData.new("Tall bushes all around", 5, 7, func():
+		add_bush(1, 0)
+		add_rotation_switch(0, 1)
+		add_tall_bush(2, 1)
+		add_tall_bush(4, 1)
+		add_tall_bush(2, 2)
+		add_goal(3, 2)
+		add_tall_bush(0, 3)
+		add_plant(2, 3)
+		add_bush(3, 3)
+		add_tall_bush(4, 3)
+		add_tall_bush(1, 4)
+		add_player(3, 4)
+		add_tall_bush(4, 4)
+		add_bush(2, 5)
+		add_bush(0, 6),
+		),
+
+	LevelData.new("Too late", 8, 6, func():
+		add_bush(7, 3)
+		add_goal(7, 4)
+		add_bush(6, 3)
+		add_bush(6, 4)
+		add_bush(6, 5)
+		add_tall_bush(5, 0)
+		for i in range(6):
+			add_bush(4, i)
+		add_plant(3, 2)
+		add_rotation_switch(2, 3)
+		add_tall_bush(1, 2)
+		add_plant(1, 4)
+		add_bush(1, 5)
+		add_bush(0, 4)
+		add_player(0, 0),
+		),
+
+	LevelData.new("Soko soko", 5, 5, func():
+		add_bush(0, 1)
+		add_bush(1, 0)
+		add_goal(0, 0)
+		add_player(4, 0)
+		add_plant(3, 1)
+		add_box(2, 2)
+		add_box(1, 2)
+		add_box(2, 1)
+		add_bush(1, 1)
+		add_box(3, 0)
+		add_bush(2, 3)
+		add_box(3, 3),
+		),
+
+	LevelData.new("How do I get out of this?", 5, 5, func():
+		add_bush(2, 4)
+		add_rotation_switch(4, 3)
+		add_plant(3, 3)
+		add_tall_bush(2, 3)
+		add_tall_bush(0, 3)
+		add_tall_bush(2, 2)
+		add_goal(1, 2)
+		add_bush(4, 1)
+		add_plant(2, 1)
+		add_bush(1, 1)
+		add_tall_bush(0, 1)
+		add_bush(1, 0)
+		add_player(0, 4),
+		),
+
+	LevelData.new("Don't get stuck!", 9, 9, func():
+		add_goal(0, 0)
+		add_tall_bush(1,1)
+
+		add_rotation_switch(4, 4)
+
+		add_box(3,3)
+		add_box(3,4)
+		add_box(3,5)
+
+		add_box(4,3)
+		add_box(4,5)
+
+		add_box(5,4)
+
+		add_bush(5,5)
+		add_bush(5,2)
+		add_bush(2,3)
+		add_bush(2,4)
+		add_bush(4,2)
+		add_bush(6,4)
+		add_bush(6,3)
+		add_bush(4,6)
+		add_bush(6,5)
+
+		add_plant(6,6)
+		add_plant(1,7)
+		add_player(0, 8),
+		),
+
+	LevelData.new("Game over", 3, 3, func():
+		add_goal(2, 1)
+		add_box(1, 2)
+		add_plant(2, 0)
+		add_rotation_switch(1,0)
+		add_bush(0, 1)
+		add_tall_bush(0, 2)
+		add_player(1, 1)
+		add_bush(0, 0)
+		SignalBus.game_over.emit()
+		),
+	]
