@@ -57,6 +57,12 @@ pivot_offset_ratio = Vector2(1, 1)
 theme_override_constants/separation = 40
 alignment = 2
 
+[node name="Debug" type="Button" parent="Buttons" unique_id=650971326]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Enable debug"
+
 [node name="More" type="Button" parent="Buttons" unique_id=226544220]
 unique_name_in_owner = true
 layout_mode = 2
@@ -68,5 +74,6 @@ layout_mode = 2
 text = "OK"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Buttons/Debug" to="." method="_on_debug_pressed"]
 [connection signal="pressed" from="Buttons/More" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Buttons/OK" to="." method="_on_ok_pressed"]

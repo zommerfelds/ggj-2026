@@ -31,7 +31,7 @@ func update_text() -> void:
 	base_font_size = 80 if page == 0 else 24
 	update_layout()
 
-	match page:
+	match page % 3:
 		0:
 			var full_time = [ "Christian Zommerfelds", "Björn Carlin", "Valentin Schlattinger" ]
 			var part_time = [ "Yue Li" ]
@@ -55,9 +55,12 @@ func update_text() -> void:
 			%Text.text = "Also using:\n\n" + "\n\n".join(misc)
 			%Text.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 
+	if page > 6:
+		%Debug.visible = true
+
 
 func _on_next_pressed() -> void:
-	page = (page + 1) % 3
+	page += 1
 	update_text()
 
 
@@ -68,3 +71,8 @@ func _on_ok_pressed() -> void:
 func _on_visibility_changed() -> void:
 	if visible and Platform.current_input_device != Platform.InputDevice.TOUCH:
 		%OK.grab_focus.call_deferred()
+
+
+func _on_debug_pressed() -> void:
+	Settings.debug_mode = !Settings.debug_mode
+	%Debug.text = "Disable debug" if Settings.debug_mode else "Enable debug"

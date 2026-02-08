@@ -67,6 +67,7 @@ layout_mode = 2
 color = Color(1, 0.42000002, 0.42000002, 1)
 
 [node name="Chapters" type="VBoxContainer" parent="HBoxContainer/LeftPane" unique_id=246355009]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Padding" type="Label" parent="HBoxContainer/LeftPane/Chapters" unique_id=811126647]
@@ -86,6 +87,13 @@ r
  "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Chapter0" type="Button" parent="HBoxContainer/LeftPane/Chapters" unique_id=73406079]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+toggle_mode = true
+text = "Chapter 0"
 
 [node name="Chapter1" type="Button" parent="HBoxContainer/LeftPane/Chapters" unique_id=1068971463]
 unique_name_in_owner = true
@@ -168,6 +176,7 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0)
 texture = SubResource("GradientTexture2D_yri7s")
 
+[connection signal="pressed" from="HBoxContainer/LeftPane/Chapters/Chapter0" to="." method="_on_chapter_0_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPane/Chapters/Chapter1" to="." method="_on_chapter_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPane/Chapters/Chapter2" to="." method="_on_chapter_2_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPane/Back" to="." method="_on_back_pressed"]

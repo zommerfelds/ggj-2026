@@ -8,14 +8,18 @@ var base_button_size
 # keyboard/controller since only the latter should cause automatic scrolling.
 var using_mouse_frame = 0
 var current_chapter = 1
+var chapters: Array[Button] = []
 
 
 func _ready() -> void:
 	base_button_size = theme.get_font_size("font_size", "Button")
 	theme = theme.duplicate()
 
-	MenuCommon.hover_to_focus(%Chapter1)
-	MenuCommon.hover_to_focus(%Chapter2)
+	for child in %Chapters.get_children():
+		if child is Button:
+			chapters.append(child)
+			MenuCommon.hover_to_focus(child)
+
 	MenuCommon.hover_to_focus(%Back)
 
 	get_viewport().size_changed.connect(update_layout)
@@ -26,12 +30,16 @@ func _ready() -> void:
 
 
 func update_state() -> void:
+	%Chapter0.visible = Settings.debug_mode
 	_on_chapter_1_pressed()
 	if visible and !Platform.is_touch_device and !default_button.has_focus():
 		default_button.grab_focus.call_deferred()
 
 
 func update_list() -> void:
+	for i in chapters.size():
+		chapters[i].button_pressed = i == current_chapter
+
 	for child in %Levels.get_children():
 		%Levels.remove_child(child)
 		child.queue_free()
@@ -85,13 +93,13 @@ func update_layout() -> void:
 	theme.set_font_size("font_size", "Label", base_button_size * ui_scale)
 
 	if s.x < s.y: # Taller than wide: collapse side bar
-		%Chapter1.text = "1"
-		%Chapter2.text = "2"
+		for i in chapters.size():
+			chapters[i].text = "%d" % i
 		%Back.text = "<"
 		%SidewaysChapter.visible = true
 	else:
-		%Chapter1.text = "Chapter 1"
-		%Chapter2.text = "Chapter 2"
+		for i in chapters.size():
+			chapters[i].text = "Chapter %d" % i
 		%Back.text = "Back"
 		%SidewaysChapter.visible = false
 
@@ -108,15 +116,16 @@ func _on_back_pressed() -> void:
 	SignalBus.change_screen.emit(SignalBus.Screen.MENU)
 
 
+func _on_chapter_0_pressed() -> void:
+	current_chapter = 0
+	update_list()
+
+
 func _on_chapter_1_pressed() -> void:
-	%Chapter1.button_pressed = true
-	%Chapter2.button_pressed = false
 	current_chapter = 1
 	update_list()
 
 
 func _on_chapter_2_pressed() -> void:
-	%Chapter1.button_pressed = false
-	%Chapter2.button_pressed = true
 	current_chapter = 2
 	update_list()
