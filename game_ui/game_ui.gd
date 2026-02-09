@@ -96,6 +96,7 @@ func select_level(chapter: int, index: int) -> void:
 
 
 func setup_level() -> void:
+	is_game_over = false
 	time_since_interaction = 0.0
 	%WonLevel.visible = false
 	%WonLevelInstruction.visible = false
@@ -190,6 +191,10 @@ func updateInstructionsText():
 			%RotationInstructionsTouch.visible = true
 			%WonLevelTouch.visible = true
 
+	%GameOver.visible = is_game_over
+	$Overlay/LevelName.visible = !is_game_over
+	$Overlay/LevelNameBackdrop.visible = !is_game_over
+
 
 func set_can_rotate(new_value: bool):
 	can_rotate = new_value
@@ -224,10 +229,9 @@ func camera_rotated():
 	times_camera_rotated += 1
 
 func game_over():
-	$Overlay/LevelName.visible = false
-	$Overlay/LevelNameBackdrop.visible = false
 	is_game_over = true
-	%GameOver.visible = true
+	updateInstructionsText()
+
 
 func can_interrupt(node: Node = self):
 	if (node.has_method("is_interruptible")):
