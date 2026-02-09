@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
 [ext_resource type="PackedScene" uid="uid://hsaxhgiytdhw" path="res://game_ui/joystick.tscn" id="4_vsxus"]
-[ext_resource type="PackedScene" uid="uid://bxsicl83w2dvo" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
+[ext_resource type="PackedScene" uid="uid://baec03jkec2ug" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50

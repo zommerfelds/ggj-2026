@@ -8,8 +8,6 @@ var next_level_texture: Texture2D = load("res://game_ui/noun-next-1548812.svg")
 var home_texture: Texture2D = load("res://game_ui/noun-home-4460073.svg")
 
 var level: Node
-var chapter_index = LevelSelector.get_res().chapter
-var level_index = LevelSelector.get_res().level
 var can_rotate = false
 var time_since_interaction = 0.0
 var times_camera_rotated = 0
@@ -51,7 +49,7 @@ func _process(delta) -> void:
 
 	time_since_interaction += delta
 	updateInstructionsText()
-	$Overlay/LevelName.text = "Level %d:%d" % [chapter_index, level_index + 1]
+	$Overlay/LevelName.text = "Level %d:%d" % [GameProgress.current_chapter(), GameProgress.current_level() + 1]
 	if level.level_name != "":
 		$Overlay/LevelName.text = $Overlay/LevelName.text + " | %s" % level.level_name
 	if (Input.is_action_pressed("skip_level_1") && Input.is_action_just_pressed("skip_level_2")
@@ -84,14 +82,13 @@ func reset_level() -> void:
 
 
 func next_level(delta: int = 1) -> void:
-	var new = Level.level_offset(chapter_index, level_index, delta)
+	var new = Level.level_offset(GameProgress.current_chapter(), GameProgress.current_level(), delta)
 	select_level(new[0], new[1])
 
 
 func select_level(chapter: int, index: int) -> void:
 	level.queue_free()
-	chapter_index = chapter
-	level_index = index
+	GameProgress.set_progres(chapter, index)
 	call_deferred("setup_level")
 
 
@@ -109,8 +106,8 @@ func setup_level() -> void:
 	%ParadoxBackdrop.visible = false
 	%ParadoxLabel.visible = false
 	level = level_preload.instantiate()
-	level.chapter_index = chapter_index
-	level.level_index = level_index
+	level.chapter_index = GameProgress.current_chapter()
+	level.level_index = GameProgress.current_level()
 	add_child(level)
 	update_buttons()
 
@@ -148,7 +145,8 @@ func goal_reached():
 
 func updateInstructionsText():
 	var rotationHintEnabled = times_camera_rotated < 2 || time_since_interaction > 6.0
-	var instructionsEnabled = level_index < 2 || time_since_interaction > 3.0 || has_world_ended
+	var in_tutorial = GameProgress.current_chapter() == 1 && GameProgress.current_level() < 2
+	var instructionsEnabled = in_tutorial || time_since_interaction > 3.0 || has_world_ended
 	rotationHintEnabled = rotationHintEnabled && !is_rewinding && !has_world_ended
 	instructionsEnabled = instructionsEnabled && !%WonLevel.visible && !is_game_over
 	%InstructionsBackdrop.visible = instructionsEnabled

@@ -21,6 +21,7 @@ config/icon="uid://dkleugn1cg8hh"
 
 SignalBus="*uid://bthraps6rbgjm"
 Settings="*uid://bgksj7lmr0vg0"
+GameProgress="*uid://csvb7fewjm8ot"
 Platform="*uid://dhxwmnhc0urcc"
 
 [debug]

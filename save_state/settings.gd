@@ -32,17 +32,8 @@ func _init() -> void:
 
 
 func load_state() -> void:
-	if not FileAccess.file_exists(SETTINGS_FILE):
-		return
-	var settings_file = FileAccess.open(SETTINGS_FILE, FileAccess.READ)
-	var json_string = settings_file.get_line()
-	var json = JSON.new()
+	var data = FileIO.read_json_dict(SETTINGS_FILE)
 
-	if json.parse(json_string) != OK:
-		printerr("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-		return
-
-	var data = json.data
 	debug_mode = bool(data.get("debug_mode", debug_mode))
 	sound_enabled = bool(data.get("sound_enabled", sound_enabled))
 	diagonal_arrow_keys = bool(data.get("diagonal_arrow_keys", diagonal_arrow_keys))
@@ -50,11 +41,10 @@ func load_state() -> void:
 
 
 func save_state() -> void:
-	var save_dict = {
+	var data = {
 		"debug_mode" : debug_mode,
 		"sound_enabled": sound_enabled,
 		"diagonal_arrow_keys" : diagonal_arrow_keys,
 		"always_show_touch_ui" : always_show_touch_ui,
 	}
-	var save_file = FileAccess.open(SETTINGS_FILE, FileAccess.WRITE)
-	save_file.store_line(JSON.stringify(save_dict))
+	FileIO.save_json_dict(SETTINGS_FILE, data)
