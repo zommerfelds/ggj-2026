@@ -17,6 +17,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ejwk7")
 
+[node name="LabelMobile" type="Label" parent="." unique_id=2042058925]
+layout_mode = 2
+text = "Touch UI"
+
+[node name="TouchControlsCheckBox" type="CheckBox" parent="." unique_id=1051159182]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=1520565878]
+layout_mode = 2
+
 [node name="LabelChapter" type="Label" parent="." unique_id=1474786003]
 layout_mode = 2
 text = "Chapter"
@@ -55,7 +66,7 @@ text = "<"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
-text = "12"
+text = "18"
 context_menu_enabled = false
 emoji_menu_enabled = false
 selecting_enabled = false

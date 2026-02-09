@@ -13,24 +13,28 @@ static func get_res() -> SelectedLevel:
 
 
 func _ready() -> void:
-	%NextChapter.connect("pressed", _read_text_and_update_level.bind(1, 0))
-	%PrevChapter.connect("pressed", _read_text_and_update_level.bind(-1, 0))
-	%TextChapter.connect("text_changed", _read_text_and_update_level.bind(0, 0).unbind(1))
+	%NextChapter.connect("pressed", _read_state_and_update_level.bind(1, 0))
+	%PrevChapter.connect("pressed", _read_state_and_update_level.bind(-1, 0))
+	%TextChapter.connect("text_changed", _read_state_and_update_level.bind(0, 0).unbind(1))
 
-	%NextLevel.connect("pressed", _read_text_and_update_level.bind(0, 1))
-	%PrevLevel.connect("pressed", _read_text_and_update_level.bind(0, -1))
-	%TextLevel.connect("text_changed", _read_text_and_update_level.bind(0, 0).unbind(1))
+	%NextLevel.connect("pressed", _read_state_and_update_level.bind(0, 1))
+	%PrevLevel.connect("pressed", _read_state_and_update_level.bind(0, -1))
+	%TextLevel.connect("text_changed", _read_state_and_update_level.bind(0, 0).unbind(1))
+
+	%TouchControlsCheckBox.connect("toggled", _read_state_and_update_level.bind(0, 0).unbind(1))
 
 	_update_text(get_res().chapter, get_res().level)
 
 
-func _read_text_and_update_level(delta_chapter: int = 0, delta_level: int = 0) -> void:
+func _read_state_and_update_level(delta_chapter: int = 0, delta_level: int = 0) -> void:
 	var chapter = int(%TextChapter.text) + delta_chapter
 	var level = int(%TextLevel.text) - 1 + delta_level
+	var touch_ui_enabled = %TouchControlsCheckBox.button_pressed
 
 	var config = get_res()
 	config.chapter = chapter
 	config.level = level
+	config.touch_ui_enabled = touch_ui_enabled
 	ResourceSaver.save(config, "res://addons/level_selector/selected_level.tres")
 
 	_update_text(chapter, level)

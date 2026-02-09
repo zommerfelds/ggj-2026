@@ -25,7 +25,7 @@ func _init() -> void:
 
 
 func init_is_touch_device():
-	is_touch_device = DEBUG_FORCE_TOUCH_DEVICE || OS.get_name() == "Android" || OS.get_name() == "iOS"
+	is_touch_device = DEBUG_FORCE_TOUCH_DEVICE || LevelSelector.get_res().touch_ui_enabled || OS.get_name() == "Android" || OS.get_name() == "iOS"
 
 	var window = JavaScriptBridge.get_interface("window")
 	if window:
