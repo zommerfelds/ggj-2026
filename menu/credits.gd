@@ -6,6 +6,9 @@ var base_font_size = 80
 
 
 func _ready() -> void:
+	if Platform.show_touch_ui():
+		theme = MenuCommon.theme_without_focus()
+
 	for b in $Buttons.get_children():
 		MenuCommon.hover_to_focus(b)
 	update_text()

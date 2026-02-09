@@ -13,6 +13,9 @@ static func get_res() -> SelectedLevel:
 
 
 func _ready() -> void:
+	if Platform.show_touch_ui():
+		theme = MenuCommon.theme_without_focus()
+
 	%NextChapter.connect("pressed", _read_state_and_update_level.bind(1, 0))
 	%PrevChapter.connect("pressed", _read_state_and_update_level.bind(-1, 0))
 	%TextChapter.connect("text_changed", _read_state_and_update_level.bind(0, 0).unbind(1))

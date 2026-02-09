@@ -12,6 +12,9 @@ var chapters: Array[Button] = []
 
 
 func _ready() -> void:
+	if Platform.show_touch_ui():
+		theme = MenuCommon.theme_without_focus()
+
 	base_button_size = theme.get_font_size("font_size", "Button")
 	theme = theme.duplicate()
 

@@ -2,6 +2,9 @@ extends Control
 
 
 func _ready() -> void:
+	if Platform.show_touch_ui():
+		theme = MenuCommon.theme_without_focus()
+
 	# Make mouse hover move the focus so hovering works the same as keyboard/controller focus moves:
 	for b in %Checkboxes.get_children():
 		if b is Button:
