@@ -31,7 +31,7 @@ func update_layout() -> void:
 	pass
 
 func update_text() -> void:
-	base_font_size = 80 if page == 0 else 24
+	base_font_size = 80 if page % 3 == 0 else 24
 	update_layout()
 
 	match page % 3:
