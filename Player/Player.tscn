@@ -1447,36 +1447,23 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/17/type = "audio"
+tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/17/path = NodePath("%Face/..")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("16_7v5gs")
-}],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"on_step_sound"
+}, {
+"args": [],
+"method": &"on_step_sound"
+}]
 }
-tracks/17/use_blend = true
-tracks/18/type = "audio"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("%Face/../AudioStreamPlayer")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("16_7v5gs")
-}],
-"times": PackedFloat32Array(0.4)
-}
-tracks/18/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3mea3"]
 resource_name = "walk_back"
@@ -1686,36 +1673,23 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/17/type = "audio"
+tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("%Face/../AudioStreamPlayer")
+tracks/17/path = NodePath("%Face/..")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("16_7v5gs")
-}],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"on_step_sound"
+}, {
+"args": [],
+"method": &"on_step_sound"
+}]
 }
-tracks/17/use_blend = true
-tracks/18/type = "audio"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("%Face/../AudioStreamPlayer")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("16_7v5gs")
-}],
-"times": PackedFloat32Array(0.40000004)
-}
-tracks/18/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j23h2"]
 _data = {
@@ -1835,8 +1809,23 @@ transform = Transform3D(0.9999994, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999994, -0.0
 mesh = SubResource("PlaneMesh_6ysni")
 surface_material_override/0 = SubResource("StandardMaterial3D_evw08")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1602308569]
+[node name="AudioStreamPlayerWalk1" type="AudioStreamPlayer" parent="." unique_id=1602308569]
 unique_name_in_owner = true
+stream = ExtResource("16_7v5gs")
+volume_db = -9.155
+pitch_scale = 0.81
+max_polyphony = 2
+
+[node name="AudioStreamPlayerWalk2" type="AudioStreamPlayer" parent="." unique_id=1844397972]
+unique_name_in_owner = true
+stream = ExtResource("16_7v5gs")
+volume_db = -9.155
+pitch_scale = 0.81
+max_polyphony = 2
+
+[node name="AudioStreamPlayerWalk3" type="AudioStreamPlayer" parent="." unique_id=56155933]
+unique_name_in_owner = true
+stream = ExtResource("16_7v5gs")
 volume_db = -9.155
 pitch_scale = 0.81
 max_polyphony = 2

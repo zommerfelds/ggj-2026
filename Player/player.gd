@@ -85,6 +85,20 @@ func _physics_process(_delta):
 	set_anim_state(direction)
 
 
+func on_step_sound():
+	var audio_player
+	if not %AudioStreamPlayerWalk1.playing:
+		audio_player = %AudioStreamPlayerWalk1
+	elif not %AudioStreamPlayerWalk2.playing:
+		audio_player = %AudioStreamPlayerWalk2
+	elif not %AudioStreamPlayerWalk3.playing:
+		audio_player = %AudioStreamPlayerWalk3
+	else:
+		print("WARNING: no free track for playing step sound")
+		return
+	audio_player.volume_linear = min(velocity.length() * 0.2, 0.8) + 0.2
+	audio_player.play()
+
 func set_anim_state(direction: Vector2):
 	%AnimationPlayer.speed_scale = 1.0
 	if has_won:
@@ -167,8 +181,8 @@ func isSpaceFree(global_pos: Vector3) -> bool:
 func enter_win_state():
 	if has_won:
 		return
-	%AudioStreamPlayer.stream = preload("res://sounds/274182__littlerobotsoundfactory__jingle_win_synth_05.wav")
-	%AudioStreamPlayer.play()
+	%AudioStreamPlayer2.stream = preload("res://sounds/274182__littlerobotsoundfactory__jingle_win_synth_05.wav")
+	%AudioStreamPlayer2.play()
 	has_won = true
 	SignalBus.goal_reached.emit()
 
