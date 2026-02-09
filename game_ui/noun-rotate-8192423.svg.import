@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bixytw1hs7obe"
-path="res://.godot/imported/next_level.png-8d841bc414b70f74ce2084f1a26b79ce.ctex"
+uid="uid://covffipmivl7t"
+path="res://.godot/imported/noun-rotate-8192423.svg-b63933153c282b3f4a57446d295d999b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_ui/next_level.png"
-dest_files=["res://.godot/imported/next_level.png-8d841bc414b70f74ce2084f1a26b79ce.ctex"]
+source_file="res://game_ui/noun-rotate-8192423.svg"
+dest_files=["res://.godot/imported/noun-rotate-8192423.svg-b63933153c282b3f4a57446d295d999b.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

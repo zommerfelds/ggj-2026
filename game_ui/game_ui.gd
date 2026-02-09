@@ -3,9 +3,9 @@ extends Control
 
 var level_preload = preload("res://level/level.tscn")
 var paradox_void = preload("res://level/paradox_void/paradox_void.tscn")
-var rotate_texture: Texture2D = load("res://level/rotation_switch/rotation_switch.png")
-var next_level_texture: Texture2D = load("res://game_ui/next_level.png")
-var home_texture: Texture2D = load("res://game_ui/home_button.png")
+var rotate_texture: Texture2D = load("res://game_ui/noun-rotate-8192423.svg")
+var next_level_texture: Texture2D = load("res://game_ui/noun-next-1548812.svg")
+var home_texture: Texture2D = load("res://game_ui/noun-home-4460073.svg")
 
 var level: Node
 var chapter_index = LevelSelector.get_res().chapter

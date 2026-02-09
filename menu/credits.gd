@@ -49,7 +49,11 @@ func update_text() -> void:
 				"Jingle_Win_Synth_05.wav by LittleRobotSoundFactory -- https://freesound.org/s/274182/ -- License: Attribution 4.0",
 				"Low_Swoosh - 7.wav by SoundFlakes -- https://freesound.org/s/416478/ -- License: Attribution 4.0",
 				"Grass Step Left by spycrah -- https://freesound.org/s/535220/ -- License: Attribution 4.0",
-				"Furniture - Drawers open & close by Vrymaa -- https://freesound.org/s/802695/ -- License: Creative Commons 0"
+				"Furniture - Drawers open & close by Vrymaa -- https://freesound.org/s/802695/ -- License: Creative Commons 0",
+				# Note: I'll likely replace these icons with my own, but for now putting this:
+				"Icon: home by counloucon from Noun Project -- License: CC BY 3.0",
+				"Icon: rotate by Dwi ridwanto from Noun Project -- License: CC BY 3.0",
+				"Icon: next by Acharyas from Noun Project -- License: CC BY 3.0",
 			]
 
 			%Text.text = "Also using:\n\n" + "\n\n".join(misc)
