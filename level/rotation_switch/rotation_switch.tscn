@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://gern1dskjty8" path="res://level/rotation_switch/rotation_switch_enabled.png" id="2_q5djy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vkbyq"]
-size = Vector2(1, 1)
+size = Vector2(0.8, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5djy"]
 transparency = 1
