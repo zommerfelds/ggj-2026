@@ -452,7 +452,7 @@ grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("3_h0okc")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "Press [img=100]res://game_ui/next_level.png[/img] to continue"
+text = "Press [img=100]res://game_ui/noun-next-1548812.svg[/img] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
