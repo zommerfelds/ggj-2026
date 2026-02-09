@@ -35,6 +35,8 @@ func _physics_process(_delta):
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_forward", "move_back")).limit_length(1.0)
 
+	# This is usually correct but misses the case when a controller is connected
+	# but the player still uses the keyboard... oh well...
 	if Platform.current_input_device == Platform.InputDevice.KEYBOARD && Settings.diagonal_arrow_keys:
 		direction = direction.rotated(-PI / 4.0)
 
