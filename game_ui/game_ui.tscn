@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dhxmv2234c8py" path="res://game_ui/game_ui.gd" id="1_0osaa"]
 [ext_resource type="FontFile" uid="uid://doovpwrrv7mfo" path="res://static_assets/fonts/promptfont.ttf" id="3_h0okc"]
-[ext_resource type="PackedScene" path="res://game_ui/joystick.tscn" id="4_vsxus"]
-[ext_resource type="PackedScene" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
+[ext_resource type="PackedScene" uid="uid://hsaxhgiytdhw" path="res://game_ui/joystick.tscn" id="4_vsxus"]
+[ext_resource type="PackedScene" uid="uid://bxsicl83w2dvo" path="res://game_ui/touch_button.tscn" id="5_ytni6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0osaa"]
 font_size = 50
@@ -571,15 +571,15 @@ offset_bottom = 316.0
 grow_horizontal = 0
 action_name = "reset_level"
 
-[node name="TouchButtonLabel" type="Label" parent="Overlay/Touch" unique_id=1722188073]
+[node name="TouchButtonLabel" type="Label" parent="Overlay/Touch/TouchButtonReset" unique_id=1722188073]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -212.0
-offset_top = 94.0
-offset_right = -18.0
-offset_bottom = 161.0
+offset_left = -173.0
+offset_top = -72.0
+offset_right = 21.0
+offset_bottom = -5.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 0.36862746)
 theme_override_fonts/font = ExtResource("3_h0okc")

@@ -32,7 +32,7 @@ func _ready() -> void:
 func update_state() -> void:
 	%Chapter0.visible = Settings.debug_mode
 	_on_chapter_1_pressed()
-	if visible and !Platform.is_touch_device and !default_button.has_focus():
+	if visible and !Platform.show_touch_ui() and !default_button.has_focus():
 		default_button.grab_focus.call_deferred()
 
 

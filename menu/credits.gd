@@ -61,6 +61,7 @@ func update_text() -> void:
 
 	if page > 6:
 		%Debug.visible = true
+		%Debug.text = "Disable debug" if Settings.debug_mode else "Enable debug"
 
 
 func _on_next_pressed() -> void:
@@ -79,4 +80,4 @@ func _on_visibility_changed() -> void:
 
 func _on_debug_pressed() -> void:
 	Settings.debug_mode = !Settings.debug_mode
-	%Debug.text = "Disable debug" if Settings.debug_mode else "Enable debug"
+	update_text()

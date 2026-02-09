@@ -20,6 +20,7 @@ var paradox: Node3D
 var tween: Tween
 var state_history = []
 
+
 func _ready() -> void:
 	SignalBus.connect("goal_reached", goal_reached)
 	SignalBus.connect("end_world", end_world)
@@ -32,8 +33,6 @@ func _ready() -> void:
 	setup_level()
 	set_can_rotate(false)
 
-	if not Platform.is_touch_device:
-		$Overlay/Touch.free()
 
 func _physics_process(_delta: float) -> void:
 	var should_rewind = Input.is_action_pressed("rewind") && !%WonLevel.visible
@@ -65,6 +64,18 @@ func _process(delta) -> void:
 		reset_level()
 	if (%WonLevel.visible && (Input.is_action_just_pressed("continue") || Input.is_action_just_pressed("touch_button_right"))):
 		next_level()
+
+	var touch = Platform.show_touch_ui()
+	if $Overlay/Touch.visible != touch:
+		$Overlay/Touch.visible = touch
+		for child in $Overlay/Touch.get_children():
+			child.set_disabled(!touch)
+		update_buttons()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		update_buttons()
 
 
 func reset_level() -> void:
@@ -186,7 +197,7 @@ func set_can_rotate(new_value: bool):
 
 
 func update_buttons():
-	if not Platform.is_touch_device:
+	if not Platform.show_touch_ui():
 		return
 
 	%TouchButtonHome.set_texture(home_texture, false)

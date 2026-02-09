@@ -1,9 +1,6 @@
 extends Node
 
 
-const DEBUG_FORCE_TOUCH_DEVICE = false
-
-
 enum InputDevice {
 	KEYBOARD,
 	CONTROLLER,
@@ -14,18 +11,16 @@ enum InputDevice {
 
 var is_touch_device = false # Set once during startup
 var current_input_device: InputDevice = InputDevice.KEYBOARD # Can change while running
-# TODO: Persist in user settings.
-var sound_enabled = true
 
 
 func _init() -> void:
 	init_is_touch_device()
 	detect_input_device()
-	Input.joy_connection_changed.connect(detect_input_device)
+	Input.joy_connection_changed.connect(detect_input_device.unbind(2))
 
 
 func init_is_touch_device():
-	is_touch_device = DEBUG_FORCE_TOUCH_DEVICE || LevelSelector.get_res().touch_ui_enabled || OS.get_name() == "Android" || OS.get_name() == "iOS"
+	is_touch_device = LevelSelector.get_res().touch_ui_enabled || OS.get_name() == "Android" || OS.get_name() == "iOS"
 
 	var window = JavaScriptBridge.get_interface("window")
 	if window:
@@ -33,9 +28,11 @@ func init_is_touch_device():
 		is_touch_device = js_return == 1
 
 
-func detect_input_device(_device_id: int = 0, _connected: bool = true):
+func detect_input_device():
 	var device_name = Input.get_joy_name(0)
-	if (device_name.contains("PS3")
+	if show_touch_ui():
+		current_input_device = InputDevice.TOUCH
+	elif (device_name.contains("PS3")
 			|| device_name.contains("PS4")
 			|| device_name.contains("PS5")
 			|| device_name.contains("DualSense")):
@@ -47,18 +44,15 @@ func detect_input_device(_device_id: int = 0, _connected: bool = true):
 			|| device_name.contains("Joy-Con")
 			|| device_name.contains("Joy Con")):
 		current_input_device = InputDevice.CONTROLLER
-	elif is_touch_device:
-		current_input_device = InputDevice.TOUCH
 	else:
 		current_input_device = InputDevice.KEYBOARD
-
-
-func set_sound_enabled(new_value: bool):
-	sound_enabled = new_value
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), not sound_enabled)
 
 
 func any_controller() -> bool:
 	return (current_input_device == InputDevice.PLAYSTATION or
 		current_input_device == InputDevice.XBOX or
 		current_input_device == InputDevice.CONTROLLER)
+
+
+func show_touch_ui() -> bool:
+	return Settings.always_show_touch_ui || is_touch_device

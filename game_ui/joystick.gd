@@ -8,6 +8,7 @@ var angle = 0.0
 var grabbed = false
 var touch_index = -1
 var touch_start = Vector2.ZERO
+var disabled = false
 
 
 const WHITEISH = Color(0, 0, 0, 0.2)
@@ -28,13 +29,18 @@ func _draw():
 
 func _input(event):
 	# touch_button is @tool-enabled for drawing but accessing actions will result in error messages.
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() || disabled:
 		return
 
 	if event is InputEventScreenTouch:
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
 		handle_drag(event)
+
+
+func set_disabled(new_value: bool) -> void:
+	disabled = new_value
+	SignalBus.joystick_moved.emit(Vector2.ZERO)
 
 
 func handle_touch(event : InputEventScreenTouch) -> void:
