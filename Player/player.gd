@@ -34,6 +34,10 @@ func _physics_process(_delta):
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_forward", "move_back")).limit_length(1.0)
+
+	if Platform.current_input_device == Platform.InputDevice.KEYBOARD && Settings.diagonal_arrow_keys:
+		direction = direction.rotated(-PI / 4.0)
+
 	# Direction with QEAD (diagonal)
 	var direction_diag = Vector2(
 		Input.get_axis("move_up_left", "move_down_right"),
