@@ -10,6 +10,6 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
-		SignalBus.can_rotate.emit(false)
+		SignalBus.can_rotate.emit(Settings.always_allow_rotation)
 		%Regular.visible = true
 		%Enabled.visible = false

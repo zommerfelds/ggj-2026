@@ -31,7 +31,6 @@ func _ready() -> void:
 	%ParadoxBackdrop.visibility_changed.connect(update_touch_buttons)
 
 	setup_level()
-	set_can_rotate(false)
 
 
 # When the paradox covers the screen in black, invert the touch UI colors
@@ -122,6 +121,7 @@ func setup_level() -> void:
 	level.chapter_index = GameProgress.current_chapter()
 	level.level_index = GameProgress.current_level()
 	add_child(level)
+	SignalBus.can_rotate.emit(Settings.always_allow_rotation)
 	update_buttons()
 
 func end_world(source: Vector3) -> void:

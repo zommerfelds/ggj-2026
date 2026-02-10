@@ -95,6 +95,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Always show touch controls"
 
+[node name="AlwaysRotation" type="CheckBox" parent="MarginContainer/Control/Checkboxes" unique_id=1984266735]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Always allow rotation"
+
 [node name="OK" type="Button" parent="MarginContainer/Control" unique_id=1568981475]
 unique_name_in_owner = true
 layout_mode = 1
@@ -114,4 +119,5 @@ text = "OK"
 [connection signal="toggled" from="MarginContainer/Control/Checkboxes/Sound" to="." method="_on_sound_toggled"]
 [connection signal="toggled" from="MarginContainer/Control/Checkboxes/DiagonalArrows" to="." method="_on_diagonal_arrows_toggled"]
 [connection signal="toggled" from="MarginContainer/Control/Checkboxes/TouchUI" to="." method="_on_touch_ui_toggled"]
+[connection signal="toggled" from="MarginContainer/Control/Checkboxes/AlwaysRotation" to="." method="_on_always_rotation_toggled"]
 [connection signal="pressed" from="MarginContainer/Control/OK" to="." method="_on_ok_pressed"]

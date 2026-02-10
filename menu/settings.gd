@@ -37,8 +37,10 @@ func update_state() -> void:
 	%Sound.set_pressed_no_signal(Settings.sound_enabled)
 	%DiagonalArrows.set_pressed_no_signal(Settings.diagonal_arrow_keys)
 	%TouchUI.set_pressed_no_signal(Settings.always_show_touch_ui)
+	%AlwaysRotation.set_pressed_no_signal(Settings.always_allow_rotation)
 
 	%TouchUI.visible = Settings.debug_mode
+	%AlwaysRotation.visible = Settings.debug_mode
 
 
 func _on_ok_pressed() -> void:
@@ -55,3 +57,7 @@ func _on_diagonal_arrows_toggled(toggled_on: bool) -> void:
 
 func _on_touch_ui_toggled(toggled_on: bool) -> void:
 	Settings.always_show_touch_ui = toggled_on
+
+
+func _on_always_rotation_toggled(toggled_on: bool) -> void:
+	Settings.always_allow_rotation = toggled_on
