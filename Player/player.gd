@@ -195,6 +195,13 @@ func game_over():
 func joystick_moved(dir):
 	joystick_direction = dir
 
+	# Convert the joystick motion from the "flat" perspective of the screen to the
+	# tilted one of the grid, where the grid lines have a 2:1 slope.
+	var length = joystick_direction.length()
+	if length > 0.01:
+		joystick_direction = (joystick_direction * Vector2(1.0, 2.0)).normalized() * length
+
+
 func on_is_camera_rotating(is_rotating: bool):
 	can_move = !is_rotating
 
