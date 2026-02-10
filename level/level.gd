@@ -177,6 +177,52 @@ static var chapter_0: Array[LevelData] = [
 		l.add_torch(3, 0)
 		l.add_plant(4, 1)
 		),
+
+	LevelData.new("G1", 4, 4, func(l: Level):
+		l.add_player(3, 0)
+		l.add_goal(0, 0)
+		l.add_tall_bush(1, 0)
+		l.add_bush(2, 1)
+		l.add_rotation_switch(3, 3)
+		l.add_bush(0, 2)
+		l.add_box(1, 1)
+		),
+
+	LevelData.new("G2", 3, 5, func(l: Level):
+		l.add_player(2, 1)
+		l.add_tall_bush(1, 2)
+		l.add_rotation_switch(2, 2)
+		l.add_bush(1, 3)
+		l.add_goal(1, 4)
+		l.add_bush(2, 4)
+		l.add_box(0, 3)
+		l.add_box(1, 1)
+		l.add_box(1, 0)
+		),
+
+	LevelData.new("G3", 5, 3, func(l: Level):
+		l.add_player(2, 1)
+		l.add_rotation_switch(3, 1)
+		l.add_goal(0, 1)
+		l.add_tall_bush(1, 1)
+		l.add_tall_bush(0, 2)
+		l.add_box(1, 0)
+		l.add_box(2, 0)
+		),
+
+	LevelData.new("G4", 5, 5, func(l: Level):
+		l.add_player(0, 4)
+		l.add_rotation_switch(3, 0)
+		l.add_tall_bush(1, 1)
+		l.add_bush(2, 2)
+		l.add_bush(3, 2)
+		l.add_bush(2, 3)
+		l.add_goal(3, 3)
+		l.add_tall_bush(4, 4)
+		l.add_box(0, 2)
+		l.add_box(2, 1)
+		l.add_box(4, 3)
+		),
 	]
 
 static var chapter_1: Array[LevelData] = [
