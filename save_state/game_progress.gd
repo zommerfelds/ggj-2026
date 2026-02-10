@@ -27,7 +27,7 @@ func current_level() -> int:
 	return _current_level
 
 
-func set_progres(chapter: int, level: int):
+func set_progress(chapter: int, level: int):
 	if chapter == _current_chapter and level == _current_level:
 		return
 

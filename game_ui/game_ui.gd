@@ -100,7 +100,7 @@ func next_level(delta: int = 1) -> void:
 
 func select_level(chapter: int, index: int) -> void:
 	level.queue_free()
-	GameProgress.set_progres(chapter, index)
+	GameProgress.set_progress(chapter, index)
 	call_deferred("setup_level")
 
 

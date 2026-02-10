@@ -41,5 +41,5 @@ enum Screen {
 # Emitted to change between game/menu/settings etc screens
 signal change_screen(Screen)
 
-# When a particular level is selected by index
-signal select_level(int)
+# When a particular level is selected
+signal select_level(chapter: int, index: int)
