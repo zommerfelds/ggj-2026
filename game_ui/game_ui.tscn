@@ -571,7 +571,8 @@ offset_bottom = 316.0
 grow_horizontal = 0
 action_name = "reset_level"
 
-[node name="TouchButtonLabel" type="Label" parent="Overlay/Touch/TouchButtonReset" unique_id=1722188073]
+[node name="TouchButtonResetLabel" type="Label" parent="Overlay/Touch/TouchButtonReset" unique_id=1722188073]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

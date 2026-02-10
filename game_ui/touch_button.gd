@@ -1,6 +1,10 @@
 @tool
 extends Control
 
+const LINE_WIDTH = 4.0
+const BLACK = Color(0, 0, 0, 0.2)
+const WHITE = Color(1, 1, 1, 0.2)
+
 # TouchButton supports two modes depending on the desired button behavior:
 
 # action_name is the action that will be "pressed" as long as the touch-gesture is active.
@@ -16,21 +20,20 @@ var disabled = false
 # Whether the current drag gesture is staying inside the button
 var drag_inside: bool = false
 
-const WHITEISH = Color(0, 0, 0, 0.2)
-const LINE_WIDTH = 4.0
+var color = BLACK
 
 
 func _draw():
 	var center = size / 2
 	var r = size.x / 2
-	draw_circle(center, r, WHITEISH, false, LINE_WIDTH, true)
+	draw_circle(center, r, color, false, LINE_WIDTH, true)
 
 	# touch_button is @tool-enabled for drawing but accessing actions will result in error messages.
 	if Engine.is_editor_hint():
 		return
 
 	if touch_index >= 0 and drag_inside:
-		draw_circle(center, r + LINE_WIDTH / 2, WHITEISH, true, -1.0, true)
+		draw_circle(center, r + LINE_WIDTH / 2, color, true, -1.0, true)
 
 
 func _input(event):
@@ -42,6 +45,11 @@ func _input(event):
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
 		handle_drag(event)
+	queue_redraw()
+
+
+func set_inverted(inverted: bool) -> void:
+	color = WHITE if inverted else BLACK
 	queue_redraw()
 
 

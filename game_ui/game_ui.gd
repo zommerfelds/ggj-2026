@@ -28,8 +28,21 @@ func _ready() -> void:
 	SignalBus.connect("game_over", game_over)
 	SignalBus.connect("select_level", select_level)
 
+	%ParadoxBackdrop.visibility_changed.connect(update_touch_buttons)
+
 	setup_level()
 	set_can_rotate(false)
+
+
+# When the paradox covers the screen in black, invert the touch UI colors
+func update_touch_buttons():
+	var inverted = %ParadoxBackdrop.visible
+	%TouchButtonHome.set_inverted(inverted)
+	%TouchButtonReset.set_inverted(inverted)
+	if inverted:
+		%TouchButtonResetLabel.add_theme_color_override("font_color", Color.WHITE)
+	else:
+		%TouchButtonResetLabel.remove_theme_color_override("font_color")
 
 
 func _physics_process(_delta: float) -> void:
